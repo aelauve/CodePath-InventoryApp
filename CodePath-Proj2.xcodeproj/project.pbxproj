@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E49207125E2E50900755AF9 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49207025E2E50900755AF9 /* ShoppingListViewController.swift */; };
 		5EB18FF225E1E6F300D6BE0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB18FF125E1E6F300D6BE0C /* AppDelegate.swift */; };
 		5EB18FF425E1E6F300D6BE0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB18FF325E1E6F300D6BE0C /* SceneDelegate.swift */; };
 		5EB18FF625E1E6F300D6BE0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB18FF525E1E6F300D6BE0C /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E49207025E2E50900755AF9 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		5EB18FEE25E1E6F300D6BE0C /* CodePath-Proj2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CodePath-Proj2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EB18FF125E1E6F300D6BE0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EB18FF325E1E6F300D6BE0C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				5EB1900625E1E85C00D6BE0C /* HorizCategoryCollectionViewCell.swift */,
 				5EB1900925E1EEBB00D6BE0C /* InventoryCollectionViewCell.swift */,
 				5EB1900C25E1F9E600D6BE0C /* AddItemViewController.swift */,
+				5E49207025E2E50900755AF9 /* ShoppingListViewController.swift */,
 			);
 			path = "CodePath-Proj2";
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				5EB18FF625E1E6F300D6BE0C /* ViewController.swift in Sources */,
 				5EB1900725E1E85C00D6BE0C /* HorizCategoryCollectionViewCell.swift in Sources */,
 				5EB18FF225E1E6F300D6BE0C /* AppDelegate.swift in Sources */,
+				5E49207125E2E50900755AF9 /* ShoppingListViewController.swift in Sources */,
 				5EB1900A25E1EEBB00D6BE0C /* InventoryCollectionViewCell.swift in Sources */,
 				5EB18FF425E1E6F300D6BE0C /* SceneDelegate.swift in Sources */,
 				5EB1900D25E1F9E600D6BE0C /* AddItemViewController.swift in Sources */,

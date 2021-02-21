@@ -274,18 +274,38 @@
         <!--Shopping List-->
         <scene sceneID="vuw-A0-DGU">
             <objects>
-                <viewController id="4lf-8j-yWy" sceneMemberID="viewController">
+                <viewController id="4lf-8j-yWy" customClass="ShoppingListViewController" customModule="CodePath_Proj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YNp-aS-wjL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Da-zP-SNq">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listItemCell" id="OAI-GW-HAb">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OAI-GW-HAb" id="nOE-dC-IKm">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6IF-sT-4fa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Shopping List" image="list.number" catalog="system" id="0aQ-Af-Vus"/>
+                    <navigationItem key="navigationItem" title="Shopping List" id="VvI-ea-a8Q"/>
+                    <connections>
+                        <outlet property="listTableView" destination="4Da-zP-SNq" id="0Mp-nU-fWn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UbK-s6-yQR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="361" y="893"/>
+            <point key="canvasLocation" x="1271.0144927536232" y="892.63392857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mp1-Za-Xb4">
@@ -299,7 +319,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="7Lw-VV-NWi" kind="relationship" relationship="viewControllers" id="dv9-St-7BD"/>
-                        <segue destination="4lf-8j-yWy" kind="relationship" relationship="viewControllers" id="cHS-xB-frv"/>
+                        <segue destination="lyR-hZ-I6o" kind="relationship" relationship="viewControllers" id="cHS-xB-frv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F1S-p8-kgR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -323,6 +343,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QB5-CI-heG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2831.8840579710145" y="93.75"/>
+        </scene>
+        <!--Shopping List-->
+        <scene sceneID="Dcr-u8-S65">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lyR-hZ-I6o" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Shopping List" image="list.number" catalog="system" id="0aQ-Af-Vus"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pmR-Q6-dMv">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4lf-8j-yWy" kind="relationship" relationship="rootViewController" id="2zM-Zg-civ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SmI-6D-Q0Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="360.86956521739131" y="892.63392857142856"/>
         </scene>
     </scenes>
     <resources>
