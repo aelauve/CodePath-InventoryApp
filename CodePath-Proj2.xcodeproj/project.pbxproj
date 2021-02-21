@@ -13,6 +13,9 @@
 		5EB18FF925E1E6F300D6BE0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB18FF725E1E6F300D6BE0C /* Main.storyboard */; };
 		5EB18FFB25E1E6F500D6BE0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EB18FFA25E1E6F500D6BE0C /* Assets.xcassets */; };
 		5EB18FFE25E1E6F500D6BE0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB18FFC25E1E6F500D6BE0C /* LaunchScreen.storyboard */; };
+		5EB1900725E1E85C00D6BE0C /* HorizCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB1900625E1E85C00D6BE0C /* HorizCategoryCollectionViewCell.swift */; };
+		5EB1900A25E1EEBB00D6BE0C /* InventoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB1900925E1EEBB00D6BE0C /* InventoryCollectionViewCell.swift */; };
+		5EB1900D25E1F9E600D6BE0C /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB1900C25E1F9E600D6BE0C /* AddItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		5EB18FFA25E1E6F500D6BE0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EB18FFD25E1E6F500D6BE0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5EB18FFF25E1E6F500D6BE0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EB1900625E1E85C00D6BE0C /* HorizCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		5EB1900925E1EEBB00D6BE0C /* InventoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		5EB1900C25E1F9E600D6BE0C /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				5EB18FFA25E1E6F500D6BE0C /* Assets.xcassets */,
 				5EB18FFC25E1E6F500D6BE0C /* LaunchScreen.storyboard */,
 				5EB18FFF25E1E6F500D6BE0C /* Info.plist */,
+				5EB1900625E1E85C00D6BE0C /* HorizCategoryCollectionViewCell.swift */,
+				5EB1900925E1EEBB00D6BE0C /* InventoryCollectionViewCell.swift */,
+				5EB1900C25E1F9E600D6BE0C /* AddItemViewController.swift */,
 			);
 			path = "CodePath-Proj2";
 			sourceTree = "<group>";
@@ -138,8 +147,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EB18FF625E1E6F300D6BE0C /* ViewController.swift in Sources */,
+				5EB1900725E1E85C00D6BE0C /* HorizCategoryCollectionViewCell.swift in Sources */,
 				5EB18FF225E1E6F300D6BE0C /* AppDelegate.swift in Sources */,
+				5EB1900A25E1EEBB00D6BE0C /* InventoryCollectionViewCell.swift in Sources */,
 				5EB18FF425E1E6F300D6BE0C /* SceneDelegate.swift in Sources */,
+				5EB1900D25E1F9E600D6BE0C /* AddItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
