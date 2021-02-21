@@ -64,6 +64,19 @@ class AddItemViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func decrementAmount(_ sender: Any) {
+        var count = Int(amountTextBox.text!)
+        if count! > 1{
+            count = count! - 1
+            amountTextBox.text = String(count!)
+        }
+    }
+    
+    @IBAction func incrementAmount(_ sender: Any) {
+        var count = Int(amountTextBox.text!)
+        count = count! + 1
+        amountTextBox.text = String(count!)
+    }
     
     @IBAction func expirationToggled(_ sender: Any) {
         if expirationSwitch.isOn == true{
