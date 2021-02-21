@@ -16,6 +16,8 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var nameTextBox: UITextField!
     @IBOutlet weak var amountTextBox: UITextField!
+    @IBOutlet weak var expirationSwitch: UISwitch!
+    @IBOutlet weak var expirationDate: UIDatePicker!
     
     //Still need to add actions for the buttons
     //Also need to add text fields
@@ -63,7 +65,15 @@ class AddItemViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func expirationToggled(_ sender: Any) {
+        if expirationSwitch.isOn == true{
+            expirationDate.isEnabled = true
+        }
+        else {
+            expirationDate.isEnabled = false
+        }
+    }
+    
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
