@@ -27,4 +27,8 @@ class ShopListItemsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func checkoffButtonClicked(_ sender: Any) {
+        //
+        //if checkOffButton.
+    }
 }

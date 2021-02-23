@@ -46,6 +46,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         cell.listItemImage.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         cell.listItemImage.layer.cornerRadius = (cell.listItemImage?.frame.size.width ?? 0.0) / 2
         
+        
         return cell
     }
 
