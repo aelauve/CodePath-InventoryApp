@@ -32,6 +32,11 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         //Function for what to do when user taps a cell
         //May not be needed, just placed sample code in case
         print("you tapped me")
+        
+        //Trying to change the button imagew when a cell is selected
+//        let cell = listTableView.dequeueReusableCell(withIdentifier: "listItemCell", for: indexPath) as! ShopListItemsTableViewCell
+//
+//        cell.checkOffButton.setImage(UIImage(named: "circle.fill"), for: .selected)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
