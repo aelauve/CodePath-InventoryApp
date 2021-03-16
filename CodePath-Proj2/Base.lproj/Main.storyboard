@@ -12,7 +12,7 @@
         <!--Inventory-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CodePath_Proj2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="InventoryViewController" customModule="CodePath_Proj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -375,7 +375,7 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="loginClicked:" destination="zxn-Ad-94Q" eventType="touchUpInside" id="EWE-CS-mx0"/>
-                                    <segue destination="hKj-zO-lc2" kind="presentation" id="58P-3g-Sye"/>
+                                    <segue destination="IGB-eW-5Gx" kind="presentation" id="58P-3g-Sye"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeX-sz-M4H">
@@ -414,12 +414,12 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="-1431.0267857142856"/>
         </scene>
-        <!--Inventory Selector View Controller-->
+        <!--Select an Inventory-->
         <scene sceneID="Ccg-EB-nz0">
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="hKj-zO-lc2" customClass="InventorySelectorViewController" customModule="CodePath_Proj2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Djs-VQ-BKc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -451,10 +451,22 @@
                             <outlet property="delegate" destination="hKj-zO-lc2" id="o75-4R-pwe"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Select an Inventory" id="XDd-UR-8Ra">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="2rb-kQ-oYp">
+                            <connections>
+                                <action selector="onLogout:" destination="hKj-zO-lc2" id="dQ1-zM-tiv"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Link" id="HTg-ZR-woF">
+                            <connections>
+                                <action selector="onAddNew:" destination="hKj-zO-lc2" id="PZV-rF-waB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jep-r7-Ue0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928.98550724637687" y="-684.375"/>
+            <point key="canvasLocation" x="1839.1304347826087" y="-684.375"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mp1-Za-Xb4">
@@ -511,6 +523,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SmI-6D-Q0Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="360.86956521739131" y="892.63392857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1Q1-GU-51c">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IGB-eW-5Gx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sko-1Y-hpi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hKj-zO-lc2" kind="relationship" relationship="rootViewController" id="gSb-MU-GDL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uMV-Eo-KED" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928.98550724637687" y="-684.375"/>
         </scene>
     </scenes>
     <resources>

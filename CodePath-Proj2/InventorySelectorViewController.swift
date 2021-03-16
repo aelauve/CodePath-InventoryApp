@@ -18,7 +18,21 @@ class InventorySelectorViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    
+    @IBAction func onAddNew(_ sender: Any) {
+        print("Link a new inventory")
+    }
+    
+    
+    @IBAction func onLogout(_ sender: Any) {
+        //Add logout code later
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

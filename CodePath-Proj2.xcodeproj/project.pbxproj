@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,7 @@
 		5E49207425E2E8EF00755AF9 /* ShopListItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49207325E2E8EF00755AF9 /* ShopListItemsTableViewCell.swift */; };
 		5EB18FF225E1E6F300D6BE0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB18FF125E1E6F300D6BE0C /* AppDelegate.swift */; };
 		5EB18FF425E1E6F300D6BE0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB18FF325E1E6F300D6BE0C /* SceneDelegate.swift */; };
-		5EB18FF625E1E6F300D6BE0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB18FF525E1E6F300D6BE0C /* ViewController.swift */; };
+		5EB18FF625E1E6F300D6BE0C /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB18FF525E1E6F300D6BE0C /* InventoryViewController.swift */; };
 		5EB18FF925E1E6F300D6BE0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB18FF725E1E6F300D6BE0C /* Main.storyboard */; };
 		5EB18FFB25E1E6F500D6BE0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EB18FFA25E1E6F500D6BE0C /* Assets.xcassets */; };
 		5EB18FFE25E1E6F500D6BE0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EB18FFC25E1E6F500D6BE0C /* LaunchScreen.storyboard */; };
@@ -32,7 +32,7 @@
 		5EB18FEE25E1E6F300D6BE0C /* CodePath-Proj2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CodePath-Proj2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EB18FF125E1E6F300D6BE0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EB18FF325E1E6F300D6BE0C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5EB18FF525E1E6F300D6BE0C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5EB18FF525E1E6F300D6BE0C /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		5EB18FF825E1E6F300D6BE0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5EB18FFA25E1E6F500D6BE0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EB18FFD25E1E6F500D6BE0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 				5EB64C1A26015EBF00F7CA79 /* GoogleService-Info.plist */,
 				5EB18FF125E1E6F300D6BE0C /* AppDelegate.swift */,
 				5EB18FF325E1E6F300D6BE0C /* SceneDelegate.swift */,
-				5EB18FF525E1E6F300D6BE0C /* ViewController.swift */,
+				5EB18FF525E1E6F300D6BE0C /* InventoryViewController.swift */,
 				5EB18FF725E1E6F300D6BE0C /* Main.storyboard */,
 				5EB18FFA25E1E6F500D6BE0C /* Assets.xcassets */,
 				5EB18FFC25E1E6F500D6BE0C /* LaunchScreen.storyboard */,
@@ -115,7 +115,6 @@
 				3617554041B84F4ACA9F05E8 /* Pods-CodePath-Proj2.debug.xcconfig */,
 				8B282D18EA8584BD8AB81F08 /* Pods-CodePath-Proj2.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -237,7 +236,7 @@
 				5EB64C152601581B00F7CA79 /* InventorySelectorViewController.swift in Sources */,
 				5EB64C12260157EE00F7CA79 /* LoginViewController.swift in Sources */,
 				5EB64C182601584B00F7CA79 /* InventorySelectorTableViewCell.swift in Sources */,
-				5EB18FF625E1E6F300D6BE0C /* ViewController.swift in Sources */,
+				5EB18FF625E1E6F300D6BE0C /* InventoryViewController.swift in Sources */,
 				5EB1900725E1E85C00D6BE0C /* HorizCategoryCollectionViewCell.swift in Sources */,
 				5EB18FF225E1E6F300D6BE0C /* AppDelegate.swift in Sources */,
 				5E49207125E2E50900755AF9 /* ShoppingListViewController.swift in Sources */,
