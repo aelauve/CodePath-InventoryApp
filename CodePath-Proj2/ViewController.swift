@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     
     var categories = ["All", "Meat", "Dairy", "Cleaning", "Misc"]
 
+    @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var categoryPickCollection: UICollectionView!
     @IBOutlet weak var itemCollection: UICollectionView!
     let categoryCollectionViewIdentifier = "horizCategoryCell"
@@ -23,7 +24,10 @@ class ViewController: UIViewController {
 //        self.view.addSubview(itemCollection)
     }
 
-
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
