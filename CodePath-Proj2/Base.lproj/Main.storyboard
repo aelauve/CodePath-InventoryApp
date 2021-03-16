@@ -372,7 +372,9 @@
                                 <rect key="frame" x="64" y="457" width="287" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Login"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="loginClicked:" destination="zxn-Ad-94Q" eventType="touchUpInside" id="EWE-CS-mx0"/>
                                     <segue destination="IGB-eW-5Gx" kind="presentation" id="58P-3g-Sye"/>
@@ -382,7 +384,9 @@
                                 <rect key="frame" x="64" y="552" width="287" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Sign Up"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="signUpClicked:" destination="zxn-Ad-94Q" eventType="touchUpInside" id="y9q-ha-dlw"/>
                                 </connections>
@@ -418,7 +422,7 @@
         <scene sceneID="Ccg-EB-nz0">
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="hKj-zO-lc2" customClass="InventorySelectorViewController" customModule="CodePath_Proj2" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Djs-VQ-BKc">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Djs-VQ-BKc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -430,16 +434,25 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ur6-Tx-wXh">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ur6-Tx-wXh">
                                             <rect key="frame" x="20" y="11" width="374" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <state key="normal" title="Inventory1"/>
+                                            <state key="normal" title="Inventory1">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
                                             <connections>
                                                 <segue destination="ye0-J5-yld" kind="presentation" id="lyh-4M-jpW"/>
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ur6-Tx-wXh" firstAttribute="top" secondItem="MJJ-n1-eUH" secondAttribute="topMargin" id="4zy-Dl-BkU"/>
+                                        <constraint firstItem="ur6-Tx-wXh" firstAttribute="leading" secondItem="MJJ-n1-eUH" secondAttribute="leadingMargin" id="6Fp-aK-zan"/>
+                                        <constraint firstItem="ur6-Tx-wXh" firstAttribute="centerX" secondItem="MJJ-n1-eUH" secondAttribute="centerX" id="FcD-YP-xUW"/>
+                                        <constraint firstItem="ur6-Tx-wXh" firstAttribute="centerY" secondItem="MJJ-n1-eUH" secondAttribute="centerY" id="jdW-Lc-Rvo"/>
+                                        <constraint firstItem="ur6-Tx-wXh" firstAttribute="trailing" secondItem="MJJ-n1-eUH" secondAttribute="trailingMargin" id="m5r-D1-IY5"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ur6-Tx-wXh" secondAttribute="bottom" id="s6B-I2-zQz"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="inventorySelectButton" destination="ur6-Tx-wXh" id="wWh-px-lQ1"/>
