@@ -9,6 +9,9 @@ import UIKit
 
 class InventorySelectorTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var inventorySelectButton: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
