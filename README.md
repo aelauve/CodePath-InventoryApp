@@ -14,12 +14,12 @@ The app will allow users to add items in several ways: manually type in the item
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
-- **Category:**
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:**
-- **Scope:**
+- **Category:** Database, Item Tracking
+- **Mobile:** Mobile first experience, uses camera
+- **Story:** Allows users to organize their groceries and belongings, enabling them ease of access and a streamlined shopping procedure.
+- **Market:** Anyone that appreciates organization for their items and groceries would appreciate this app. Ability to view, track, and update their inventory as needed allows users to stay organized as well as share a communication platform for necessites across a household.
+- **Habit:** Users will likely open the app at least once a week, if not more. The app will store household items as well as groceries, which are typically shopped for at least once a week or every two weeks. Very habit forming!
+- **Scope:** The app will start out as just an inventory tracker and associated shopping list. However, it has the potential to support in-app messaging between members of a shared inventory as well as in-app shopping, possibly through Food/Grocery Delivery APIs.
 
 ## Product Spec
 
