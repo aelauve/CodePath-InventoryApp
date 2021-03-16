@@ -18,6 +18,9 @@
 		5EB1900725E1E85C00D6BE0C /* HorizCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB1900625E1E85C00D6BE0C /* HorizCategoryCollectionViewCell.swift */; };
 		5EB1900A25E1EEBB00D6BE0C /* InventoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB1900925E1EEBB00D6BE0C /* InventoryCollectionViewCell.swift */; };
 		5EB1900D25E1F9E600D6BE0C /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB1900C25E1F9E600D6BE0C /* AddItemViewController.swift */; };
+		5EB64C12260157EE00F7CA79 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB64C11260157EE00F7CA79 /* LoginViewController.swift */; };
+		5EB64C152601581B00F7CA79 /* InventorySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB64C142601581B00F7CA79 /* InventorySelectorViewController.swift */; };
+		5EB64C182601584B00F7CA79 /* InventorySelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB64C172601584B00F7CA79 /* InventorySelectorTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		5EB1900625E1E85C00D6BE0C /* HorizCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		5EB1900925E1EEBB00D6BE0C /* InventoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		5EB1900C25E1F9E600D6BE0C /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		5EB64C11260157EE00F7CA79 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5EB64C142601581B00F7CA79 /* InventorySelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySelectorViewController.swift; sourceTree = "<group>"; };
+		5EB64C172601584B00F7CA79 /* InventorySelectorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySelectorTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,9 @@
 				5EB1900C25E1F9E600D6BE0C /* AddItemViewController.swift */,
 				5E49207025E2E50900755AF9 /* ShoppingListViewController.swift */,
 				5E49207325E2E8EF00755AF9 /* ShopListItemsTableViewCell.swift */,
+				5EB64C11260157EE00F7CA79 /* LoginViewController.swift */,
+				5EB64C142601581B00F7CA79 /* InventorySelectorViewController.swift */,
+				5EB64C172601584B00F7CA79 /* InventorySelectorTableViewCell.swift */,
 			);
 			path = "CodePath-Proj2";
 			sourceTree = "<group>";
@@ -152,6 +161,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EB64C152601581B00F7CA79 /* InventorySelectorViewController.swift in Sources */,
+				5EB64C12260157EE00F7CA79 /* LoginViewController.swift in Sources */,
+				5EB64C182601584B00F7CA79 /* InventorySelectorTableViewCell.swift in Sources */,
 				5EB18FF625E1E6F300D6BE0C /* ViewController.swift in Sources */,
 				5EB1900725E1E85C00D6BE0C /* HorizCategoryCollectionViewCell.swift in Sources */,
 				5EB18FF225E1E6F300D6BE0C /* AppDelegate.swift in Sources */,

@@ -354,10 +354,10 @@
             </objects>
             <point key="canvasLocation" x="1271.0144927536232" y="892.63392857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="1yX-ia-JZ6">
             <objects>
-                <viewController id="zxn-Ad-94Q" sceneMemberID="viewController">
+                <viewController id="zxn-Ad-94Q" customClass="LoginViewController" customModule="CodePath_Proj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rNw-yd-Mbq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -383,16 +383,16 @@
             </objects>
             <point key="canvasLocation" x="929" y="-1431"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Inventory Selector View Controller-->
         <scene sceneID="Ccg-EB-nz0">
             <objects>
-                <tableViewController id="hKj-zO-lc2" sceneMemberID="viewController">
+                <tableViewController id="hKj-zO-lc2" customClass="InventorySelectorViewController" customModule="CodePath_Proj2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Djs-VQ-BKc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="88" id="i7b-gm-h4t">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="InventorySelectorCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InventorySelectorCell" rowHeight="88" id="i7b-gm-h4t" customClass="InventorySelectorTableViewCell" customModule="CodePath_Proj2" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i7b-gm-h4t" id="MJJ-n1-eUH">
