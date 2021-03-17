@@ -88,6 +88,7 @@ The app will allow users to add items in several ways: manually type in the item
 ### [BONUS] Digital Wireframes & Mockups
 
 ### [BONUS] Interactive Prototype
+<img src='http://g.recordit.co/YsKwo49en8.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Schema 
 [This section will be completed in Unit 9]
