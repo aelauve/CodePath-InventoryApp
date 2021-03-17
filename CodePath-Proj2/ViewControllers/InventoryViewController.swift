@@ -52,6 +52,9 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             if indexPath.item == 0{
                 let cell = categoryPickCollection.dequeueReusableCell(withReuseIdentifier: addCategoryCollectionViewIdentifier, for: indexPath) as! AddCategoryCollectionCell
                 
+                cell.addCategoryButton.layer.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+                cell.addCategoryButton.layer.borderWidth = 2.0
+                cell.addCategoryButton.layer.cornerRadius = 15
                 
                 return cell
                 
