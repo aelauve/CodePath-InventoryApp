@@ -14,6 +14,8 @@ class InventoryViewController: UIViewController {
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var categoryPickCollection: UICollectionView!
     @IBOutlet weak var itemCollection: UICollectionView!
+    
+    let addCategoryCollectionViewIdentifier = "addCategoryCell"
     let categoryCollectionViewIdentifier = "horizCategoryCell"
     let itemCollectionViewIdentifier = "inventoryItemCell"
     
@@ -35,8 +37,7 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
         if collectionView == self.categoryPickCollection{
-            
-            return categories.count
+            return categories.count + 1
         }
         else{
             return 21
@@ -45,18 +46,29 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        print(indexPath.item)
         if collectionView == self.categoryPickCollection{
+            //print(indexPath.item)
+            if indexPath.item == 0{
+                let cell = categoryPickCollection.dequeueReusableCell(withReuseIdentifier: addCategoryCollectionViewIdentifier, for: indexPath) as! AddCategoryCollectionCell
+                
+                
+                return cell
+                
+            } else{
+                print("hello!")
+                let cell = categoryPickCollection.dequeueReusableCell(withReuseIdentifier: categoryCollectionViewIdentifier, for: indexPath) as! HorizCategoryCollectionViewCell
+                
+                
+                cell.categoryButton.layer.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+                cell.categoryButton.layer.borderWidth = 2.0
+                cell.categoryButton.layer.cornerRadius = 15
+                let title = categories[indexPath.row - 1]
+                cell.categoryButton.setTitle(title, for: .normal)
+                
+                return cell
+            }
             
-            let cell = categoryPickCollection.dequeueReusableCell(withReuseIdentifier: categoryCollectionViewIdentifier, for: indexPath) as! HorizCategoryCollectionViewCell
-            
-            
-            cell.categoryButton.layer.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-            cell.categoryButton.layer.borderWidth = 2.0
-            cell.categoryButton.layer.cornerRadius = 15
-            let title = categories[indexPath.row]
-            cell.categoryButton.setTitle(title, for: .normal)
-            return cell
         }
         else{
             
