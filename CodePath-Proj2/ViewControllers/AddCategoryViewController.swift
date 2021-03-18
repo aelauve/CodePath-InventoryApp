@@ -25,7 +25,29 @@ class AddCategoryViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-
+    @IBAction func onChooseImage(_ sender: Any) {
+    }
+    
+    @IBAction func onAddCategory(_ sender: Any) {
+        
+        // If input is blank, show error message
+        if categoryNameTextField.text == ""{
+            let alert = UIAlertController(title: "Uh Oh!", message: "Category Name must be filled in.", preferredStyle: UIAlertController.Style.alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+            {
+                (UIAlertAction) -> Void in
+            }
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+            {
+                () -> Void in
+            }
+        } else {
+            //Add category to user database
+            print("Add success")
+        }
+    
+    }
     /*
     // MARK: - Navigation
 

@@ -13,11 +13,14 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var addToInventoryButton: UIButton!
+    //ignore next line
     @IBOutlet weak var notesTextView: UITextView!
+    
     @IBOutlet weak var nameTextBox: UITextField!
     @IBOutlet weak var amountTextBox: UITextField!
     @IBOutlet weak var expirationSwitch: UISwitch!
     @IBOutlet weak var expirationDate: UIDatePicker!
+    @IBOutlet weak var notesTextBox: UITextView!
     
     //Still need to add actions for the buttons
     //Also need to add text fields
@@ -25,6 +28,8 @@ class AddItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // **** Set itemImage to default image for that category!
         
         //Temporary styling of item image
         itemImageView.layer.cornerRadius = (itemImageView?.frame.size.width ?? 0.0) / 2
@@ -51,9 +56,9 @@ class AddItemViewController: UIViewController {
         minusButton.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
         
         //Styling Notes text view
-        notesTextView.layer.borderWidth = 1.0
-        notesTextView.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
-        notesTextView.layer.cornerRadius = 5
+        notesTextBox.layer.borderWidth = 1.0
+        notesTextBox.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
+        notesTextBox.layer.cornerRadius = 5
         
         //Styling 'Add to' Button
         addToInventoryButton.layer.cornerRadius = 10
@@ -92,6 +97,24 @@ class AddItemViewController: UIViewController {
     }
     
     @IBAction func addToInventoryClicked(_ sender: Any) {
+        
+        // If input is blank, show error message
+        if nameTextBox.text == ""{
+            let alert = UIAlertController(title: "Uh Oh!", message: "Name must be filled in.", preferredStyle: UIAlertController.Style.alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+            {
+                (UIAlertAction) -> Void in
+            }
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+            {
+                () -> Void in
+            }
+            
+        } else {
+            //Add item to category in user database
+            print("Add success")
+        }
         self.dismiss(animated: true, completion: nil)
     }
     

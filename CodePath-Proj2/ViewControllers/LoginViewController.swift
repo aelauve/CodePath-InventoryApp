@@ -13,6 +13,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,13 +26,31 @@ class LoginViewController: UIViewController {
         signUpButton.layer.borderColor = #colorLiteral(red: 0.852301836, green: 0.4426146448, blue: 0.608592689, alpha: 1)
         signUpButton.layer.cornerRadius = 10
 
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func loginClicked(_ sender: Any) {
+        //Add code to login the user
     }
     
     @IBAction func signUpClicked(_ sender: Any) {
+        
+        // If input is blank, show error message
+        if usernameTextField.text == "" || passwordTextField.text == ""{
+            let alert = UIAlertController(title: "Uh Oh!", message: "E-mail and Password fields can't be left blank.", preferredStyle: UIAlertController.Style.alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+            {
+                (UIAlertAction) -> Void in
+            }
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+            {
+                () -> Void in
+            }
+        } else {
+            //perform user signup in database and log them in
+            print("Sign up success!")
+        }
+        
     }
     /*
     // MARK: - Navigation
