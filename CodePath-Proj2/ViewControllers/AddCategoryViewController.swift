@@ -9,6 +9,13 @@ import UIKit
 
 class AddCategoryViewController: UIViewController {
 
+    @IBOutlet weak var defaultIconImage: UIImageView!
+    @IBOutlet weak var chooseImageButton: UIButton!
+    @IBOutlet weak var categoryNameTextField: UITextField!
+    @IBOutlet weak var addCategoryButton: UIButton!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

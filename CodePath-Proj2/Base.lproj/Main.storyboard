@@ -341,6 +341,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addCategoryButton" destination="V9x-kA-yji" id="eDc-34-5U0"/>
+                        <outlet property="categoryNameTextField" destination="52g-Id-NTP" id="E7L-a9-zwe"/>
+                        <outlet property="chooseImageButton" destination="Nzd-1a-xoI" id="3ct-5d-nFq"/>
+                        <outlet property="defaultIconImage" destination="u0I-xL-0I9" id="9lr-mN-6eJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcm-HO-Khz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
