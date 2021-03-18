@@ -27,13 +27,16 @@ The app will allow users to add items in several ways: manually type in the item
 
 **Required Must-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* The user can add items manually or through barcode scanning
+* The user can categorize items to make the inventory more organized 
+* The user can register an account 
+* The user can log in to their account and have all the previous information stored
 
 **Optional Nice-to-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* The user can can share an inventory with multiple family members, each having their own personal inventory and one shared inventory 
+* The user will be able to chat with the other members who have access to the shared inventory
+* The user can make price comparison while adding items to the shopping list to search for the website with the lowest price
 
 ### 2. Screen Archetypes
 
@@ -65,6 +68,7 @@ The app will allow users to add items in several ways: manually type in the item
 
 * Inventory
 * Shopping List
+* Barcode Scanner
 
 **Flow Navigation** (Screen to Screen)
 
@@ -79,11 +83,19 @@ The app will allow users to add items in several ways: manually type in the item
    * Inventory
 * Add Item
    * Inventory
+   * Barcode Scan
+* Barcode Scan
+   * Add Item 
+   * Inventory
 * Shopping List
+   * Shopping List Add Item
+* Shopping List Add Item
+   * Shopping List 
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+![](https://i.imgur.com/f3jRk14.jpg)
+
 
 ### [BONUS] Digital Wireframes & Mockups
 
