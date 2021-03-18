@@ -32,7 +32,15 @@ class InventoryViewController: UIViewController {
     
 }
 
-extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        if indexPath.row == 0{
+//                return CGSize(width: 50, height: 33)
+//            } else {
+//                return CGSize(width: 115, height: 33)
+//            }
+//        }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
@@ -46,9 +54,9 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print(indexPath.item)
+
         if collectionView == self.categoryPickCollection{
-            //print(indexPath.item)
+
             if indexPath.item == 0{
                 let cell = categoryPickCollection.dequeueReusableCell(withReuseIdentifier: addCategoryCollectionViewIdentifier, for: indexPath) as! AddCategoryCollectionCell
                 
@@ -59,7 +67,6 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
                 return cell
                 
             } else{
-                print("hello!")
                 let cell = categoryPickCollection.dequeueReusableCell(withReuseIdentifier: categoryCollectionViewIdentifier, for: indexPath) as! HorizCategoryCollectionViewCell
                 
                 
@@ -85,6 +92,7 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             cell.itemNameLabel.text = "Garlic"
             cell.itemNumberLabel.text = String(2)
             
+            
             cell.layer.cornerRadius = 15
             //cell.layer.borderWidth = 1.0
             cell.layer.backgroundColor = #colorLiteral(red: 1, green: 0.5132452846, blue: 0.6042660475, alpha: 0.1098958795)
@@ -93,6 +101,11 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
         }
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //print("item at \(indexPath.section)/\(indexPath.item) tapped")
+        performSegue(withIdentifier: "showItemDetails", sender: nil)
+      }
     
     
 }
