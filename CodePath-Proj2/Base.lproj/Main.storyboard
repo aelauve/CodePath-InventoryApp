@@ -293,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SUE-qh-Gnp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2241" y="1781"/>
+            <point key="canvasLocation" x="529" y="1815"/>
         </scene>
         <!--Add Category-->
         <scene sceneID="Nme-gj-urN">
@@ -350,7 +350,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcm-HO-Khz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4205.7971014492759" y="1771.875"/>
+            <point key="canvasLocation" x="2494" y="1807"/>
+        </scene>
+        <!--Item Details View Controller-->
+        <scene sceneID="nZL-9G-r4w">
+            <objects>
+                <viewController id="oGn-N1-kvq" customClass="ItemDetailsViewController" customModule="CodePath_Proj2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0HZ-jp-tIc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Rez-0A-Jf8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G3A-Vh-Hdt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3600" y="1815"/>
         </scene>
         <!--Inventory-->
         <scene sceneID="4KF-Tg-7uP">
@@ -599,7 +614,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QB5-CI-heG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1328" y="1781"/>
+            <point key="canvasLocation" x="-384" y="1815"/>
         </scene>
         <!--Shopping List-->
         <scene sceneID="Dcr-u8-S65">
@@ -654,7 +669,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hIQ-fN-NDx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3299" y="1772"/>
+            <point key="canvasLocation" x="1587" y="1807"/>
         </scene>
     </scenes>
     <resources>
