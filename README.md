@@ -103,7 +103,18 @@ The app will allow users to add items in several ways: manually type in the item
 <img src='http://g.recordit.co/YsKwo49en8.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Schema 
-[This section will be completed in Unit 9]
+
+User
+
+| Property.     | Type | Description |
+| ------------- | ---- | ----------- |
+| username      | ---- | ----------- |
+| userPassword  | ---- | ----------- |
+| inventoryID   | ---- | ----------- |
+| userFirstName | ---- | ----------- |
+| userLastName  | ---- | ----------- |
+| userEmail     | ---- | ----------- |
+
 ### Models
 [Add table of models]
 ### Networking
