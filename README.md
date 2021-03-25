@@ -106,7 +106,7 @@ The app will allow users to add items in several ways: manually type in the item
 
 ### Models
 
-####User
+User
 
 | Property      | Type                           | Description                                  |
 | ------------- | ------------------------------ | -------------------------------------------- |
@@ -117,7 +117,7 @@ The app will allow users to add items in several ways: manually type in the item
 | userLastName  | String                         | user's last name                             |
 | userEmail     | String                         | user's e-mail address                        |
 
-####Inventory
+Inventory
 
 | Property    | Type                          | Description                              |
 | ----------- | ----------------------------- | ---------------------------------------- |
@@ -125,7 +125,7 @@ The app will allow users to add items in several ways: manually type in the item
 | categories  | Array of pointers to Category | unique IDs associated with Category data |
 | ownedBy     | Array of pointers to User     | unique IDs associated with User data     |
 
-####Category
+Category
 
 | Property     | Type                      | Description                          |
 | ------------ | ------------------------- | ------------------------------------ |
@@ -133,7 +133,7 @@ The app will allow users to add items in several ways: manually type in the item
 | categoryIcon | File                      | picture/icon to represent category   |
 | itemList     | Array of pointers to Item | unique IDs associated with Item data |
 
-####Item
+Item
 
 | Property     | Type                | Description                        |
 | ------------ | ------------------- | ---------------------------------- |
