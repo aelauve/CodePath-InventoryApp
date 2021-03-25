@@ -146,9 +146,10 @@ Item
 
 ShoppingList
 
-| Property     | Type                      | Description               |
-| ------------ | ------------------------- | ------------------------- |
-| itemList     | Array of pointers to Item | list of items to shop for |
+| Property    | Type                      | Description                               |
+| ----------- | ------------------------- | ----------------------------------------- |
+| inventoryID | Pointer to Inventory      | inventory that the list is associate with |
+| itemList    | Array of pointers to Item | list of items to shop for                 |
 
 ### Networking
 - [Add list of network requests by screen ]
