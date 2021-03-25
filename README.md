@@ -144,6 +144,12 @@ Item
 | itemCount    | Number              | number of items in the inventory   |
 | notes        | String              | optional user notes for the item   |
 
+ShoppingList
+
+| Property     | Type                      | Description               |
+| ------------ | ------------------------- | ------------------------- |
+| itemList     | Array of pointers to Item | list of items to shop for |
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
