@@ -104,19 +104,46 @@ The app will allow users to add items in several ways: manually type in the item
 
 ## Schema 
 
-User
-
-| Property.     | Type | Description |
-| ------------- | ---- | ----------- |
-| username      | ---- | ----------- |
-| userPassword  | ---- | ----------- |
-| inventoryID   | ---- | ----------- |
-| userFirstName | ---- | ----------- |
-| userLastName  | ---- | ----------- |
-| userEmail     | ---- | ----------- |
-
 ### Models
-[Add table of models]
+
+####User
+
+| Property      | Type                           | Description                                  |
+| ------------- | ------------------------------ | -------------------------------------------- |
+| username      | String                         | unique ID for the user                       |
+| userPassword  | String                         | password for user login                      |
+| inventoryID   | Array of pointers to Inventory | inventory IDs associated with Inventory data |
+| userFirstName | String                         | user's first name                            |
+| userLastName  | String                         | user's last name                             |
+| userEmail     | String                         | user's e-mail address                        |
+
+####Inventory
+
+| Property    | Type                          | Description                              |
+| ----------- | ----------------------------- | ---------------------------------------- |
+| inventoryID | Number                        | unique ID for the inventory              |
+| categories  | Array of pointers to Category | unique IDs associated with Category data |
+| ownedBy     | Array of pointers to User     | unique IDs associated with User data     |
+
+####Category
+
+| Property     | Type                      | Description                          |
+| ------------ | ------------------------- | ------------------------------------ |
+| categoryName | String                    | unique ID for the category           |
+| categoryIcon | File                      | picture/icon to represent category   |
+| itemList     | Array of pointers to Item | unique IDs associated with Item data |
+
+####Item
+
+| Property     | Type                | Description                        |
+| ------------ | ------------------- | ---------------------------------- |
+| itemName     | String              | unique ID for the item             |
+| itemCategory | Pointer to Category | category the item belongs to       |
+| itemIcon     | File                | picture/icon to represent the item |
+| expiration   | Date                | date of item expiration, if any    |
+| itemCount    | Number              | number of items in the inventory   |
+| notes        | String              | optional user notes for the item   |
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
