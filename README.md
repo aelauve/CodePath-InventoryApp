@@ -152,6 +152,30 @@ ShoppingList
 | itemList    | Array of pointers to Item | list of items to shop for                 |
 
 ### Networking
-- [Add list of network requests by screen ]
+
+List of network requests by screen
+
+* Login
+   * (Read/GET) Query username and password for login authentication
+   * (Create/POST) Create a new user
+* Inventory Selector
+   * (Read/GET) Query user's list of inventories
+   * (Read/GET) Query selected inventory data
+* Inventory
+   * (Read/GET) Query inventory's list of categories
+   * (Read/GET) Query inventory's list of items
+   * (Create/POST) Create a new category
+* Item Details
+   * (Read/GET) Query item's data (name, count, expiration, notes, etc)
+   * (Update/PUT) Update item picture
+   * (Update/PUT) Update item count
+   * (Delete) Delete item from database
+* Add Item
+   * (Create/POST) Create a new item
+* Shopping List
+   *  (Create/POST) Create a new shopping list item
+   *  
+
+
 - [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+
