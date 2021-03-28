@@ -157,6 +157,8 @@ List of network requests by screen
 
 * Login
    * (Read/GET) Query username and password for login authentication
+   let query = PFQuer(className: "User")
+   
    * (Create/POST) Create a new user
 * Inventory Selector
    * (Read/GET) Query user's list of inventories
