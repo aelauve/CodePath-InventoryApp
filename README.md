@@ -169,20 +169,20 @@ List of network requests by screen
    
    * (Create/POST) Create a new user
   
-        let user = PFUser()
-        user.username = userNameField.text
-        user.password = passwordField.text
-        user.firstName = firstNameField.text
-        user.lastName = lastNameField.text
-        user.email = emailField.text
-        
-        user.signUpInBackground { (success, error) in
-            if success {
-                self.performSegue(withIdentifier: "loginSegue", sender: nil)
-            } else {
-                print("Error: \(String(describing: error?.localizedDescription))")
-            }
-        }
+          let user = PFUser()
+          user.username = userNameField.text
+          user.password = passwordField.text
+          user.firstName = firstNameField.text
+          user.lastName = lastNameField.text
+          user.email = emailField.text
+
+          user.signUpInBackground { (success, error) in
+              if success {
+                  self.performSegue(withIdentifier: "loginSegue", sender: nil)
+              } else {
+                  print("Error: \(String(describing: error?.localizedDescription))")
+              }
+          }
         
 * Inventory Selector
    * (Read/GET) Query user's list of inventories
