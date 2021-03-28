@@ -187,15 +187,16 @@ List of network requests by screen
 * Inventory Selector
    * (Read/GET) Query user's list of inventories
 
-let user = PFUser()
-let inventoryIDArray = user.inventories
+          let user = PFUser()
+          let inventoryIDArray = user.inventories
 
-let inventoryListArray = []
+          let inventoryListArray = []
 
-for inventoryID in inventoryIDArray {
-  let query = PFQuery(className: "Inventory")
-  query.whereKey("ownedBy", containedIn: user)
-  query.findObjectsInBackground { ( ... *To be continued*
+          for inventoryID in inventoryIDArray {
+            let query = PFQuery(className: "Inventory")
+            query.whereKey("ownedBy", containedIn: user)
+            query.findObjectsInBackground { ( ... *To be continued*
+          }
 
    * (Read/GET) Query selected inventory data
    * (Update/PUT) Update inventory list with new Inventory
