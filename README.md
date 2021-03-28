@@ -119,11 +119,12 @@ User
 
 Inventory
 
-| Property    | Type                          | Description                              |
-| ----------- | ----------------------------- | ---------------------------------------- |
-| inventoryID | Number                        | unique ID for the inventory              |
-| categories  | Array of pointers to Category | unique IDs associated with Category data |
-| ownedBy     | Array of pointers to User     | unique IDs associated with User data     |
+| Property    | Type                          | Description                               |
+| ----------- | ----------------------------- | ----------------------------------------  |
+| inventoryID | Number                        | unique ID for the inventory               |
+| name        | String                        | name for inventory (Personal, Family, etc)|
+| categories  | Array of pointers to Category | unique IDs associated with Category data  |
+| ownedBy     | Array of pointers to User     | unique IDs associated with User data      |
 
 Category
 
@@ -198,8 +199,36 @@ List of network requests by screen
             query.findObjectsInBackground { ( ... *To be continued*
           }
 
-   * (Read/GET) Query selected inventory data
    * (Update/PUT) Update inventory list with new Inventory
+
+          let user = PFUser.current()
+          let newInventory = PFObject(className: "Inventory")
+          newInventory[inventoryID] = //random number
+          newInventory[categories] = []
+          newInventory[ownedBy] = [user]
+
+          newInventory.saveInBackground { (success, error) in
+              if success {
+                  print("Inventory created!")
+                  self.dismiss(animated: true, completion: nil)
+              } else {
+                  print("Error: \(error?.localizedDescription)")
+              }
+          }
+
+          user[inventoryID].append(newInventory) //Not sure if this works
+
+          user.saveInBackground { (success, error) in
+              if success {
+                  print("Inventory added!")
+                  self.dismiss(animated: true, completion: nil)
+              } else {
+                  print("Error: \(error?.localizedDescription)")
+              }
+          }
+
+  * (Update/PUT) Link existing inventory
+
 * Inventory
    * (Read/GET) Query inventory's list of categories
    * (Read/GET) Query inventory's list of items
