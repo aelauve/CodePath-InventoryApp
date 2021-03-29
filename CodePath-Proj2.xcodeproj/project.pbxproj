@@ -25,7 +25,6 @@
 		5EB64C12260157EE00F7CA79 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB64C11260157EE00F7CA79 /* LoginViewController.swift */; };
 		5EB64C152601581B00F7CA79 /* InventorySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB64C142601581B00F7CA79 /* InventorySelectorViewController.swift */; };
 		5EB64C182601584B00F7CA79 /* InventorySelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB64C172601584B00F7CA79 /* InventorySelectorTableViewCell.swift */; };
-		5EB64C1B26015EBF00F7CA79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5EB64C1A26015EBF00F7CA79 /* GoogleService-Info.plist */; };
 		5EF68D2926123BD200D21641 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF68D2826123BD200D21641 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +49,6 @@
 		5EB64C11260157EE00F7CA79 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5EB64C142601581B00F7CA79 /* InventorySelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySelectorViewController.swift; sourceTree = "<group>"; };
 		5EB64C172601584B00F7CA79 /* InventorySelectorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySelectorTableViewCell.swift; sourceTree = "<group>"; };
-		5EB64C1A26015EBF00F7CA79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5EF68D2826123BD200D21641 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8B282D18EA8584BD8AB81F08 /* Pods-CodePath-Proj2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodePath-Proj2.release.xcconfig"; path = "Target Support Files/Pods-CodePath-Proj2/Pods-CodePath-Proj2.release.xcconfig"; sourceTree = "<group>"; };
 		B0809F2E29C9F800921901A1 /* Pods_CodePath_Proj2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodePath_Proj2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,7 +122,6 @@
 		5EB18FF025E1E6F300D6BE0C /* CodePath-Proj2 */ = {
 			isa = PBXGroup;
 			children = (
-				5EB64C1A26015EBF00F7CA79 /* GoogleService-Info.plist */,
 				5EB18FF125E1E6F300D6BE0C /* AppDelegate.swift */,
 				5EB18FF325E1E6F300D6BE0C /* SceneDelegate.swift */,
 				5EB18FF725E1E6F300D6BE0C /* Main.storyboard */,
@@ -206,7 +203,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EB18FFE25E1E6F500D6BE0C /* LaunchScreen.storyboard in Resources */,
-				5EB64C1B26015EBF00F7CA79 /* GoogleService-Info.plist in Resources */,
 				5EB18FFB25E1E6F500D6BE0C /* Assets.xcassets in Resources */,
 				5EB18FF925E1E6F300D6BE0C /* Main.storyboard in Resources */,
 			);

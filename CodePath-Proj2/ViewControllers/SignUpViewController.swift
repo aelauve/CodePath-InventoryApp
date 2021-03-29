@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import Parse
+import Parse
 
 class SignUpViewController: UIViewController {
 
@@ -28,20 +28,97 @@ class SignUpViewController: UIViewController {
     @IBAction func onRegister(_ sender: Any) {
         print("Register clicked!")
         
-//        let user = PFUser()
-//        user.username = usernameTextField.text
-//        user.password = passwordField.text
-//        user.firstName = passwordTextField.text
-//        user.lastName = lastNameTextField.text
-//        user.email = emailTextField.text
-//
-//        user.signUpInBackground { (success, error) in
-//            if success {
-//                self.performSegue(withIdentifier:"signUpSuccessful", sender: nil)
-//            } else {
-//                print("Error: \(String(describing: error?.localizedDescription))")
-//            }
-//        }
+        let username = self.usernameTextField.text
+        let password = self.passwordTextField.text
+        let email = self.emailTextField.text
+        let firstName = self.firstNameTextField.text
+        let lastName = self.lastNameTextField.text
+        
+        if (usernameTextField.text == "") {
+            
+            let alert = UIAlertController(title: "Invalid", message: "Username must not be left blank", preferredStyle: UIAlertController.Style.alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+            {
+                (UIAlertAction) -> Void in
+            }
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+            {
+                () -> Void in
+            }
+            
+        } else if (passwordTextField.text == ""){
+            
+            let alert = UIAlertController(title: "Invalid", message: "Password must not be left blank", preferredStyle: UIAlertController.Style.alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+            {
+                (UIAlertAction) -> Void in
+            }
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+            {
+                () -> Void in
+            }
+            
+        } else if (emailTextField.text == ""){
+
+            let alert = UIAlertController(title: "Invalid", message: "Email must not be left blank", preferredStyle: UIAlertController.Style.alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+            {
+                (UIAlertAction) -> Void in
+            }
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+            {
+                () -> Void in
+            }
+            
+        } else if (firstNameTextField.text == ""){
+
+            let alert = UIAlertController(title: "Invalid", message: "First Name must not be left blank", preferredStyle: UIAlertController.Style.alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+            {
+                (UIAlertAction) -> Void in
+            }
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+            {
+                () -> Void in
+            }
+            
+        } else if (lastNameTextField.text == ""){
+
+            let alert = UIAlertController(title: "Invalid", message: "Last Name must not be left blank", preferredStyle: UIAlertController.Style.alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+            {
+                (UIAlertAction) -> Void in
+            }
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+            {
+                () -> Void in
+            }
+            
+        } else {
+            let spinner: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium) as UIActivityIndicatorView
+            spinner.startAnimating()
+            
+            let user = PFUser()
+            user.username = username
+            user.password = password
+            user.email = email
+//            user.firstName = firstName
+//            user.lastName = lastName
+
+            user.signUpInBackground { (success, error) in
+                if success {
+                    self.performSegue(withIdentifier:"signUpSuccessful", sender: nil)
+                } else {
+                    print("Error: \(String(describing: error?.localizedDescription))")
+                }
+            }
+        }
+    
     }
     
     
