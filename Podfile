@@ -6,10 +6,6 @@ target 'CodePath-Proj2' do
   use_frameworks!
 
   # Pods for CodePath-Proj2
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/Firestore'
-  pod 'Firebase/Database'
+  pod 'Parse'
 
 end
