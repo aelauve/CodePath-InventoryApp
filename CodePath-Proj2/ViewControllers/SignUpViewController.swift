@@ -22,7 +22,9 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        registerButton.layer.backgroundColor = #colorLiteral(red: 1, green: 0.5132452846, blue: 0.6042660475, alpha: 1)
+        registerButton.layer.borderColor = #colorLiteral(red: 0.852301836, green: 0.4426146448, blue: 0.608592689, alpha: 1)
+        registerButton.layer.cornerRadius = 10
     }
     
     @IBAction func onRegister(_ sender: Any) {
@@ -34,7 +36,7 @@ class SignUpViewController: UIViewController {
         let firstName = self.firstNameTextField.text
         let lastName = self.lastNameTextField.text
         
-        if (usernameTextField.text == "") {
+        if (username == "") {
             
             let alert = UIAlertController(title: "Invalid", message: "Username must not be left blank", preferredStyle: UIAlertController.Style.alert)
             let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
@@ -47,7 +49,7 @@ class SignUpViewController: UIViewController {
                 () -> Void in
             }
             
-        } else if (passwordTextField.text == ""){
+        } else if (password == ""){
             
             let alert = UIAlertController(title: "Invalid", message: "Password must not be left blank", preferredStyle: UIAlertController.Style.alert)
             let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
@@ -60,7 +62,7 @@ class SignUpViewController: UIViewController {
                 () -> Void in
             }
             
-        } else if (emailTextField.text == ""){
+        } else if (email == ""){
 
             let alert = UIAlertController(title: "Invalid", message: "Email must not be left blank", preferredStyle: UIAlertController.Style.alert)
             let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
@@ -73,7 +75,7 @@ class SignUpViewController: UIViewController {
                 () -> Void in
             }
             
-        } else if (firstNameTextField.text == ""){
+        } else if (firstName == ""){
 
             let alert = UIAlertController(title: "Invalid", message: "First Name must not be left blank", preferredStyle: UIAlertController.Style.alert)
             let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
@@ -86,7 +88,7 @@ class SignUpViewController: UIViewController {
                 () -> Void in
             }
             
-        } else if (lastNameTextField.text == ""){
+        } else if (lastName == ""){
 
             let alert = UIAlertController(title: "Invalid", message: "Last Name must not be left blank", preferredStyle: UIAlertController.Style.alert)
             let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)

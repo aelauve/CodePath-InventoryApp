@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Parse
 
 class LoginViewController: UIViewController {
 
@@ -29,29 +30,24 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginClicked(_ sender: Any) {
-        //Add code to login the user
+        let username = usernameTextField.text!
+        let password = passwordTextField.text!
+
+        PFUser.logInWithUsername(inBackground:username, password: password) { (user, error) in
+          if user != nil {
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+          } else {
+            print("Error: \(String(describing: error?.localizedDescription))")
+          }
+        
+        }
     }
     
-    @IBAction func signUpClicked(_ sender: Any) {
-        
-        // If input is blank, show error message
-        if usernameTextField.text == "" || passwordTextField.text == ""{
-            let alert = UIAlertController(title: "Uh Oh!", message: "E-mail and Password fields can't be left blank.", preferredStyle: UIAlertController.Style.alert)
-            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
-            {
-                (UIAlertAction) -> Void in
-            }
-            alert.addAction(alertAction)
-            present(alert, animated: true)
-            {
-                () -> Void in
-            }
-        } else {
-            //perform user signup in database and log them in
-            print("Sign up success!")
-        }
-        
-    }
+//    @IBAction func signUpClicked(_ sender: Any) {
+//
+//        self.performSegue(withIdentifier:"onSignUp", sender: nil)
+//
+//    }
     /*
     // MARK: - Navigation
 

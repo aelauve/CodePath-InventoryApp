@@ -588,7 +588,7 @@
                                 </state>
                                 <connections>
                                     <action selector="loginClicked:" destination="zxn-Ad-94Q" eventType="touchUpInside" id="EWE-CS-mx0"/>
-                                    <segue destination="IGB-eW-5Gx" kind="presentation" id="58P-3g-Sye"/>
+                                    <segue destination="IGB-eW-5Gx" kind="presentation" identifier="loginSegue" id="58P-3g-Sye"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeX-sz-M4H">
@@ -600,7 +600,7 @@
                                 </state>
                                 <connections>
                                     <action selector="signUpClicked:" destination="zxn-Ad-94Q" eventType="touchUpInside" id="y9q-ha-dlw"/>
-                                    <segue destination="Ksf-vW-zzU" kind="presentation" id="Nro-cs-9ma"/>
+                                    <segue destination="Ksf-vW-zzU" kind="presentation" identifier="onSignUp" id="Nro-cs-9ma"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQT-dA-KRX">
@@ -666,7 +666,7 @@
                                 <rect key="frame" x="20" y="370" width="374" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8S-uY-qy4">
                                 <rect key="frame" x="178" y="462" width="57" height="30"/>

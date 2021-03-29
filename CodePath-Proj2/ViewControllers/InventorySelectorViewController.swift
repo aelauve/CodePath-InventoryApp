@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Parse
 
 class InventorySelectorViewController: UITableViewController {
 
@@ -26,7 +27,7 @@ class InventorySelectorViewController: UITableViewController {
     
     
     @IBAction func onLogout(_ sender: Any) {
-        //Add logout code later
+        PFUser.logOut()
         self.dismiss(animated: true, completion: nil)
     }
     
