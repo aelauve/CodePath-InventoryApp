@@ -231,7 +231,44 @@ List of network requests by screen
 
 * Inventory
    * (Read/GET) Query inventory's list of categories
+
+          let query = PFQuery(className:"Inventory")
+          query.findObjectsInBackground { (categories: [PFObject]?, error: Error?) in
+            if let error = error {
+              print(error.localizedDescription)
+            } else {
+              print("Successfully retrieved \(categories.count) categories.")
+              //TODO: Do something with the categories
+              }
+            }
+
    * (Read/GET) Query inventory's list of items
+
+          let query = PFQuery(className:"Inventory")
+          query.findObjectsInBackground { (items: [PFObject]?, error: Error?) in
+            if let error = error {
+              print(error.localizedDescription)
+            } else {
+              print("Successfully retrieved \(items.count) items.")
+              //TODO: Do something with the items
+              //      (Will only display when "All" is selected)
+              }
+            }
+
+   * (Read/GET) Query each category's list of items
+
+          //Previously defined variable chosenCategory
+          let query = PFQuery(className:"Category")
+          query.whereKey("categoryName", equalTo: chosenCategory)
+          query.findObjectsInBackground { (items: [PFObject]?, error: Error?) in
+            if let error = error {
+              print(error.localizedDescription)
+            } else {
+              print("Successfully retrieved \(items.count) items.")
+              //TODO: Do something with the items
+              }
+            }
+
    * (Create/POST) Create a new category
 * Item Details
    * (Read/GET) Query item's data (name, count, expiration, notes, etc)
@@ -242,8 +279,6 @@ List of network requests by screen
    * (Create/POST) Create a new item
 * Shopping List
    *  (Create/POST) Create a new shopping list item
-   *  
-
-
-- [Create basic snippets for each Parse network request]
+   *  (Update/PUT) Update item count
+   *  (Delete) Delete item from shopping list
 
