@@ -600,6 +600,7 @@
                                 </state>
                                 <connections>
                                     <action selector="signUpClicked:" destination="zxn-Ad-94Q" eventType="touchUpInside" id="y9q-ha-dlw"/>
+                                    <segue destination="Ksf-vW-zzU" kind="presentation" id="Nro-cs-9ma"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQT-dA-KRX">
@@ -627,7 +628,80 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ypz-SD-oPw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928.98550724637687" y="-1431.0267857142856"/>
+            <point key="canvasLocation" x="477" y="-1434"/>
+        </scene>
+        <!--Sign Up-->
+        <scene sceneID="SHa-eG-C6h">
+            <objects>
+                <viewController id="46g-6O-Saw" customClass="SignUpViewController" customModule="CodePath_Proj2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1oN-Xe-CMN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X94-yf-txc">
+                                <rect key="frame" x="20" y="95" width="374" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="txQ-9R-Ccv">
+                                <rect key="frame" x="20" y="167" width="374" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cSc-WZ-ITz">
+                                <rect key="frame" x="20" y="237" width="374" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="22O-VS-aAu">
+                                <rect key="frame" x="20" y="302" width="374" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="usG-AH-Bmf">
+                                <rect key="frame" x="20" y="370" width="374" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8S-uY-qy4">
+                                <rect key="frame" x="178" y="462" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="onRegister:" destination="46g-6O-Saw" eventType="touchUpInside" id="31s-Pd-6mv"/>
+                                    <segue destination="IGB-eW-5Gx" kind="presentation" identifier="signUpSuccessful" id="dj6-af-3bn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Y6f-43-Ilh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Sign Up" id="SOh-1e-TQO">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="fOG-xd-CBP">
+                            <connections>
+                                <action selector="onCancel:" destination="46g-6O-Saw" id="Khb-D5-Z2o"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="X94-yf-txc" id="UnO-vp-Ye5"/>
+                        <outlet property="firstNameTextField" destination="txQ-9R-Ccv" id="zg5-5f-gyd"/>
+                        <outlet property="lastNameTextField" destination="cSc-WZ-ITz" id="cd3-3V-NUg"/>
+                        <outlet property="passwordTextField" destination="usG-AH-Bmf" id="jWf-N0-E80"/>
+                        <outlet property="registerButton" destination="G8S-uY-qy4" id="LQx-yB-pXj"/>
+                        <outlet property="usernameTextField" destination="22O-VS-aAu" id="4lS-nW-YjT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fyn-3a-tFD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2268.1159420289855" y="-1420.3125"/>
         </scene>
         <!--Select an Inventory-->
         <scene sceneID="Ccg-EB-nz0">
@@ -681,7 +755,7 @@
                                 <action selector="onLogout:" destination="hKj-zO-lc2" id="dQ1-zM-tiv"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Link" id="HTg-ZR-woF">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="HTg-ZR-woF">
                             <connections>
                                 <action selector="onAddNew:" destination="hKj-zO-lc2" id="PZV-rF-waB"/>
                             </connections>
@@ -802,7 +876,28 @@
             </objects>
             <point key="canvasLocation" x="4186" y="1826"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BJW-cT-28i">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ksf-vW-zzU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iEf-QC-Yhr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="46g-6O-Saw" kind="relationship" relationship="rootViewController" id="FEn-8j-Dnj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l7g-Ny-bFi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1357.9710144927537" y="-1420.3125"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dj6-af-3bn"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.backward" catalog="system" width="128" height="106"/>
         <image name="bag.fill" catalog="system" width="128" height="128"/>

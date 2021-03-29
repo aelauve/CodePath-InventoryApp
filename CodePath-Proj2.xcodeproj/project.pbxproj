@@ -26,6 +26,7 @@
 		5EB64C152601581B00F7CA79 /* InventorySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB64C142601581B00F7CA79 /* InventorySelectorViewController.swift */; };
 		5EB64C182601584B00F7CA79 /* InventorySelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB64C172601584B00F7CA79 /* InventorySelectorTableViewCell.swift */; };
 		5EB64C1B26015EBF00F7CA79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5EB64C1A26015EBF00F7CA79 /* GoogleService-Info.plist */; };
+		5EF68D2926123BD200D21641 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF68D2826123BD200D21641 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		5EB64C142601581B00F7CA79 /* InventorySelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySelectorViewController.swift; sourceTree = "<group>"; };
 		5EB64C172601584B00F7CA79 /* InventorySelectorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySelectorTableViewCell.swift; sourceTree = "<group>"; };
 		5EB64C1A26015EBF00F7CA79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5EF68D2826123BD200D21641 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8B282D18EA8584BD8AB81F08 /* Pods-CodePath-Proj2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodePath-Proj2.release.xcconfig"; path = "Target Support Files/Pods-CodePath-Proj2/Pods-CodePath-Proj2.release.xcconfig"; sourceTree = "<group>"; };
 		B0809F2E29C9F800921901A1 /* Pods_CodePath_Proj2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodePath_Proj2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -84,6 +86,7 @@
 				5E49207025E2E50900755AF9 /* ShoppingListViewController.swift */,
 				5E8196B12602B0FB00C653F5 /* AddCategoryViewController.swift */,
 				5E9472632602D1E4000212AB /* ItemDetailsViewController.swift */,
+				5EF68D2826123BD200D21641 /* SignUpViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				5E8196B22602B0FB00C653F5 /* AddCategoryViewController.swift in Sources */,
 				5E49207125E2E50900755AF9 /* ShoppingListViewController.swift in Sources */,
 				5E49207425E2E8EF00755AF9 /* ShopListItemsTableViewCell.swift in Sources */,
+				5EF68D2926123BD200D21641 /* SignUpViewController.swift in Sources */,
 				5EB1900A25E1EEBB00D6BE0C /* InventoryCollectionViewCell.swift in Sources */,
 				5E99FA492602AA7900866893 /* AddCategoryCollectionCell.swift in Sources */,
 				5EB18FF425E1E6F300D6BE0C /* SceneDelegate.swift in Sources */,
