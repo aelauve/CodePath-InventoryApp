@@ -109,8 +109,8 @@ class SignUpViewController: UIViewController {
             user.username = username
             user.password = password
             user.email = email
-//            user.firstName = firstName
-//            user.lastName = lastName
+            user["firstName"] = firstName
+            user["lastName"] = lastName
 
             user.signUpInBackground { (success, error) in
                 if success {
