@@ -32,9 +32,38 @@ class LoginViewController: UIViewController {
     @IBAction func loginClicked(_ sender: Any) {
         let username = usernameTextField.text!
         let password = passwordTextField.text!
+        
+        if (username == "") {
+            
+            let alert = UIAlertController(title: "Invalid", message: "Username must not be left blank", preferredStyle: UIAlertController.Style.alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+            {
+                (UIAlertAction) -> Void in
+            }
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+            {
+                () -> Void in
+            }
+            
+        } else if (password == ""){
+            
+            let alert = UIAlertController(title: "Invalid", message: "Password must not be left blank", preferredStyle: UIAlertController.Style.alert)
+            let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+            {
+                (UIAlertAction) -> Void in
+            }
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+            {
+                () -> Void in
+            }
+            
+        }
 
         PFUser.logInWithUsername(inBackground:username, password: password) { (user, error) in
           if user != nil {
+            //print(PFUser.current()!)
             self.performSegue(withIdentifier: "loginSegue", sender: nil)
           } else {
             print("Error: \(String(describing: error?.localizedDescription))")

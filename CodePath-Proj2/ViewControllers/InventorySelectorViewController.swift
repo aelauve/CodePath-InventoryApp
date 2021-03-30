@@ -21,13 +21,10 @@ class InventorySelectorViewController: UITableViewController {
     }
     
     
-    @IBAction func onAddNew(_ sender: Any) {
-        print("Link a new inventory")
-        
-        //et newInventory = PFObject(className: "Inventory")
-        
-        
-    }
+//    @IBAction func onAddNew(_ sender: Any) {
+//        print("Link a new inventory")
+//        
+//    }
     
     
     @IBAction func onLogout(_ sender: Any) {
