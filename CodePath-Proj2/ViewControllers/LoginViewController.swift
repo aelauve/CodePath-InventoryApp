@@ -72,11 +72,11 @@ class LoginViewController: UIViewController {
         }
     }
     
-//    @IBAction func signUpClicked(_ sender: Any) {
-//
-//        self.performSegue(withIdentifier:"onSignUp", sender: nil)
-//
-//    }
+    @IBAction func signUpClicked(_ sender: Any) {
+
+        self.performSegue(withIdentifier:"onSignUp", sender: nil)
+
+    }
     /*
     // MARK: - Navigation
 
