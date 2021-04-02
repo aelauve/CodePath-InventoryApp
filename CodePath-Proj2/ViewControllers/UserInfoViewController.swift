@@ -77,6 +77,7 @@ class UserInfoViewController: UIViewController {
         dataViewController.idLabel = dataSource[index]
         dataViewController.nameLabel = dataSource[index]
         dataViewController.sharedWith = dataSource[index]
+        dataViewController.createdAt = dataSource[index]
         
         return dataViewController
     }

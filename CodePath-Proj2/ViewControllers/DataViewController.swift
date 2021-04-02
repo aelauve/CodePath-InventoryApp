@@ -13,21 +13,32 @@ class DataViewController: UIViewController {
     @IBOutlet weak var invNameLabel: UILabel!
     @IBOutlet weak var invIDLabel: UILabel!
     @IBOutlet weak var sharedWithLabel: UILabel!
+    @IBOutlet weak var createdLabel: UILabel!
     
     var index: Int?
     var nameLabel: String?
     var idLabel: String?
     var sharedWith: String?
+    var createdAt: String?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         outerView.layer.cornerRadius = 20
+        outerView.layer.opacity = 0.5
         
         invNameLabel.text = nameLabel
+        invNameLabel.sizeToFit()
+        
         invIDLabel.text = idLabel
+        invIDLabel.sizeToFit()
+        
         sharedWithLabel.text = sharedWith
+        sharedWithLabel.sizeToFit()
+        
+        createdLabel.text = sharedWith
+        createdLabel.sizeToFit()
 
         // Do any additional setup after loading the view.
     }

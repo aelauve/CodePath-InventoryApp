@@ -28,6 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // --- end copy
 
+        let pageControl = UIPageControl.appearance()
+        pageControl.currentPageIndicatorTintColor = #colorLiteral(red: 1, green: 0.5132452846, blue: 0.6042660475, alpha: 1)
+        pageControl.pageIndicatorTintColor = .lightGray
+        
         return true
     }
 
