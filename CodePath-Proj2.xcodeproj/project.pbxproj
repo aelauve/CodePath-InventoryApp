@@ -10,6 +10,7 @@
 		1A2C179C62789DBBA7D1FAD7 /* Pods_CodePath_Proj2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0809F2E29C9F800921901A1 /* Pods_CodePath_Proj2.framework */; };
 		5E49207125E2E50900755AF9 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49207025E2E50900755AF9 /* ShoppingListViewController.swift */; };
 		5E49207425E2E8EF00755AF9 /* ShopListItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49207325E2E8EF00755AF9 /* ShopListItemsTableViewCell.swift */; };
+		5E4F10CC2617742B00AFF4EF /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F10CB2617742B00AFF4EF /* DataViewController.swift */; };
 		5E5846CD2613673D00AB0458 /* AddInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5846CC2613673D00AB0458 /* AddInventoryViewController.swift */; };
 		5E8196B22602B0FB00C653F5 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8196B12602B0FB00C653F5 /* AddCategoryViewController.swift */; };
 		5E9472642602D1E4000212AB /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9472632602D1E4000212AB /* ItemDetailsViewController.swift */; };
@@ -26,6 +27,8 @@
 		5EB64C12260157EE00F7CA79 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB64C11260157EE00F7CA79 /* LoginViewController.swift */; };
 		5EB64C152601581B00F7CA79 /* InventorySelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB64C142601581B00F7CA79 /* InventorySelectorViewController.swift */; };
 		5EB64C182601584B00F7CA79 /* InventorySelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB64C172601584B00F7CA79 /* InventorySelectorTableViewCell.swift */; };
+		5ED8C51426177604003293A8 /* CustomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED8C51326177604003293A8 /* CustomPageViewController.swift */; };
+		5ED8C5172617766B003293A8 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED8C5162617766B003293A8 /* UserInfoViewController.swift */; };
 		5EF68D2926123BD200D21641 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF68D2826123BD200D21641 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +36,7 @@
 		3617554041B84F4ACA9F05E8 /* Pods-CodePath-Proj2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodePath-Proj2.debug.xcconfig"; path = "Target Support Files/Pods-CodePath-Proj2/Pods-CodePath-Proj2.debug.xcconfig"; sourceTree = "<group>"; };
 		5E49207025E2E50900755AF9 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		5E49207325E2E8EF00755AF9 /* ShopListItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListItemsTableViewCell.swift; sourceTree = "<group>"; };
+		5E4F10CB2617742B00AFF4EF /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		5E5846CC2613673D00AB0458 /* AddInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInventoryViewController.swift; sourceTree = "<group>"; };
 		5E8196B12602B0FB00C653F5 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		5E9472632602D1E4000212AB /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		5EB64C11260157EE00F7CA79 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5EB64C142601581B00F7CA79 /* InventorySelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySelectorViewController.swift; sourceTree = "<group>"; };
 		5EB64C172601584B00F7CA79 /* InventorySelectorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySelectorTableViewCell.swift; sourceTree = "<group>"; };
+		5ED8C51326177604003293A8 /* CustomPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageViewController.swift; sourceTree = "<group>"; };
+		5ED8C5162617766B003293A8 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		5EF68D2826123BD200D21641 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8B282D18EA8584BD8AB81F08 /* Pods-CodePath-Proj2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodePath-Proj2.release.xcconfig"; path = "Target Support Files/Pods-CodePath-Proj2/Pods-CodePath-Proj2.release.xcconfig"; sourceTree = "<group>"; };
 		B0809F2E29C9F800921901A1 /* Pods_CodePath_Proj2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodePath_Proj2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +94,9 @@
 				5E9472632602D1E4000212AB /* ItemDetailsViewController.swift */,
 				5EF68D2826123BD200D21641 /* SignUpViewController.swift */,
 				5E5846CC2613673D00AB0458 /* AddInventoryViewController.swift */,
+				5E4F10CB2617742B00AFF4EF /* DataViewController.swift */,
+				5ED8C51326177604003293A8 /* CustomPageViewController.swift */,
+				5ED8C5162617766B003293A8 /* UserInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -268,14 +277,17 @@
 				5EB1900725E1E85C00D6BE0C /* HorizCategoryCollectionViewCell.swift in Sources */,
 				5EB18FF225E1E6F300D6BE0C /* AppDelegate.swift in Sources */,
 				5E8196B22602B0FB00C653F5 /* AddCategoryViewController.swift in Sources */,
+				5ED8C51426177604003293A8 /* CustomPageViewController.swift in Sources */,
 				5E49207125E2E50900755AF9 /* ShoppingListViewController.swift in Sources */,
 				5E49207425E2E8EF00755AF9 /* ShopListItemsTableViewCell.swift in Sources */,
 				5EF68D2926123BD200D21641 /* SignUpViewController.swift in Sources */,
+				5E4F10CC2617742B00AFF4EF /* DataViewController.swift in Sources */,
 				5EB1900A25E1EEBB00D6BE0C /* InventoryCollectionViewCell.swift in Sources */,
 				5E99FA492602AA7900866893 /* AddCategoryCollectionCell.swift in Sources */,
 				5EB18FF425E1E6F300D6BE0C /* SceneDelegate.swift in Sources */,
 				5E9472642602D1E4000212AB /* ItemDetailsViewController.swift in Sources */,
 				5EB1900D25E1F9E600D6BE0C /* AddItemViewController.swift in Sources */,
+				5ED8C5172617766B003293A8 /* UserInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
