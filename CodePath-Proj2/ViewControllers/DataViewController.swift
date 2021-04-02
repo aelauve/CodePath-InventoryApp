@@ -9,6 +9,7 @@ import UIKit
 
 class DataViewController: UIViewController {
 
+    @IBOutlet weak var outerView: UIView!
     @IBOutlet weak var invNameLabel: UILabel!
     @IBOutlet weak var invIDLabel: UILabel!
     @IBOutlet weak var sharedWithLabel: UILabel!
@@ -21,6 +22,8 @@ class DataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        outerView.layer.cornerRadius = 20
         
         invNameLabel.text = nameLabel
         invIDLabel.text = idLabel
