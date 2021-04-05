@@ -27,16 +27,16 @@ The app will allow users to add items in several ways: manually type in the item
 
 **Required Must-have Stories**
 
-[ ] The user can add items manually or through barcode scanning
-[ ] The user can categorize items to make the inventory more organized 
-[x] The user can register an account 
-[x] The user can log in to their account and have all the previous information stored
+- [ ] The user can add items manually or through barcode scanning
+- [ ] The user can categorize items to make the inventory more organized 
+- [x] The user can register an account 
+- [x] The user can log in to their account and have all the previous information stored
 
 **Optional Nice-to-have Stories**
 
-[ ] The user can can share an inventory with multiple family members, each having their own personal inventory and one shared inventory 
-[ ] The user will be able to chat with the other members who have access to the shared inventory
-[ ] The user can make price comparison while adding items to the shopping list to search for the website with the lowest price
+- [ ] The user can can share an inventory with multiple family members, each having their own personal inventory and one shared inventory 
+- [ ] The user will be able to chat with the other members who have access to the shared inventory
+- [ ] The user can make price comparison while adding items to the shopping list to search for the website with the lowest price
 
 ### 2. Screen Archetypes
 
