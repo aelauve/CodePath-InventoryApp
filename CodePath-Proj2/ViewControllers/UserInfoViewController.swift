@@ -31,12 +31,31 @@ class UserInfoViewController: UIViewController {
     }
     
     func getUserInfo(){
+        
+        //Populate user info
         let user = PFUser.current()
         
         firstName = user!["firstName"] as? String
         lastName = user!["lastName"] as? String
         
         nameLabel.text = firstName! + " " + lastName!
+        
+        
+        //Populate data source
+        let query = PFQuery(className: "Inventory")
+        query.includeKeys(["objectId", "name", "ownedBy", "createdAt"])
+        query.whereKey("ownedBy", contains: user!["objectId"] as! String) //Not sure if this actually works
+        
+        query.findObjectsInBackground { (inventories, error) in
+            if inventories != nil {
+                print(inventories) //To be replaced later
+//                for i in inventories! {
+//                    self.dataSource.append(i)
+//                }
+            } else {
+                print("Error: \(error?.localizedDescription)")
+            }
+        }
         
     }
     
