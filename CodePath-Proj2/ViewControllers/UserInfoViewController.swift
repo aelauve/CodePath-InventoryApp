@@ -6,19 +6,38 @@
 //
 
 import UIKit
+import Parse
 
 class UserInfoViewController: UIViewController {
 
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
     
-    let dataSource = ["View Controller 1", "View Controller 2", "View Controller 3", "View Controller 4"]
+    //let dataSource = ["View Controller 1", "View Controller 2", "View Controller 3", "View Controller 4"]
+    var dataSource: [[String]] = [ ["0001", "Personal", " ", "January 1, 2021"], ["0002", "Family", "Mom, Dad, Brother, Sister", "February 1, 2021"], ["0003", "Roomies", "Zawad, Enrique, Sara", "March 1, 2021"], ["0004", "Work", "Coworkers", "April 1, 2021"] ]
     var currentViewControllerIndex = 0
+    
+    var firstName: String?
+    var lastName: String?
+    var inventoryList: [Int]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getUserInfo()
+        
         configurePageViewController()
         // Do any additional setup after loading the view.
+    }
+    
+    func getUserInfo(){
+        let user = PFUser.current()
+        
+        firstName = user!["firstName"] as? String
+        lastName = user!["lastName"] as? String
+        
+        nameLabel.text = firstName! + " " + lastName!
+        
     }
     
     func configurePageViewController() {
@@ -74,10 +93,12 @@ class UserInfoViewController: UIViewController {
         }
         
         dataViewController.index = index
-        dataViewController.idLabel = dataSource[index]
-        dataViewController.nameLabel = dataSource[index]
-        dataViewController.sharedWith = dataSource[index]
-        dataViewController.createdAt = dataSource[index]
+        dataViewController.idLabel = dataSource[index][0]
+        dataViewController.nameLabel = dataSource[index][1]
+        dataViewController.sharedWith = dataSource[index][2]
+        dataViewController.createdAt = dataSource[index][3]
+        
+        //dataViewController.createdAt = dataSource[index]
         
         return dataViewController
     }

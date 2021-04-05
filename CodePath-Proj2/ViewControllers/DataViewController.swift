@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Parse
 
 class DataViewController: UIViewController {
 
@@ -29,16 +30,16 @@ class DataViewController: UIViewController {
         outerView.layer.opacity = 0.5
         
         invNameLabel.text = nameLabel
-        invNameLabel.sizeToFit()
+        //invNameLabel.sizeToFit()
         
         invIDLabel.text = idLabel
-        invIDLabel.sizeToFit()
+        //invIDLabel.sizeToFit()
         
         sharedWithLabel.text = sharedWith
-        sharedWithLabel.sizeToFit()
+        //sharedWithLabel.sizeToFit()
         
-        createdLabel.text = sharedWith
-        createdLabel.sizeToFit()
+        createdLabel.text = createdAt
+        //createdLabel.sizeToFit()
 
         // Do any additional setup after loading the view.
     }
