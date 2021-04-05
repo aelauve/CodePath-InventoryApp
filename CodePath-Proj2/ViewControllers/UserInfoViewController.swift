@@ -42,20 +42,20 @@ class UserInfoViewController: UIViewController {
         
         
         //Populate data source
-        let query = PFQuery(className: "Inventory")
-        query.includeKeys(["objectId", "name", "ownedBy", "createdAt"])
-        query.whereKey("ownedBy", contains: user!["objectId"] as! String) //Not sure if this actually works
-        
-        query.findObjectsInBackground { (inventories, error) in
-            if inventories != nil {
-                print(inventories) //To be replaced later
-//                for i in inventories! {
-//                    self.dataSource.append(i)
-//                }
-            } else {
-                print("Error: \(error?.localizedDescription)")
-            }
-        }
+//        let query = PFQuery(className: "Inventory")
+//        query.includeKeys(["objectId", "name", "ownedBy", "createdAt"])
+//        query.whereKey("ownedBy", contains: user!["objectId"] as! String) //Not sure if this actually works
+//
+//        query.findObjectsInBackground { (inventories, error) in
+//            if inventories != nil {
+//                print(inventories) //To be replaced later
+////                for i in inventories! {
+////                    self.dataSource.append(i)
+////                }
+//            } else {
+//                print("Error: \(error?.localizedDescription)")
+//            }
+//        }
         
     }
     
