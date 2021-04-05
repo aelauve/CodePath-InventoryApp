@@ -282,3 +282,7 @@ List of network requests by screen
    *  (Update/PUT) Update item count
    *  (Delete) Delete item from shopping list
 
+## Updates
+
+<img src='http://g.recordit.co/a4ZTgJ1Po5.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/KM41pUqNkC.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
