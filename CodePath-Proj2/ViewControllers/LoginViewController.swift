@@ -61,11 +61,32 @@ class LoginViewController: UIViewController {
             
         }
 
-        PFUser.logInWithUsername(inBackground:username, password: password) { (user, error) in
-          if user != nil {
-            //print(PFUser.current()!)
-            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+        PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
+          
+            if user != nil {
+            
+                let user = PFUser.current()
+                if (user!["inventories"] != nil){
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                
+            }
+            else {
+                
+                let alert = UIAlertController(title: "Welcome!", message: "Let's add your first inventory.", preferredStyle: UIAlertController.Style.alert)
+                let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+                {
+                    UIAlertAction in
+                    self.performSegue(withIdentifier: "addInventorySegue", sender: nil)
+                }
+                alert.addAction(alertAction)
+                self.present(alert, animated: true)
+                {
+                    () -> Void in
+                }
+            }
           } else {
+            print(username)
+            print(password)
             print("Error: \(String(describing: error?.localizedDescription))")
           }
         

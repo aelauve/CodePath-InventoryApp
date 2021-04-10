@@ -10,9 +10,18 @@ import Parse
 
 class InventorySelectorViewController: UITableViewController {
 
+    var invObjects = [PFObject]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let user = PFUser.current()
+        invObjects = user!["inventories"] as! [PFObject]
+        
+//        for x in user!["inventories"]\{
+//            invObjects.append(x)
+//        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -25,6 +34,10 @@ class InventorySelectorViewController: UITableViewController {
 //        print("Link a new inventory")
 //        
 //    }
+    
+    func getInventories() {
+        
+    }
     
     
     @IBAction func onLogout(_ sender: Any) {
@@ -55,7 +68,16 @@ class InventorySelectorViewController: UITableViewController {
         cell.inventorySelectButton.layer.cornerRadius = 10
         cell.inventorySelectButton.layer.borderColor = #colorLiteral(red: 0.852301836, green: 0.4426146448, blue: 0.608592689, alpha: 1)
         
+        let inventory = invObjects[indexPath.row]
+        let invName = inventory["name"] as! String
+        
+        cell.inventorySelectButton.setTitle(invName, for: .normal)
+        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var selected = indexPath.row
     }
 
     /*
@@ -93,14 +115,10 @@ class InventorySelectorViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+//         Get the new view controller using segue.destination.
+//         Pass the selected object to the new view controller.
     }
-    */
 
 }

@@ -460,6 +460,7 @@
                     <connections>
                         <outlet property="addToInventoryButton" destination="F4u-ec-7Yy" id="zO2-FN-nok"/>
                         <outlet property="amountTextBox" destination="PDW-Q8-M8X" id="655-YR-lnW"/>
+                        <outlet property="categoryPicker" destination="WEC-8i-G2u" id="rJQ-y9-q6Y"/>
                         <outlet property="expirationDate" destination="nBW-eW-wOL" id="rg6-QJ-Zf0"/>
                         <outlet property="expirationSwitch" destination="vwr-Fr-aoo" id="f3J-J8-i8z"/>
                         <outlet property="itemImageView" destination="Aj4-Ps-CfE" id="HpC-f6-e0h"/>
@@ -745,7 +746,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginClicked:" destination="zxn-Ad-94Q" eventType="touchUpInside" id="EWE-CS-mx0"/>
-                                    <segue destination="IGB-eW-5Gx" kind="presentation" identifier="loginSegue" id="58P-3g-Sye"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeX-sz-M4H">
@@ -781,6 +781,8 @@
                         <outlet property="passwordTextField" destination="Yik-5k-jJW" id="NRL-02-8Nn"/>
                         <outlet property="signUpButton" destination="aeX-sz-M4H" id="qFa-i9-VIa"/>
                         <outlet property="usernameTextField" destination="dQT-dA-KRX" id="rmH-pY-K1A"/>
+                        <segue destination="Usa-bB-mDM" kind="presentation" identifier="addInventorySegue" id="dpj-eM-Se5"/>
+                        <segue destination="IGB-eW-5Gx" kind="presentation" identifier="loginSegue" id="89E-wY-6Ee"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ypz-SD-oPw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -823,7 +825,7 @@
                                 <rect key="frame" x="20" y="370" width="374" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8S-uY-qy4">
                                 <rect key="frame" x="178" y="462" width="57" height="30"/>
@@ -831,7 +833,7 @@
                                 <state key="normal" title="Register"/>
                                 <connections>
                                     <action selector="onRegister:" destination="46g-6O-Saw" eventType="touchUpInside" id="31s-Pd-6mv"/>
-                                    <segue destination="IGB-eW-5Gx" kind="presentation" identifier="signUpSuccessful" id="dj6-af-3bn"/>
+                                    <segue destination="zxn-Ad-94Q" kind="presentation" identifier="signUpSuccessful" modalPresentationStyle="fullScreen" id="Q9k-up-vBz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -865,7 +867,7 @@
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="hKj-zO-lc2" customClass="InventorySelectorViewController" customModule="CodePath_Proj2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Djs-VQ-BKc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -995,6 +997,7 @@
                     <connections>
                         <outlet property="inventoryID" destination="fbt-gP-9zK" id="UYL-VJ-tJO"/>
                         <outlet property="inventoryName" destination="EYO-Eb-IU8" id="SuL-iv-ey9"/>
+                        <segue destination="hKj-zO-lc2" kind="presentation" identifier="inventoryAddSuccess" id="u8o-70-e6u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udw-JU-Wki" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1150,7 +1153,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="58P-3g-Sye"/>
+        <segue reference="dpj-eM-Se5"/>
+        <segue reference="u8o-70-e6u"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.backward" catalog="system" width="128" height="106"/>
