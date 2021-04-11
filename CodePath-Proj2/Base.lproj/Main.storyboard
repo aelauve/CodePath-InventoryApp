@@ -162,11 +162,7 @@
                                 <action selector="backButtonClicked:" destination="BYZ-38-t0r" id="2p0-xN-NJf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="S49-2O-LRG">
-                            <connections>
-                                <segue destination="FqL-b3-7JK" kind="presentation" id="mZR-E3-Zya"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="S49-2O-LRG"/>
                     </navigationItem>
                     <connections>
                         <outlet property="backButton" destination="eBW-ff-ava" id="7FS-NA-RYt"/>
@@ -174,6 +170,7 @@
                         <outlet property="itemCollection" destination="fWR-1r-rcb" id="WIQ-X8-gpq"/>
                         <segue destination="jd1-OR-Sg9" kind="presentation" identifier="showItemDetails" id="rqH-o6-3RG"/>
                         <segue destination="Csb-cg-HNP" kind="presentation" identifier="addCategory" id="bOJ-xA-VGw"/>
+                        <segue destination="FqL-b3-7JK" kind="presentation" identifier="addItem" id="95e-re-7Qy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1154,7 +1151,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UJT-DX-24C"/>
         <segue reference="Pw0-bM-a9h"/>
         <segue reference="u8o-70-e6u"/>
     </inferredMetricsTieBreakers>

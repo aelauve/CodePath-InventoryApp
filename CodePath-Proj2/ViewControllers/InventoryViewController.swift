@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import Parse
 
 class InventoryViewController: UIViewController {
     
-    var categories = ["All", "Meat", "Dairy", "Cleaning", "Misc"]
+    //var categories = ["All", "Meat", "Dairy", "Cleaning", "Misc"]
+    var categories: [String] = [String]()
+    var categoryNames: [String] = [String]()
+    var items: [String] = [String]()
 
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var categoryPickCollection: UICollectionView!
@@ -24,6 +28,33 @@ class InventoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Get Category objectIds
+        let query = PFQuery(className: "Inventory")
+        query.getObjectInBackground(withId: inventoryID) { (inventory, error) in
+          if error == nil && inventory != nil {
+            self.categories = inventory!["categories"] as! [String]
+            self.items = inventory!["items"] as! [String]
+          } else {
+            print(error)
+          }
+        }
+        
+        // Get Category names
+        for x in self.categories {
+            
+            let query = PFQuery(className: "Category")
+            query.getObjectInBackground(withId: x) { (category, error) in
+              if error == nil && category != nil {
+                self.categoryNames.append(category!["name"] as! String)
+              } else {
+                print(error)
+              }
+            }
+            
+        }
+        
+        // Get
+        
 //        self.view.addSubview(categoryPickCollection)
 //        self.view.addSubview(itemCollection)
     }
@@ -34,19 +65,18 @@ class InventoryViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//         Get the new view controller using segue.destination.
-//         Pass the selected object to the new view controller.
-        
-        let destinationVC = segue.destination as! AddCategoryViewController
-        destinationVC.inventoryID = inventoryID
-        
+        if segue.identifier == "addCategory" {
+            let destinationVC = segue.destination as! AddCategoryViewController
+            destinationVC.inventoryID = inventoryID
+        } else if segue.identifier == "addItem" {
+            let destinationVC = segue.destination as! AddItemViewController
+            destinationVC.inventoryID = inventoryID
+        }
     }
     
     
     @IBAction func addCategory(_ sender: Any) {
-        
         self.performSegue(withIdentifier: "addCategory", sender: nil)
-        
     }
     
 }
@@ -67,7 +97,7 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             return categories.count + 1
         }
         else{
-            return 21
+            return items.count
         }
         
     }
@@ -108,8 +138,19 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             cell.itemImage.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             cell.itemImage.layer.cornerRadius = (cell.itemImage?.frame.size.width ?? 0.0) / 2
             
-            cell.itemNameLabel.text = "Garlic"
-            cell.itemNumberLabel.text = String(2)
+            
+            let query = PFQuery(className: "Item")
+            query.getObjectInBackground(withId: items[indexPath.row]) { (item, error) in
+              if error == nil && item != nil {
+                cell.itemNameLabel.text = item!["itemName"] as! String
+                cell.itemNumberLabel.text = String(item!["itemCount"] as! Int)
+              } else {
+                print(error)
+              }
+            }
+            
+//            cell.itemNameLabel.text = "Garlic"
+//            cell.itemNumberLabel.text = String(2)
             
             
             cell.layer.cornerRadius = 15
@@ -122,8 +163,25 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //print("item at \(indexPath.section)/\(indexPath.item) tapped")
-        performSegue(withIdentifier: "showItemDetails", sender: nil)
+        
+        if collectionView == self.categoryPickCollection{
+            //items = category[items]
+            let selectedCat = categories[indexPath.row]
+            
+            let query = PFQuery(className: "Category")
+            query.getObjectInBackground(withId: selectedCat) { (category, error) in
+              if error == nil && category != nil {
+                self.items = category!["items"] as! [String]
+                collectionView.reloadData()
+              } else {
+                print(error)
+              }
+            }
+            
+        } else {
+            performSegue(withIdentifier: "showItemDetails", sender: nil)
+        }
+        
       }
     
     

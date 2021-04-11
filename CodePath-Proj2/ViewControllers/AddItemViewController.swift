@@ -26,7 +26,7 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     var pickerData: [String] = [String]()
     var chosenCategory: String = ""
-    
+    var inventoryID: String = ""
     //Still need to add actions for the buttons
     //Also need to add text fields
     
