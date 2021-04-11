@@ -15,6 +15,8 @@ class InventoryViewController: UIViewController {
     @IBOutlet weak var categoryPickCollection: UICollectionView!
     @IBOutlet weak var itemCollection: UICollectionView!
     
+    var inventoryID: String = ""
+    
     let addCategoryCollectionViewIdentifier = "addCategoryCell"
     let categoryCollectionViewIdentifier = "horizCategoryCell"
     let itemCollectionViewIdentifier = "inventoryItemCell"
@@ -28,6 +30,23 @@ class InventoryViewController: UIViewController {
 
     @IBAction func backButtonClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//         Get the new view controller using segue.destination.
+//         Pass the selected object to the new view controller.
+        
+        let destinationVC = segue.destination as! AddCategoryViewController
+        destinationVC.inventoryID = inventoryID
+        
+    }
+    
+    
+    @IBAction func addCategory(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "addCategory", sender: nil)
+        
     }
     
 }

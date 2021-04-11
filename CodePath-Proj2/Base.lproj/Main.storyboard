@@ -42,7 +42,7 @@
                                                     <color key="tintColor" red="1" green="0.54459590749999998" blue="0.61055415940000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" image="plus" catalog="system"/>
                                                     <connections>
-                                                        <segue destination="Csb-cg-HNP" kind="presentation" id="rqk-h2-5kn"/>
+                                                        <action selector="addCategory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PxL-aI-PO3"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -173,6 +173,7 @@
                         <outlet property="categoryPickCollection" destination="bfu-rP-Sfy" id="LoA-hT-iCI"/>
                         <outlet property="itemCollection" destination="fWR-1r-rcb" id="WIQ-X8-gpq"/>
                         <segue destination="jd1-OR-Sg9" kind="presentation" identifier="showItemDetails" id="rqH-o6-3RG"/>
+                        <segue destination="Csb-cg-HNP" kind="presentation" identifier="addCategory" id="bOJ-xA-VGw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -884,9 +885,6 @@
                                             <state key="normal" title="Inventory1">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
-                                            <connections>
-                                                <segue destination="ye0-J5-yld" kind="presentation" id="lyh-4M-jpW"/>
-                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -917,10 +915,13 @@
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="HTg-ZR-woF">
                             <connections>
                                 <action selector="onAddNew:" destination="hKj-zO-lc2" id="PZV-rF-waB"/>
-                                <segue destination="xr6-VM-EPl" kind="presentation" id="UqB-4F-EiV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="xr6-VM-EPl" kind="presentation" id="UJT-DX-24C"/>
+                        <segue destination="ye0-J5-yld" kind="presentation" identifier="invSelected" id="IJl-bP-GMb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jep-r7-Ue0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1153,7 +1154,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dpj-eM-Se5"/>
+        <segue reference="UJT-DX-24C"/>
+        <segue reference="Pw0-bM-a9h"/>
         <segue reference="u8o-70-e6u"/>
     </inferredMetricsTieBreakers>
     <resources>

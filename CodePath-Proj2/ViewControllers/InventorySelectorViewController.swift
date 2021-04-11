@@ -10,13 +10,16 @@ import Parse
 
 class InventorySelectorViewController: UITableViewController {
 
-    var invObjects = [PFObject]()
+    var invObjects: [String] = [String]()
+    //var invNames: [String] = [String]()
+    var invSelected: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Load inventories
         let user = PFUser.current()
-        invObjects = user!["inventories"] as! [PFObject]
+        invObjects = user!["inventories"] as! [String]
         
 //        for x in user!["inventories"]\{
 //            invObjects.append(x)
@@ -57,7 +60,7 @@ class InventorySelectorViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return invObjects.count
     }
 
 
@@ -67,58 +70,38 @@ class InventorySelectorViewController: UITableViewController {
         cell.inventorySelectButton.layer.backgroundColor = #colorLiteral(red: 1, green: 0.5132452846, blue: 0.6042660475, alpha: 1)
         cell.inventorySelectButton.layer.cornerRadius = 10
         cell.inventorySelectButton.layer.borderColor = #colorLiteral(red: 0.852301836, green: 0.4426146448, blue: 0.608592689, alpha: 1)
+
+        var inv: String = invObjects[indexPath.row]
         
-        let inventory = invObjects[indexPath.row]
-        let invName = inventory["name"] as! String
+        let query = PFQuery(className: "Inventory")
+        query.getObjectInBackground(withId: inv) { (inventory, error) in
+          if error == nil && inventory != nil {
+            cell.inventorySelectButton.setTitle(inventory!["name"] as! String, for: .normal)
+          } else {
+            print(error)
+          }
+        }
         
-        cell.inventorySelectButton.setTitle(invName, for: .normal)
+        //cell.inventorySelectButton.setTitle(invName, for: .normal)
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var selected = indexPath.row
+        invSelected = invObjects[indexPath.row]
+        
+        self.performSegue(withIdentifier:"invSelected", sender: nil)
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //         Get the new view controller using segue.destination.
 //         Pass the selected object to the new view controller.
+        
+        let destinationVC = segue.destination as! InventoryViewController
+        destinationVC.inventoryID = invSelected
+        
     }
 
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Parse
 
 class AddCategoryViewController: UIViewController {
 
@@ -13,6 +14,8 @@ class AddCategoryViewController: UIViewController {
     @IBOutlet weak var chooseImageButton: UIButton!
     @IBOutlet weak var categoryNameTextField: UITextField!
     @IBOutlet weak var addCategoryButton: UIButton!
+    
+    var inventoryID: String = ""
     
     
     
@@ -43,6 +46,51 @@ class AddCategoryViewController: UIViewController {
                 () -> Void in
             }
         } else {
+            
+            var newCat = PFObject(className:"Category")
+            newCat["categoryName"] = categoryNameTextField.text
+            newCat["itemList"] = []
+            
+            newCat.saveInBackground { (success, error) in
+                if success {
+                    let catObjID = newCat.objectId!
+                    
+                    var query = PFQuery(className:"Inventory")
+                    
+                    //query.getObjectInBackgroundWithId(inventoryID) {
+                      //(inventory: PFObject?, error: NSError?) -> Void in
+                    query.getObjectInBackground(withId: self.inventoryID) { (inventory, error) in
+                        if error == nil && inventory != nil {
+                            if inventory!["categories"] == nil {
+                                inventory!["categories"] = [catObjID]
+                            } else {
+                                var invCats: [String] = inventory!["categories"] as! [String]
+                                invCats.append(catObjID)
+                                inventory!["categories"] = invCats
+                            }
+                            
+                            inventory!.saveInBackground() { (success, error) in
+                                if success {
+                                    print("Saved!")
+                                    self.dismiss(animated: true, completion: nil)
+                                } else {
+                                    print("Inventory save error")
+                                    print("Error: \(error?.localizedDescription)")
+                                }
+                            }
+                        
+                      } else {
+                        print("nil inventory")
+                      }
+                    }
+                    
+                } else {
+                    print("Category save error")
+                    print("Error: \(error?.localizedDescription)")
+                }
+            }
+            
+            
             //Add category to user database
             print("Add success")
         }
