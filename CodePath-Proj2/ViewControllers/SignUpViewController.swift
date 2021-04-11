@@ -28,7 +28,6 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func onRegister(_ sender: Any) {
-        print("Register clicked!")
         
         let username = self.usernameTextField.text
         let password = self.passwordTextField.text
@@ -114,7 +113,19 @@ class SignUpViewController: UIViewController {
 
             user.signUpInBackground { (success, error) in
                 if success {
-                    self.performSegue(withIdentifier:"signUpSuccessful", sender: nil)
+                    
+                    let alert = UIAlertController(title: "Welcome!", message: "Sign-up Successful", preferredStyle: UIAlertController.Style.alert)
+                    let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+                    {
+                        UIAlertAction in
+                        self.performSegue(withIdentifier:"signUpSuccessful", sender: nil)
+                    }
+                    alert.addAction(alertAction)
+                    self.present(alert, animated: true)
+                    {
+                        () -> Void in
+                    }
+                    
                 } else {
                     print("Error: \(String(describing: error?.localizedDescription))")
                 }

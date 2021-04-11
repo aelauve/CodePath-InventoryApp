@@ -38,8 +38,9 @@ class InventorySelectorViewController: UITableViewController {
 //        
 //    }
     
-    func getInventories() {
-        
+
+    @IBAction func addInventory(_ sender: Any) {
+        self.performSegue(withIdentifier: "addInventory", sender: nil)
     }
     
     
@@ -65,18 +66,22 @@ class InventorySelectorViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "InventorySelectorCell", for: indexPath) as! InventorySelectorTableViewCell
 
-        cell.inventorySelectButton.layer.backgroundColor = #colorLiteral(red: 1, green: 0.5132452846, blue: 0.6042660475, alpha: 1)
-        cell.inventorySelectButton.layer.cornerRadius = 10
-        cell.inventorySelectButton.layer.borderColor = #colorLiteral(red: 0.852301836, green: 0.4426146448, blue: 0.608592689, alpha: 1)
+        cell.inventoryLabel.layer.backgroundColor = #colorLiteral(red: 1, green: 0.5132452846, blue: 0.6042660475, alpha: 1)
+        print("Background color")
+        cell.inventoryLabel.layer.cornerRadius = 10
+        print("Corner radius")
+        cell.inventoryLabel.layer.borderColor = #colorLiteral(red: 0.852301836, green: 0.4426146448, blue: 0.608592689, alpha: 1)
+        print("Border color")
 
         var inv: String = invObjects[indexPath.row]
         
         let query = PFQuery(className: "Inventory")
         query.getObjectInBackground(withId: inv) { (inventory, error) in
           if error == nil && inventory != nil {
-            cell.inventorySelectButton.setTitle(inventory!["name"] as! String, for: .normal)
+            cell.inventoryLabel.text = inventory!["name"] as! String
           } else {
             print(error)
           }
@@ -98,9 +103,12 @@ class InventorySelectorViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //         Get the new view controller using segue.destination.
 //         Pass the selected object to the new view controller.
-        
-        let destinationVC = segue.destination as! InventoryViewController
-        destinationVC.inventoryID = invSelected
+        if segue.identifier == "invSelected"{
+            let barVCs = segue.destination as! UITabBarController
+            let navVCs = barVCs.viewControllers?[0] as! UINavigationController
+            let destinationVC = navVCs.viewControllers[0] as! InventoryViewController
+            destinationVC.inventoryID = invSelected
+        }
         
     }
 

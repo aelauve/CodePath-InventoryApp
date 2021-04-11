@@ -67,27 +67,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="115" height="33"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sw-qT-31M">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bkv-Ad-rAG">
                                                     <rect key="frame" x="0.0" y="0.0" width="115" height="33"/>
-                                                    <color key="backgroundColor" red="1" green="0.54459590746460529" blue="0.61055415941373548" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <state key="normal" title="Button">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                </button>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="0.54459590749999998" blue="0.61055415940000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="3Sw-qT-31M" firstAttribute="centerX" secondItem="eAi-jf-ggI" secondAttribute="centerX" id="3b6-aB-mb4"/>
-                                                <constraint firstAttribute="trailing" secondItem="3Sw-qT-31M" secondAttribute="trailing" id="5OT-Zc-ivq"/>
-                                                <constraint firstItem="3Sw-qT-31M" firstAttribute="top" secondItem="eAi-jf-ggI" secondAttribute="top" id="IAr-gK-X3e"/>
-                                                <constraint firstItem="3Sw-qT-31M" firstAttribute="leading" secondItem="eAi-jf-ggI" secondAttribute="leading" id="M9a-wD-MR6"/>
-                                                <constraint firstItem="3Sw-qT-31M" firstAttribute="centerY" secondItem="eAi-jf-ggI" secondAttribute="centerY" id="eci-Nt-XD7"/>
-                                                <constraint firstAttribute="bottom" secondItem="3Sw-qT-31M" secondAttribute="bottom" id="wC9-3L-xAU"/>
-                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="115" height="33"/>
                                         <connections>
-                                            <outlet property="categoryButton" destination="3Sw-qT-31M" id="SBu-Yd-v8M"/>
+                                            <outlet property="categoryLabel" destination="Bkv-Ad-rAG" id="pNe-fu-egU"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -162,7 +154,11 @@
                                 <action selector="backButtonClicked:" destination="BYZ-38-t0r" id="2p0-xN-NJf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="S49-2O-LRG"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="S49-2O-LRG">
+                            <connections>
+                                <action selector="addItem:" destination="BYZ-38-t0r" id="Uy9-2V-yyf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backButton" destination="eBW-ff-ava" id="7FS-NA-RYt"/>
@@ -175,7 +171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1245" y="927"/>
+            <point key="canvasLocation" x="1244.9275362318842" y="926.78571428571422"/>
         </scene>
         <!--User Info-->
         <scene sceneID="DoQ-ff-wT0">
@@ -826,12 +822,14 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8S-uY-qy4">
-                                <rect key="frame" x="178" y="462" width="57" height="30"/>
+                                <rect key="frame" x="121" y="462" width="172" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Register"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Register">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="onRegister:" destination="46g-6O-Saw" eventType="touchUpInside" id="31s-Pd-6mv"/>
-                                    <segue destination="zxn-Ad-94Q" kind="presentation" identifier="signUpSuccessful" modalPresentationStyle="fullScreen" id="Q9k-up-vBz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -854,18 +852,19 @@
                         <outlet property="passwordTextField" destination="usG-AH-Bmf" id="jWf-N0-E80"/>
                         <outlet property="registerButton" destination="G8S-uY-qy4" id="LQx-yB-pXj"/>
                         <outlet property="usernameTextField" destination="22O-VS-aAu" id="4lS-nW-YjT"/>
+                        <segue destination="zxn-Ad-94Q" kind="presentation" identifier="signUpSuccessful" modalPresentationStyle="fullScreen" id="nhD-iz-nUd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fyn-3a-tFD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2268.1159420289855" y="-1420.3125"/>
+            <point key="canvasLocation" x="2266.666666666667" y="-1420.3125"/>
         </scene>
         <!--Select an Inventory-->
         <scene sceneID="Ccg-EB-nz0">
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="hKj-zO-lc2" customClass="InventorySelectorViewController" customModule="CodePath_Proj2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Djs-VQ-BKc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -876,25 +875,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ur6-Tx-wXh">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyV-RC-iuP">
                                             <rect key="frame" x="20" y="11" width="374" height="44"/>
-                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <state key="normal" title="Inventory1">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                        </button>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="1" green="0.54459590749999998" blue="0.61055415940000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="ur6-Tx-wXh" firstAttribute="top" secondItem="MJJ-n1-eUH" secondAttribute="topMargin" id="4zy-Dl-BkU"/>
-                                        <constraint firstItem="ur6-Tx-wXh" firstAttribute="leading" secondItem="MJJ-n1-eUH" secondAttribute="leadingMargin" id="6Fp-aK-zan"/>
-                                        <constraint firstItem="ur6-Tx-wXh" firstAttribute="centerX" secondItem="MJJ-n1-eUH" secondAttribute="centerX" id="FcD-YP-xUW"/>
-                                        <constraint firstItem="ur6-Tx-wXh" firstAttribute="centerY" secondItem="MJJ-n1-eUH" secondAttribute="centerY" id="jdW-Lc-Rvo"/>
-                                        <constraint firstItem="ur6-Tx-wXh" firstAttribute="trailing" secondItem="MJJ-n1-eUH" secondAttribute="trailingMargin" id="m5r-D1-IY5"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="ur6-Tx-wXh" secondAttribute="bottom" id="s6B-I2-zQz"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="inventorySelectButton" destination="ur6-Tx-wXh" id="wWh-px-lQ1"/>
+                                    <outlet property="inventoryLabel" destination="xyV-RC-iuP" id="W2M-2s-4q8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -911,18 +903,18 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="HTg-ZR-woF">
                             <connections>
-                                <action selector="onAddNew:" destination="hKj-zO-lc2" id="PZV-rF-waB"/>
+                                <action selector="addInventory:" destination="hKj-zO-lc2" id="HMm-o2-sDK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="xr6-VM-EPl" kind="presentation" id="UJT-DX-24C"/>
+                        <segue destination="xr6-VM-EPl" kind="presentation" identifier="addInventory" id="UJT-DX-24C"/>
                         <segue destination="ye0-J5-yld" kind="presentation" identifier="invSelected" id="IJl-bP-GMb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jep-r7-Ue0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1387" y="-689"/>
+            <point key="canvasLocation" x="1386.9565217391305" y="-689.0625"/>
         </scene>
         <!--Add New Inventory-->
         <scene sceneID="J8E-xH-DJ1">
@@ -995,17 +987,17 @@
                     <connections>
                         <outlet property="inventoryID" destination="fbt-gP-9zK" id="UYL-VJ-tJO"/>
                         <outlet property="inventoryName" destination="EYO-Eb-IU8" id="SuL-iv-ey9"/>
-                        <segue destination="hKj-zO-lc2" kind="presentation" identifier="inventoryAddSuccess" id="u8o-70-e6u"/>
+                        <segue destination="IGB-eW-5Gx" kind="presentation" identifier="inventoryAddSuccess" id="SiA-Uc-yFX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udw-JU-Wki" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3200.0000000000005" y="-679.01785714285711"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--MainTabController-->
         <scene sceneID="mp1-Za-Xb4">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ye0-J5-yld" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ye0-J5-yld" userLabel="MainTabController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="f3m-9H-yUA">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -1151,8 +1143,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Pw0-bM-a9h"/>
-        <segue reference="u8o-70-e6u"/>
+        <segue reference="89E-wY-6Ee"/>
+        <segue reference="dpj-eM-Se5"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.backward" catalog="system" width="128" height="106"/>

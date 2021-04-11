@@ -47,7 +47,7 @@ class AddInventoryViewController: UIViewController {
             var newInventory = PFObject(className:"Inventory")
             
             newInventory["name"] = inventoryName.text
-            newInventory["categories"] = []
+            newInventory["categories"] = ["All"]
             newInventory["ownedBy"] = [PFUser.current()?.objectId]
             
             newInventory.saveInBackground { (success, error) in

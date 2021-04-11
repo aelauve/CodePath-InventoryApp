@@ -10,5 +10,6 @@ import UIKit
 class HorizCategoryCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var categoryButton: UIButton!
+    @IBOutlet weak var categoryLabel: UILabel!
     
 }

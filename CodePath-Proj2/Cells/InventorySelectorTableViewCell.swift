@@ -10,6 +10,7 @@ import UIKit
 class InventorySelectorTableViewCell: UITableViewCell {
 
     @IBOutlet weak var inventorySelectButton: UIButton!
+    @IBOutlet weak var inventoryLabel: UILabel!
     
     
     override func awakeFromNib() {

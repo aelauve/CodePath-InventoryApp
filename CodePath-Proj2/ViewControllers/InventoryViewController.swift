@@ -28,16 +28,37 @@ class InventoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        categoryPickCollection.dataSource = self
+        categoryPickCollection.delegate = self
+
+        getCategories()
+        
+        categoryPickCollection.reloadData()
+        
+        // Get
+        
+//        self.view.addSubview(categoryPickCollection)
+//        self.view.addSubview(itemCollection)
+    }
+    
+    func getCategories() {
         // Get Category objectIds
         let query = PFQuery(className: "Inventory")
         query.getObjectInBackground(withId: inventoryID) { (inventory, error) in
           if error == nil && inventory != nil {
+
             self.categories = inventory!["categories"] as! [String]
-            self.items = inventory!["items"] as! [String]
+            
+            if inventory!["items"] != nil {
+                self.items = inventory!["items"] as! [String]
+            } else {
+                self.items = []
+            }
           } else {
             print(error)
           }
         }
+        
         
         // Get Category names
         for x in self.categories {
@@ -52,11 +73,6 @@ class InventoryViewController: UIViewController {
             }
             
         }
-        
-        // Get
-        
-//        self.view.addSubview(categoryPickCollection)
-//        self.view.addSubview(itemCollection)
     }
 
     @IBAction func backButtonClicked(_ sender: Any) {
@@ -66,10 +82,12 @@ class InventoryViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addCategory" {
-            let destinationVC = segue.destination as! AddCategoryViewController
+            let navVCs = segue.destination as! UINavigationController
+            let destinationVC = navVCs.viewControllers[0] as! AddCategoryViewController
             destinationVC.inventoryID = inventoryID
         } else if segue.identifier == "addItem" {
-            let destinationVC = segue.destination as! AddItemViewController
+            let navVCs = segue.destination as! UINavigationController
+            let destinationVC = navVCs.viewControllers[0] as! AddItemViewController
             destinationVC.inventoryID = inventoryID
         }
     }
@@ -79,6 +97,10 @@ class InventoryViewController: UIViewController {
         self.performSegue(withIdentifier: "addCategory", sender: nil)
     }
     
+    
+    @IBAction func addItem(_ sender: Any) {
+        self.performSegue(withIdentifier: "addItem", sender: nil)
+    }
 }
 
 extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -103,7 +125,7 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         if collectionView == self.categoryPickCollection{
 
             if indexPath.item == 0{
@@ -119,11 +141,11 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
                 let cell = categoryPickCollection.dequeueReusableCell(withReuseIdentifier: categoryCollectionViewIdentifier, for: indexPath) as! HorizCategoryCollectionViewCell
                 
                 
-                cell.categoryButton.layer.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-                cell.categoryButton.layer.borderWidth = 2.0
-                cell.categoryButton.layer.cornerRadius = 15
-                let title = categories[indexPath.row - 1]
-                cell.categoryButton.setTitle(title, for: .normal)
+                cell.categoryLabel.layer.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+                cell.categoryLabel.layer.borderWidth = 2.0
+                cell.categoryLabel.layer.cornerRadius = 15
+                let title = categoryNames[indexPath.row - 1]
+                cell.categoryLabel.text = title
                 
                 return cell
             }
@@ -165,9 +187,9 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == self.categoryPickCollection{
-            //items = category[items]
-            let selectedCat = categories[indexPath.row]
             
+            let selectedCat = categories[indexPath.row]
+
             let query = PFQuery(className: "Category")
             query.getObjectInBackground(withId: selectedCat) { (category, error) in
               if error == nil && category != nil {
