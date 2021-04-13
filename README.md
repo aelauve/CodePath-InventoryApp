@@ -286,3 +286,9 @@ List of network requests by screen
 
 <img src='http://g.recordit.co/a4ZTgJ1Po5.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='http://g.recordit.co/KM41pUqNkC.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+- Fixed a login bug
+- Added special alerts on sign up and first login
+- Added networking to store and display actual user data
+<img src='http://g.recordit.co/fWvaXlvnCv.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/epycgDBe9i.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
