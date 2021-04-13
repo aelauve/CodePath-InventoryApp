@@ -28,11 +28,12 @@ class InventoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        categoryPickCollection.dataSource = self
-        categoryPickCollection.delegate = self
+//        categoryPickCollection.dataSource = self
+//        categoryPickCollection.delegate = self
 
         getCategories()
-        
+
+        getCategoryNames()
         categoryPickCollection.reloadData()
         
         // Get
@@ -41,6 +42,26 @@ class InventoryViewController: UIViewController {
 //        self.view.addSubview(itemCollection)
     }
     
+    func getCategoryNames() {
+        
+        print("In catNames")
+        print(self.categories.count)
+        
+        for x in self.categories {
+            print("In for loop")
+            let query = PFQuery(className: "Category")
+            query.getObjectInBackground(withId: x) { (category, error) in
+              if error != nil && category != nil {
+                print(category!["name"] as! String)
+                self.categoryNames.append(category!["name"] as! String)
+              } else {
+                print(error)
+              }
+            }
+        }
+    }
+    
+    
     func getCategories() {
         // Get Category objectIds
         let query = PFQuery(className: "Inventory")
@@ -48,8 +69,9 @@ class InventoryViewController: UIViewController {
           if error == nil && inventory != nil {
 
             self.categories = inventory!["categories"] as! [String]
-            
-            if inventory!["items"] != nil {
+            print("in getCat")
+            print(self.categories.count)
+            if inventory!["itemList"] != nil {
                 self.items = inventory!["items"] as! [String]
             } else {
                 self.items = []
@@ -58,23 +80,11 @@ class InventoryViewController: UIViewController {
             print(error)
           }
         }
-        
-        
-        // Get Category names
-        for x in self.categories {
-            
-            let query = PFQuery(className: "Category")
-            query.getObjectInBackground(withId: x) { (category, error) in
-              if error == nil && category != nil {
-                self.categoryNames.append(category!["name"] as! String)
-              } else {
-                print(error)
-              }
-            }
-            
-        }
+        print("End of getCat")
+        print(self.categories.count)
     }
 
+    
     @IBAction func backButtonClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

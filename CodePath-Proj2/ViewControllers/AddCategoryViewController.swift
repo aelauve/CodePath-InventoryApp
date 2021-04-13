@@ -57,8 +57,6 @@ class AddCategoryViewController: UIViewController {
                     
                     var query = PFQuery(className:"Inventory")
                     
-                    //query.getObjectInBackgroundWithId(inventoryID) {
-                      //(inventory: PFObject?, error: NSError?) -> Void in
                     query.getObjectInBackground(withId: self.inventoryID) { (inventory, error) in
                         if error == nil && inventory != nil {
                             if inventory!["categories"] == nil {
@@ -71,7 +69,6 @@ class AddCategoryViewController: UIViewController {
                             
                             inventory!.saveInBackground() { (success, error) in
                                 if success {
-                                    print("Saved!")
                                     self.dismiss(animated: true, completion: nil)
                                 } else {
                                     print("Inventory save error")
@@ -92,7 +89,6 @@ class AddCategoryViewController: UIViewController {
             
             
             //Add category to user database
-            print("Add success")
         }
     
     }
