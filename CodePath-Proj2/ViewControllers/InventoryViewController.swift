@@ -32,35 +32,13 @@ class InventoryViewController: UIViewController {
 //        categoryPickCollection.delegate = self
 
         getCategories()
-
-        getCategoryNames()
-        categoryPickCollection.reloadData()
+        //categoryPickCollection.reloadData()
         
         // Get
         
 //        self.view.addSubview(categoryPickCollection)
 //        self.view.addSubview(itemCollection)
     }
-    
-    func getCategoryNames() {
-        
-        print("In catNames")
-        print(self.categories.count)
-        
-        for x in self.categories {
-            print("In for loop")
-            let query = PFQuery(className: "Category")
-            query.getObjectInBackground(withId: x) { (category, error) in
-              if error != nil && category != nil {
-                print(category!["name"] as! String)
-                self.categoryNames.append(category!["name"] as! String)
-              } else {
-                print(error)
-              }
-            }
-        }
-    }
-    
     
     func getCategories() {
         // Get Category objectIds
@@ -69,19 +47,31 @@ class InventoryViewController: UIViewController {
           if error == nil && inventory != nil {
 
             self.categories = inventory!["categories"] as! [String]
-            print("in getCat")
-            print(self.categories.count)
+            
+            for x in self.categories {
+                let query = PFQuery(className: "Category")
+                query.getObjectInBackground(withId: x) { (category, error) in
+                  if error == nil && category != nil {
+                    self.categoryNames.append(category!["categoryName"] as! String)
+                  } else {
+                    print(error)
+                  }
+                }
+            }
+            
+            self.categoryPickCollection.reloadData()
+            
             if inventory!["itemList"] != nil {
                 self.items = inventory!["items"] as! [String]
             } else {
                 self.items = []
             }
+            
           } else {
             print(error)
           }
         }
-        print("End of getCat")
-        print(self.categories.count)
+
     }
 
     
@@ -154,7 +144,9 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
                 cell.categoryLabel.layer.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
                 cell.categoryLabel.layer.borderWidth = 2.0
                 cell.categoryLabel.layer.cornerRadius = 15
-                let title = categoryNames[indexPath.row - 1]
+                //let title = categoryNames[indexPath.row - 1]
+                print(categoryNames)
+                print(indexPath.row)
                 cell.categoryLabel.text = title
                 
                 return cell
