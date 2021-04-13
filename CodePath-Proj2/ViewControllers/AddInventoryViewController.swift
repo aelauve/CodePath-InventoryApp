@@ -105,21 +105,29 @@ class AddInventoryViewController: UIViewController {
         }
         
         else {
-            
-            
             // **Below not working correctly
-            
-            var foundInventory: [PFObject]?
-            let inventoryQuery = PFQuery(className: "Inventory")
-            inventoryQuery.includeKeys(["objectID"])
-            inventoryQuery.whereKey("objectID", contains: inventoryID.text)
-            
-            inventoryQuery.findObjectsInBackground { (inventory, error) in
-                if inventory != nil {
-                    foundInventory = inventory
-                    print("Success")
+            let query = PFQuery(className: "Inventory")
+            query.getObjectInBackground(withId: inventoryID.text!) { (inventory, error) in
+              if error == nil && inventory != nil {
+                
+                // Add inventory to current user
+                let currentUser = PFUser.current()
+                var userInv: [String] = currentUser!["inventories"] as! [String]
+                userInv.append((inventory?.objectId)!)
+                currentUser!["inventories"] = userInv
+                
+                currentUser!.saveInBackground() { (success, error) in
+                    if success {
+                        print("Saved!")
+                        self.performSegue(withIdentifier:"inventoryAddSuccess", sender: nil)
+                    } else {
+                        print("User save error")
+                        print("Error: \(error?.localizedDescription)")
+                    }
                 }
-                else {
+
+                
+              } else {
                     let alert = UIAlertController(title: "Error", message: "Invalid Inventory ID", preferredStyle: UIAlertController.Style.alert)
                     let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
                     {
@@ -130,8 +138,8 @@ class AddInventoryViewController: UIViewController {
                     {
                         () -> Void in
                     }
-                    
-                }
+              }
+        
             }
         }
         

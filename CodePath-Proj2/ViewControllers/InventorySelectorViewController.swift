@@ -20,6 +20,7 @@ class InventorySelectorViewController: UITableViewController {
         // Load inventories
         let user = PFUser.current()
         invObjects = user!["inventories"] as! [String]
+        print("invObjects")
         
 //        for x in user!["inventories"]\{
 //            invObjects.append(x)
@@ -70,11 +71,8 @@ class InventorySelectorViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InventorySelectorCell", for: indexPath) as! InventorySelectorTableViewCell
 
         cell.inventoryLabel.layer.backgroundColor = #colorLiteral(red: 1, green: 0.5132452846, blue: 0.6042660475, alpha: 1)
-        print("Background color")
         cell.inventoryLabel.layer.cornerRadius = 10
-        print("Corner radius")
         cell.inventoryLabel.layer.borderColor = #colorLiteral(red: 0.852301836, green: 0.4426146448, blue: 0.608592689, alpha: 1)
-        print("Border color")
 
         var inv: String = invObjects[indexPath.row]
         
