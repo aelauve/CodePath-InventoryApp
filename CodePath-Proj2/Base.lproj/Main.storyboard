@@ -33,12 +33,12 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="addCategoryCell" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="addCategoryCell" id="aPw-Bl-vIs" customClass="AddCategoryCollectionCell" customModule="CodePath_Proj2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="17.5" width="50" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0Hv-3X-ago">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Hv-3X-ago">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3D-sd-sj0">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
+                                                    <rect key="frame" x="16" y="1.5" width="18" height="22"/>
                                                     <color key="tintColor" red="1" green="0.54459590749999998" blue="0.61055415940000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" image="plus" catalog="system"/>
                                                     <connections>
@@ -48,11 +48,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="a3D-sd-sj0" firstAttribute="centerY" secondItem="0Hv-3X-ago" secondAttribute="centerY" id="03C-Sm-S8K"/>
-                                                <constraint firstItem="a3D-sd-sj0" firstAttribute="leading" secondItem="0Hv-3X-ago" secondAttribute="leading" id="5Tp-kT-w0z"/>
                                                 <constraint firstItem="a3D-sd-sj0" firstAttribute="centerX" secondItem="0Hv-3X-ago" secondAttribute="centerX" id="VLA-Jw-kbN"/>
-                                                <constraint firstAttribute="bottom" secondItem="a3D-sd-sj0" secondAttribute="bottom" id="ZUY-sD-HQM"/>
-                                                <constraint firstItem="a3D-sd-sj0" firstAttribute="top" secondItem="0Hv-3X-ago" secondAttribute="top" id="jl5-GA-CiU"/>
-                                                <constraint firstAttribute="trailing" secondItem="a3D-sd-sj0" secondAttribute="trailing" id="rzS-aU-vv8"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="50" height="25"/>
@@ -70,7 +66,6 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bkv-Ad-rAG">
                                                     <rect key="frame" x="0.0" y="0.0" width="115" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="1" green="0.54459590749999998" blue="0.61055415940000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>

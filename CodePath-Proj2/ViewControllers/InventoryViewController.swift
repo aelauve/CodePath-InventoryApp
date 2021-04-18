@@ -32,7 +32,8 @@ class InventoryViewController: UIViewController {
 //        categoryPickCollection.delegate = self
 
         getCategories()
-        //categoryPickCollection.reloadData()
+        categoryPickCollection.reloadData()
+        itemCollection.reloadData()
         
         // Get
         
@@ -53,13 +54,16 @@ class InventoryViewController: UIViewController {
                 query.getObjectInBackground(withId: x) { (category, error) in
                   if error == nil && category != nil {
                     self.categoryNames.append(category!["categoryName"] as! String)
+//                    print("Categories: ")
+//                    print(self.categoryNames)
+                    
+                    self.categoryPickCollection.reloadData()
                   } else {
                     print(error)
                   }
                 }
             }
             
-            self.categoryPickCollection.reloadData()
             
             if inventory!["itemList"] != nil {
                 self.items = inventory!["items"] as! [String]
@@ -89,6 +93,8 @@ class InventoryViewController: UIViewController {
             let navVCs = segue.destination as! UINavigationController
             let destinationVC = navVCs.viewControllers[0] as! AddItemViewController
             destinationVC.inventoryID = inventoryID
+            destinationVC.pickerData = categoryNames
+            destinationVC.categoryObjIDs = categories
         }
     }
     
@@ -131,9 +137,11 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             if indexPath.item == 0{
                 let cell = categoryPickCollection.dequeueReusableCell(withReuseIdentifier: addCategoryCollectionViewIdentifier, for: indexPath) as! AddCategoryCollectionCell
                 
+                cell.addCategoryButton.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
+                cell.addCategoryButton.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
                 cell.addCategoryButton.layer.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
                 cell.addCategoryButton.layer.borderWidth = 2.0
-                cell.addCategoryButton.layer.cornerRadius = 15
+                cell.addCategoryButton.layer.cornerRadius = 0.5 * (cell.addCategoryButton).bounds.size.width
                 
                 return cell
                 
@@ -144,10 +152,15 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
                 cell.categoryLabel.layer.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
                 cell.categoryLabel.layer.borderWidth = 2.0
                 cell.categoryLabel.layer.cornerRadius = 15
-                //let title = categoryNames[indexPath.row - 1]
-                print(categoryNames)
-                print(indexPath.row)
-                cell.categoryLabel.text = title
+                cell.categoryLabel.backgroundColor = #colorLiteral(red: 1, green: 0.7447917417, blue: 0.8300149343, alpha: 1)
+                
+                if categoryNames.count > indexPath.item - 1{
+                
+                    let title = categoryNames[indexPath.item-1]
+                    cell.categoryLabel.text = title
+                } else {
+                    cell.categoryLabel.text = "Category"
+                }
                 
                 return cell
             }
@@ -190,16 +203,27 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
         
         if collectionView == self.categoryPickCollection{
             
-            let selectedCat = categories[indexPath.row]
+            if indexPath.item == 0 {
+                self.performSegue(withIdentifier: "addCategory", sender: nil)
+            } else {
+                
+                let selectedCat = categories[indexPath.item-1]
 
-            let query = PFQuery(className: "Category")
-            query.getObjectInBackground(withId: selectedCat) { (category, error) in
-              if error == nil && category != nil {
-                self.items = category!["items"] as! [String]
-                collectionView.reloadData()
-              } else {
-                print(error)
-              }
+                let query = PFQuery(className: "Category")
+                query.getObjectInBackground(withId: selectedCat) { (category, error) in
+                  if error == nil && category != nil {
+                    if category!["items"] != nil {
+                        self.items = category!["items"] as! [String]
+                        self.itemCollection.reloadData()
+                    } else {
+                        self.items = []
+                        self.itemCollection.reloadData()
+                    }
+                  } else {
+                    self.items = []
+                    self.itemCollection.reloadData()
+                  }
+                }
             }
             
         } else {

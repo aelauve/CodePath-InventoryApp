@@ -25,7 +25,9 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var categoryPicker: UIPickerView!
     
     var pickerData: [String] = [String]()
+    var categoryObjIDs: [String] = [String]()
     var chosenCategory: String = ""
+    var chosenCatID: String = ""
     var inventoryID: String = ""
     //Still need to add actions for the buttons
     //Also need to add text fields
@@ -77,8 +79,9 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         self.categoryPicker.dataSource = self
         
         //Input temporary data
-        pickerData = ["Category1", "Category2", "Category3"]
+        //pickerData = ["Category1", "Category2", "Category3"]
         chosenCategory = pickerData[0]
+        chosenCatID = categoryObjIDs[0]
         
     }
     
@@ -108,6 +111,7 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
         chosenCategory = pickerData[row]
+        chosenCatID = categoryObjIDs[row]
     }
     
     
@@ -172,7 +176,6 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             
             item["itemName"] = nameTextBox.text
             item["itemCategory"] = chosenCategory
-            item["itemIcon"] = "None"   //temporary
             if expirationSwitch.isOn {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MM/dd/yy"
@@ -184,25 +187,40 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                 
             item.saveInBackground { (success, error) in
                 if success {
-                    print("Saved!")
-                    self.dismiss(animated: true, completion: nil)
+                    
+                    let itemID = item.objectId!
+                    
+                    let query = PFQuery(className: "Category")
+                    query.getObjectInBackground(withId: self.chosenCatID) { (category, error) in
+                        if error == nil && category != nil {
+                            if category!["itemList"] == nil {
+                                category!["itemList"] = [itemID]
+                            } else {
+                                var catItems: [String] = category!["itemList"] as! [String]
+                                catItems.append(itemID)
+                                category!["itemList"] = catItems
+                            }
+                            
+                            category!.saveInBackground() { (success, error) in
+                                if success {
+                                    self.dismiss(animated: true, completion: nil)
+                                } else {
+                                    print("Inventory save error")
+                                    print("Error: \(error?.localizedDescription)")
+                                }
+                            }
+                        } else {
+                            print("nil category")
+                        }
+                    }
+            
                 } else {
                     print("Error: \(error?.localizedDescription)")
                 }
             }
         }
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
+
 
 }
