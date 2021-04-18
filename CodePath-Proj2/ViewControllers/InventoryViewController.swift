@@ -54,9 +54,6 @@ class InventoryViewController: UIViewController {
                 query.getObjectInBackground(withId: x) { (category, error) in
                   if error == nil && category != nil {
                     self.categoryNames.append(category!["categoryName"] as! String)
-//                    print("Categories: ")
-//                    print(self.categoryNames)
-                    
                     self.categoryPickCollection.reloadData()
                   } else {
                     print(error)
@@ -111,13 +108,13 @@ class InventoryViewController: UIViewController {
 
 extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if indexPath.row == 0{
-//                return CGSize(width: 50, height: 33)
-//            } else {
-//                return CGSize(width: 115, height: 33)
-//            }
-//        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.item == 0{
+                return CGSize(width: 50, height: 33)
+            } else {
+                return CGSize(width: 115, height: 33)
+            }
+        }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
@@ -208,19 +205,23 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             } else {
                 
                 let selectedCat = categories[indexPath.item-1]
+                print("Selected: \(selectedCat)")
 
                 let query = PFQuery(className: "Category")
                 query.getObjectInBackground(withId: selectedCat) { (category, error) in
                   if error == nil && category != nil {
                     if category!["items"] != nil {
-                        self.items = category!["items"] as! [String]
+                        self.items = category!["itemList"] as! [String]
+                        print("Items not nil: \(self.items)")
                         self.itemCollection.reloadData()
                     } else {
                         self.items = []
+                        print("Items nil: \(self.items)")
                         self.itemCollection.reloadData()
                     }
                   } else {
                     self.items = []
+                    print("Category nil: \(self.items)")
                     self.itemCollection.reloadData()
                   }
                 }

@@ -20,7 +20,6 @@ class InventorySelectorViewController: UITableViewController {
         // Load inventories
         let user = PFUser.current()
         invObjects = user!["inventories"] as! [String]
-        print("invObjects")
         
 //        for x in user!["inventories"]\{
 //            invObjects.append(x)

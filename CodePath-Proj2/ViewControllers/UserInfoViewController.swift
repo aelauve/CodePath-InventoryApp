@@ -14,19 +14,20 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     
     //let dataSource = ["View Controller 1", "View Controller 2", "View Controller 3", "View Controller 4"]
-    var dataSource: [[String]] = [ ["0001", "Personal", " ", "January 1, 2021"], ["0002", "Family", "Mom, Dad, Brother, Sister", "February 1, 2021"], ["0003", "Roomies", "Zawad, Enrique, Sara", "March 1, 2021"], ["0004", "Work", "Coworkers", "April 1, 2021"] ]
+    var dataSource: [[String]] = [[String]]()
     var currentViewControllerIndex = 0
     
     var firstName: String?
     var lastName: String?
-    var inventoryList: [Int]?
+    var inventoryList: [String]?
+    
+    let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         getUserInfo()
-        
-        configurePageViewController()
         // Do any additional setup after loading the view.
     }
     
@@ -37,25 +38,71 @@ class UserInfoViewController: UIViewController {
         
         firstName = user!["firstName"] as? String
         lastName = user!["lastName"] as? String
-        
+        inventoryList = user!["inventories"] as? [String]
         nameLabel.text = firstName! + " " + lastName!
         
         
-        //Populate data source
-//        let query = PFQuery(className: "Inventory")
-//        query.includeKeys(["objectId", "name", "ownedBy", "createdAt"])
-//        query.whereKey("ownedBy", contains: user!["objectId"] as! String) //Not sure if this actually works
-//
-//        query.findObjectsInBackground { (inventories, error) in
-//            if inventories != nil {
-//                print(inventories) //To be replaced later
-////                for i in inventories! {
-////                    self.dataSource.append(i)
-////                }
-//            } else {
-//                print("Error: \(error?.localizedDescription)")
-//            }
-//        }
+        for invID in inventoryList!{
+            self.myGroup.enter()
+            let query = PFQuery(className: "Inventory")
+            query.getObjectInBackground(withId: invID) { (inventory, error) in
+              if error == nil && inventory != nil {
+
+                let invName = inventory!["name"] as! String
+                let createdAt = "April 18, 2021"
+                
+                if inventory!["ownedBy"] as? [String] != nil{
+                    var userString = ""
+                    var index = 0
+                    
+                    for userID in inventory!["ownedBy"] as! [String]{
+                        
+                        let innerGroup = DispatchGroup()
+                        
+                        innerGroup.enter()
+                        let query = PFUser.query()
+                        query!.getObjectInBackground(withId: userID) { (user, error) in
+                          if error == nil && user != nil {
+                            
+                            print("User Name: \(user!["firstName"])")
+                            
+                            if index == inventory!.accessibilityElementCount()-1{
+                                userString += user!["firstName"] as! String
+                            } else {
+                                userString += user!["firstName"] as! String + ", "
+                            }
+                            
+                          } else {
+                            print("Could not load user")
+                          }
+                        }
+                        innerGroup.leave()
+                        
+                        innerGroup.notify(queue: .main){
+                            self.dataSource.append([invID, invName, userString, createdAt])
+                            //print(self.dataSource[index])
+                            index += 1
+                        }
+                        
+                    }
+                } else {
+                    self.dataSource.append([invID, invName, " ", createdAt])
+                }
+              } else {
+                print("Info load error")
+              }
+                self.myGroup.leave()
+            }
+        }
+        
+        self.myGroup.notify(queue: .main){
+            self.configurePageViewController()
+        }
+        print(dataSource)
+        let date = Date.init()
+        let dateFormat = DateFormatter()
+        dateFormat.dateStyle = .medium
+        print(dateFormat.string(from: date))
         
     }
     
@@ -102,7 +149,7 @@ class UserInfoViewController: UIViewController {
     func detailViewControllerAt(index: Int) -> DataViewController? {
         
         //Error checking
-        if index >= dataSource.count || dataSource.count == 0 {
+        if index >= dataSource.count || dataSource.count == 0 || dataSource[index] == []{
             return nil
         }
         
@@ -110,6 +157,7 @@ class UserInfoViewController: UIViewController {
         guard let dataViewController = storyboard?.instantiateViewController(identifier: String(describing: DataViewController.self)) as? DataViewController else {
             return nil
         }
+        
         
         dataViewController.index = index
         dataViewController.idLabel = dataSource[index][0]
