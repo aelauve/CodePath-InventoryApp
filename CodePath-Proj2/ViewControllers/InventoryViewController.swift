@@ -25,8 +25,12 @@ class InventoryViewController: UIViewController {
     let categoryCollectionViewIdentifier = "horizCategoryCell"
     let itemCollectionViewIdentifier = "inventoryItemCell"
     
+    let myGroup = DispatchGroup()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("In viewDidLoad")
         
 //        categoryPickCollection.dataSource = self
 //        categoryPickCollection.delegate = self
@@ -34,26 +38,27 @@ class InventoryViewController: UIViewController {
         getCategories()
         categoryPickCollection.reloadData()
         itemCollection.reloadData()
-        
-        // Get
-        
-//        self.view.addSubview(categoryPickCollection)
-//        self.view.addSubview(itemCollection)
+
     }
+
     
     func getCategories() {
         // Get Category objectIds
+        myGroup.enter()
         let query = PFQuery(className: "Inventory")
         query.getObjectInBackground(withId: inventoryID) { (inventory, error) in
           if error == nil && inventory != nil {
 
             self.categories = inventory!["categories"] as! [String]
+            print("Categories: \(self.categories)")
             
             for x in self.categories {
+                print("x = \(x)")
                 let query = PFQuery(className: "Category")
                 query.getObjectInBackground(withId: x) { (category, error) in
                   if error == nil && category != nil {
                     self.categoryNames.append(category!["categoryName"] as! String)
+                    print("Category name: \(category!["categoryName"] as! String)")
                     self.categoryPickCollection.reloadData()
                   } else {
                     print(error)
@@ -64,13 +69,21 @@ class InventoryViewController: UIViewController {
             
             if inventory!["itemList"] != nil {
                 self.items = inventory!["items"] as! [String]
+                //self.itemCollection.reloadData()
             } else {
                 self.items = []
+                //self.itemCollection.reloadData()
             }
             
           } else {
             print(error)
           }
+        }
+        myGroup.leave()
+        
+        myGroup.notify(queue: .main){
+            self.categoryPickCollection.reloadData()
+            self.itemCollection.reloadData()
         }
 
     }
@@ -148,8 +161,8 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
                 
                 cell.categoryLabel.layer.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
                 cell.categoryLabel.layer.borderWidth = 2.0
-                cell.categoryLabel.layer.cornerRadius = 15
                 cell.categoryLabel.backgroundColor = #colorLiteral(red: 1, green: 0.7447917417, blue: 0.8300149343, alpha: 1)
+                cell.categoryLabel.layer.cornerRadius = 15
                 
                 if categoryNames.count > indexPath.item - 1{
                 
@@ -167,6 +180,8 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             
             let cell = itemCollection.dequeueReusableCell(withReuseIdentifier: itemCollectionViewIdentifier, for: indexPath) as! InventoryCollectionViewCell
             
+            print("Creating item cell...")
+            
             cell.itemImage.layer.borderWidth = 1.0
             cell.itemImage.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             cell.itemImage.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -179,6 +194,7 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
                 cell.itemNameLabel.text = item!["itemName"] as! String
                 cell.itemNumberLabel.text = String(item!["itemCount"] as! Int)
               } else {
+                print("Error getting item")
                 print(error)
               }
             }
