@@ -284,13 +284,24 @@ List of network requests by screen
    *  (Update/PUT) Update item count
    *  (Delete) Delete item from shopping list
 
-## Updates
+## Updates - Milestone 10
 
 <img src='http://g.recordit.co/a4ZTgJ1Po5.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='http://g.recordit.co/KM41pUqNkC.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+## Updates - Milestone 11
 
 - Fixed a login bug
 - Added special alerts on sign up and first login
 - Added networking to store and display actual user data
 <img src='http://g.recordit.co/fWvaXlvnCv.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='http://g.recordit.co/epycgDBe9i.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+## Updates - Milestone 12
+
+- Main screen now shows individual inventory's categories
+- User info screen shows most data for each of user's inventories
+- User can add categories (Does not currently update in app -> to be worked on next sprint)
+- User can add items (Does not currently update in app -> to be worked on next sprint)
+<img src='http://g.recordit.co/Dc3eYAXRUE.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/ZunAWHTjCf.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
