@@ -16,6 +16,8 @@ class AddCategoryViewController: UIViewController {
     @IBOutlet weak var addCategoryButton: UIButton!
     
     var inventoryID: String = ""
+    var regColor: UIColor = UIColor(named: "GreenReg")!
+    var lightColor: UIColor = UIColor(named: "GreenLight")!
     
     
     

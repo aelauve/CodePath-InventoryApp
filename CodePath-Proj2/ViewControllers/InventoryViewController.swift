@@ -20,6 +20,8 @@ class InventoryViewController: UIViewController {
     @IBOutlet weak var itemCollection: UICollectionView!
     
     var inventoryID: String = ""
+    var regColor: UIColor = UIColor(named: "GreenReg")!
+    var lightColor: UIColor = UIColor(named: "GreenLight")!
     
     let addCategoryCollectionViewIdentifier = "addCategoryCell"
     let categoryCollectionViewIdentifier = "horizCategoryCell"
@@ -99,12 +101,16 @@ class InventoryViewController: UIViewController {
             let navVCs = segue.destination as! UINavigationController
             let destinationVC = navVCs.viewControllers[0] as! AddCategoryViewController
             destinationVC.inventoryID = inventoryID
+            destinationVC.regColor = self.regColor
+            destinationVC.lightColor = self.lightColor
         } else if segue.identifier == "addItem" {
             let navVCs = segue.destination as! UINavigationController
             let destinationVC = navVCs.viewControllers[0] as! AddItemViewController
             destinationVC.inventoryID = inventoryID
             destinationVC.pickerData = categoryNames
             destinationVC.categoryObjIDs = categories
+            destinationVC.regColor = self.regColor
+            destinationVC.lightColor = self.lightColor
         }
     }
     

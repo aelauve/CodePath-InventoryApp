@@ -13,6 +13,8 @@ class InventorySelectorViewController: UITableViewController {
     var invObjects: [String] = [String]()
     //var invNames: [String] = [String]()
     var invSelected: String = ""
+    var regColor: UIColor = UIColor(named: "GreenReg")!
+    var lightColor: UIColor = UIColor(named: "GreenLight")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +107,8 @@ class InventorySelectorViewController: UITableViewController {
             let navVCs = barVCs.viewControllers?[0] as! UINavigationController
             let destinationVC = navVCs.viewControllers[0] as! InventoryViewController
             destinationVC.inventoryID = invSelected
+            destinationVC.regColor = self.regColor
+            destinationVC.lightColor = self.lightColor
         }
         
     }

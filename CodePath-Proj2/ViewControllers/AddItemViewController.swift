@@ -29,6 +29,8 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var chosenCategory: String = ""
     var chosenCatID: String = ""
     var inventoryID: String = ""
+    var regColor: UIColor = UIColor(named: "GreenReg")!
+    var lightColor: UIColor = UIColor(named: "GreenLight")!
     //Still need to add actions for the buttons
     //Also need to add text fields
     
