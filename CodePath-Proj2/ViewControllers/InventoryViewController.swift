@@ -32,7 +32,8 @@ class InventoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("In viewDidLoad")
+        backButton.tintColor = regColor
+        
         
 //        categoryPickCollection.dataSource = self
 //        categoryPickCollection.delegate = self
@@ -155,9 +156,10 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
                 
                 cell.addCategoryButton.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
                 cell.addCategoryButton.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
-                cell.addCategoryButton.layer.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+                cell.addCategoryButton.layer.borderColor = regColor.cgColor
                 cell.addCategoryButton.layer.borderWidth = 2.0
                 cell.addCategoryButton.layer.cornerRadius = 0.5 * (cell.addCategoryButton).bounds.size.width
+                cell.addCategoryButton.tintColor = regColor
                 
                 return cell
                 
@@ -165,9 +167,9 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
                 let cell = categoryPickCollection.dequeueReusableCell(withReuseIdentifier: categoryCollectionViewIdentifier, for: indexPath) as! HorizCategoryCollectionViewCell
                 
                 
-                cell.categoryLabel.layer.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-                cell.categoryLabel.layer.borderWidth = 2.0
-                cell.categoryLabel.backgroundColor = #colorLiteral(red: 1, green: 0.7447917417, blue: 0.8300149343, alpha: 1)
+                //cell.categoryLabel.layer.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+                //cell.categoryLabel.layer.borderWidth = 2.0
+                cell.categoryLabel.backgroundColor = regColor
                 cell.categoryLabel.layer.cornerRadius = 15
                 
                 if categoryNames.count > indexPath.item - 1{
@@ -211,7 +213,7 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             
             cell.layer.cornerRadius = 15
             //cell.layer.borderWidth = 1.0
-            cell.layer.backgroundColor = #colorLiteral(red: 1, green: 0.5132452846, blue: 0.6042660475, alpha: 0.1098958795)
+            cell.backgroundColor = lightColor
             
             return cell
         }

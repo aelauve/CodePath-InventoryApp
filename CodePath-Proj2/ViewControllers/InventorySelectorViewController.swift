@@ -16,6 +16,8 @@ class InventorySelectorViewController: UITableViewController {
     var regColor: UIColor = UIColor(named: "GreenReg")!
     var lightColor: UIColor = UIColor(named: "GreenLight")!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -71,9 +73,9 @@ class InventorySelectorViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "InventorySelectorCell", for: indexPath) as! InventorySelectorTableViewCell
 
-        cell.inventoryLabel.layer.backgroundColor = #colorLiteral(red: 1, green: 0.5132452846, blue: 0.6042660475, alpha: 1)
+        cell.inventoryLabel.backgroundColor = self.regColor
         cell.inventoryLabel.layer.cornerRadius = 10
-        cell.inventoryLabel.layer.borderColor = #colorLiteral(red: 0.852301836, green: 0.4426146448, blue: 0.608592689, alpha: 1)
+        //cell.inventoryLabel.layer.borderColor = #colorLiteral(red: 0.852301836, green: 0.4426146448, blue: 0.608592689, alpha: 1)
 
         var inv: String = invObjects[indexPath.row]
         
@@ -107,6 +109,12 @@ class InventorySelectorViewController: UITableViewController {
             let navVCs = barVCs.viewControllers?[0] as! UINavigationController
             let destinationVC = navVCs.viewControllers[0] as! InventoryViewController
             destinationVC.inventoryID = invSelected
+            destinationVC.regColor = self.regColor
+            destinationVC.lightColor = self.lightColor
+        }
+        if segue.identifier == "addInventory"{
+            let navVC = segue.destination as! UINavigationController
+            let destinationVC = navVC.viewControllers[0] as! AddInventoryViewController
             destinationVC.regColor = self.regColor
             destinationVC.lightColor = self.lightColor
         }

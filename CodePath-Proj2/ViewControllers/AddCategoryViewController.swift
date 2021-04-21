@@ -23,6 +23,10 @@ class AddCategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addCategoryButton.backgroundColor = regColor
+        addCategoryButton.layer.borderWidth = 2.0
+        addCategoryButton.layer.cornerRadius = 10
 
         // Do any additional setup after loading the view.
     }

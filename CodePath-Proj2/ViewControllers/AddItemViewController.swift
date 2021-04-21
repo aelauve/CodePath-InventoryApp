@@ -42,38 +42,38 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         //Temporary styling of item image
         itemImageView.layer.cornerRadius = (itemImageView?.frame.size.width ?? 0.0) / 2
-        itemImageView.layer.borderWidth = 2.0
-        itemImageView.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
-        itemImageView.layer.backgroundColor = #colorLiteral(red: 1, green: 0.5132452846, blue: 0.6042660475, alpha: 1)
+        //itemImageView.layer.borderWidth = 2.0
+        //itemImageView.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
+        itemImageView.backgroundColor = lightColor
         
         //Styling border of Name and Amount text boxes
-        nameTextBox.layer.borderWidth = 1.0
-        nameTextBox.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
+        //nameTextBox.layer.borderWidth = 1.0
+        //nameTextBox.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
         nameTextBox.layer.cornerRadius = 5
         
         amountTextBox.layer.borderWidth = 1.0
-        amountTextBox.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
+        //amountTextBox.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
         amountTextBox.layer.cornerRadius = 5
         
         //Styling '+' and '-' buttons
         plusButton.layer.cornerRadius = 5
-        plusButton.layer.borderWidth = 1.0
-        plusButton.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
+        //plusButton.layer.borderWidth = 1.0
+        //plusButton.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
         
         minusButton.layer.cornerRadius = 5
-        minusButton.layer.borderWidth = 1.0
-        minusButton.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
+       // minusButton.layer.borderWidth = 1.0
+        //minusButton.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
         
         //Styling Notes text view
-        notesTextBox.layer.borderWidth = 1.0
-        notesTextBox.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
+        //notesTextBox.layer.borderWidth = 1.0
+        //notesTextBox.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
         notesTextBox.layer.cornerRadius = 5
         
         //Styling 'Add to' Button
         addToInventoryButton.layer.cornerRadius = 10
-        addToInventoryButton.layer.borderWidth = 2.0
-        addToInventoryButton.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
-        addToInventoryButton.layer.backgroundColor = #colorLiteral(red: 1, green: 0.5132452846, blue: 0.6042660475, alpha: 1)
+        //addToInventoryButton.layer.borderWidth = 2.0
+        //addToInventoryButton.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
+        addToInventoryButton.backgroundColor = regColor
         
         
         //Connect picker data

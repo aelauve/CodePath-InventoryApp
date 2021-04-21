@@ -22,12 +22,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginButton.backgroundColor = UIColor(named: "GreenReg")
+        loginButton.backgroundColor = regColor
         //loginButton.layer.borderColor = UIColor(named: "GreenLight")?.cgColor
         loginButton.layer.cornerRadius = 10
         
-        signUpButton.layer.backgroundColor = #colorLiteral(red: 1, green: 0.5132452846, blue: 0.6042660475, alpha: 1)
-        signUpButton.layer.borderColor = #colorLiteral(red: 0.852301836, green: 0.4426146448, blue: 0.608592689, alpha: 1)
+        signUpButton.backgroundColor = regColor
+        //signUpButton.layer.borderColor = #colorLiteral(red: 0.852301836, green: 0.4426146448, blue: 0.608592689, alpha: 1)
         signUpButton.layer.cornerRadius = 10
 
     }
@@ -73,28 +73,31 @@ class LoginViewController: UIViewController {
                 let color: String = user!["colorPalette"] as! String
                 switch color {
                 case "Green":
-                    self.regColor = UIColor(named: "GreenRegular")!
+                    self.regColor = UIColor(named: "GreenReg")!
                     self.lightColor = UIColor(named: "GreenLight")!
+                case "Teal":
+                    self.regColor = UIColor(named: "TealReg")!
+                    self.lightColor = UIColor(named: "TealLight")!
                 case "Blue":
-                    self.regColor = UIColor(named: "BlueRegular")!
+                    self.regColor = UIColor(named: "BlueReg")!
                     self.lightColor = UIColor(named: "BlueLight")!
                 case "Purple":
-                    self.regColor = UIColor(named: "PurpleRegular")!
+                    self.regColor = UIColor(named: "PurpleReg")!
                     self.lightColor = UIColor(named: "PurpleLight")!
                 case "Yellow":
-                    self.regColor = UIColor(named: "YellowRegular")!
+                    self.regColor = UIColor(named: "YellowReg")!
                     self.lightColor = UIColor(named: "YellowLight")!
                 case "Red":
-                    self.regColor = UIColor(named: "RedRegular")!
+                    self.regColor = UIColor(named: "RedReg")!
                     self.lightColor = UIColor(named: "RedLight")!
                 case "Pink":
-                    self.regColor = UIColor(named: "PinkRegular")!
+                    self.regColor = UIColor(named: "PinkReg")!
                     self.lightColor = UIColor(named: "PinkLight")!
                 case "Black":
-                    self.regColor = UIColor(named: "BlackRegular")!
+                    self.regColor = UIColor(named: "BlackReg")!
                     self.lightColor = UIColor(named: "BlackLight")!
                 default:
-                    self.regColor = UIColor(named: "GreenRegular")!
+                    self.regColor = UIColor(named: "GreenReg")!
                     self.lightColor = UIColor(named: "GreenLight")!
                 }
                 

@@ -12,11 +12,22 @@ class AddInventoryViewController: UIViewController {
 
     @IBOutlet weak var inventoryName: UITextField!
     @IBOutlet weak var inventoryID: UITextField!
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var linkButton: UIButton!
+    
+    var regColor: UIColor = UIColor(named: "GreenReg")!
+    var lightColor: UIColor = UIColor(named: "GreenLight")!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addButton.backgroundColor = regColor
+        addButton.layer.cornerRadius = 10
+        
+        linkButton.backgroundColor = regColor
+        linkButton.layer.cornerRadius = 10
 
         // Do any additional setup after loading the view.
     }

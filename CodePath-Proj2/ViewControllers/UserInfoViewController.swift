@@ -12,6 +12,8 @@ class UserInfoViewController: UIViewController {
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var userProfileView: UIView!
+    @IBOutlet weak var settingsButton: UIButton!
     
     //let dataSource = ["View Controller 1", "View Controller 2", "View Controller 3", "View Controller 4"]
     var dataSource: [[String]] = [[String]]()
@@ -20,15 +22,21 @@ class UserInfoViewController: UIViewController {
     var firstName: String?
     var lastName: String?
     var inventoryList: [String]?
+    var regColor: UIColor = UIColor(named: "GreenReg")!
+    var lightColor: UIColor = UIColor(named: "GreenLight")!
     
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         getUserInfo()
-        // Do any additional setup after loading the view.
+        
+        userProfileView.backgroundColor = regColor
+        
+        settingsButton.backgroundColor = lightColor
+        settingsButton.layer.cornerRadius = 15
+        
     }
     
     func getUserInfo(){
@@ -40,6 +48,37 @@ class UserInfoViewController: UIViewController {
         lastName = user!["lastName"] as? String
         inventoryList = user!["inventories"] as? [String]
         nameLabel.text = firstName! + " " + lastName!
+        
+        let color: String = user!["colorPalette"] as! String
+        switch color {
+        case "Green":
+            self.regColor = UIColor(named: "GreenReg")!
+            self.lightColor = UIColor(named: "GreenLight")!
+        case "Teal":
+            self.regColor = UIColor(named: "TealReg")!
+            self.lightColor = UIColor(named: "TealLight")!
+        case "Blue":
+            self.regColor = UIColor(named: "BlueReg")!
+            self.lightColor = UIColor(named: "BlueLight")!
+        case "Purple":
+            self.regColor = UIColor(named: "PurpleReg")!
+            self.lightColor = UIColor(named: "PurpleLight")!
+        case "Yellow":
+            self.regColor = UIColor(named: "YellowReg")!
+            self.lightColor = UIColor(named: "YellowLight")!
+        case "Red":
+            self.regColor = UIColor(named: "RedReg")!
+            self.lightColor = UIColor(named: "RedLight")!
+        case "Pink":
+            self.regColor = UIColor(named: "PinkReg")!
+            self.lightColor = UIColor(named: "PinkLight")!
+        case "Black":
+            self.regColor = UIColor(named: "BlackReg")!
+            self.lightColor = UIColor(named: "BlackLight")!
+        default:
+            self.regColor = UIColor(named: "GreenReg")!
+            self.lightColor = UIColor(named: "GreenLight")!
+        }
         
         
         for invID in inventoryList!{
@@ -105,6 +144,11 @@ class UserInfoViewController: UIViewController {
         print(dateFormat.string(from: date))
         
     }
+    
+    @IBAction func onSettings(_ sender: Any) {
+        performSegue(withIdentifier: "goToSettings", sender: nil)
+    }
+    
     
     func configurePageViewController() {
         
