@@ -264,36 +264,57 @@
                                 <rect key="frame" x="20" y="116" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="GreenReg"/>
+                                <connections>
+                                    <action selector="colorChanged:" destination="AQu-S3-qJE" eventType="touchUpInside" id="4Ws-HB-Wgz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="blue" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfw-2N-pSr">
                                 <rect key="frame" x="96" y="116" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="BlueReg"/>
+                                <connections>
+                                    <action selector="colorChanged:" destination="AQu-S3-qJE" eventType="touchUpInside" id="FTy-1e-Ray"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="purple" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PcQ-9x-YuB">
                                 <rect key="frame" x="134" y="116" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="PurpleReg"/>
+                                <connections>
+                                    <action selector="colorChanged:" destination="AQu-S3-qJE" eventType="touchUpInside" id="fHr-qc-E2t"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="teal" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsk-b6-siE">
                                 <rect key="frame" x="58" y="116" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="TealReg"/>
+                                <connections>
+                                    <action selector="colorChanged:" destination="AQu-S3-qJE" eventType="touchUpInside" id="kVc-gp-RHp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="red" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaN-nV-Pc4">
                                 <rect key="frame" x="210" y="116" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="RedReg"/>
+                                <connections>
+                                    <action selector="colorChanged:" destination="AQu-S3-qJE" eventType="touchUpInside" id="Ecn-jn-355"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="yellow" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yo6-s8-qPe">
                                 <rect key="frame" x="172" y="116" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="YellowReg"/>
+                                <connections>
+                                    <action selector="colorChanged:" destination="AQu-S3-qJE" eventType="touchUpInside" id="Iub-Py-8Ft"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="pink" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJl-46-vjQ">
                                 <rect key="frame" x="248" y="116" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="PinkReg"/>
+                                <connections>
+                                    <action selector="colorChanged:" destination="AQu-S3-qJE" eventType="touchUpInside" id="b7l-uy-Iap"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="black" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmb-VZ-KO4">
                                 <rect key="frame" x="286" y="116" width="30" height="30"/>
@@ -308,7 +329,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="iUh-ae-dvw">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="87r-Wa-7pt"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="87r-Wa-7pt">
+                            <connections>
+                                <action selector="onBack:" destination="AQu-S3-qJE" id="sff-01-GWo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="blackButton" destination="xmb-VZ-KO4" id="gpX-h5-cml"/>

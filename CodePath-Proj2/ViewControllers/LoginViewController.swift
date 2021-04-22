@@ -134,14 +134,14 @@ class LoginViewController: UIViewController {
 
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "loginSegue" {
-            let navVC = segue.destination as! UINavigationController
-            let destinationVC = navVC.viewControllers[0] as! InventorySelectorViewController
-            destinationVC.regColor = self.regColor
-            destinationVC.lightColor = self.lightColor
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "loginSegue" {
+//            let navVC = segue.destination as! UINavigationController
+//            let destinationVC = navVC.viewControllers[0] as! InventorySelectorViewController
+//            destinationVC.regColor = self.regColor
+//            destinationVC.lightColor = self.lightColor
+//        }
+//    }
     /*
     // MARK: - Navigation
 

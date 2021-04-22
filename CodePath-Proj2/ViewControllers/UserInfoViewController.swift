@@ -33,7 +33,6 @@ class UserInfoViewController: UIViewController {
         getUserInfo()
         
         userProfileView.backgroundColor = regColor
-        
         settingsButton.backgroundColor = lightColor
         settingsButton.layer.cornerRadius = 15
         
@@ -147,6 +146,14 @@ class UserInfoViewController: UIViewController {
     
     @IBAction func onSettings(_ sender: Any) {
         performSegue(withIdentifier: "goToSettings", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToSettings" {
+            let navVCs = segue.destination as! UINavigationController
+            let destinationVC = navVCs.viewControllers[0] as! SettingsViewController
+            destinationVC.regColor = self.regColor
+        }
     }
     
     

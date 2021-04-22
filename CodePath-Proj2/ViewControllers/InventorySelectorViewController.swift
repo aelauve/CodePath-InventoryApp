@@ -21,6 +21,9 @@ class InventorySelectorViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Load colors
+        getColorScheme()
+        
         // Load inventories
         let user = PFUser.current()
         invObjects = user!["inventories"] as! [String]
@@ -36,11 +39,40 @@ class InventorySelectorViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    
-//    @IBAction func onAddNew(_ sender: Any) {
-//        print("Link a new inventory")
-//        
-//    }
+    func getColorScheme(){
+        let user = PFUser.current()
+        
+        let color: String = user!["colorPalette"] as! String
+        switch color {
+        case "Green":
+            self.regColor = UIColor(named: "GreenReg")!
+            self.lightColor = UIColor(named: "GreenLight")!
+        case "Teal":
+            self.regColor = UIColor(named: "TealReg")!
+            self.lightColor = UIColor(named: "TealLight")!
+        case "Blue":
+            self.regColor = UIColor(named: "BlueReg")!
+            self.lightColor = UIColor(named: "BlueLight")!
+        case "Purple":
+            self.regColor = UIColor(named: "PurpleReg")!
+            self.lightColor = UIColor(named: "PurpleLight")!
+        case "Yellow":
+            self.regColor = UIColor(named: "YellowReg")!
+            self.lightColor = UIColor(named: "YellowLight")!
+        case "Red":
+            self.regColor = UIColor(named: "RedReg")!
+            self.lightColor = UIColor(named: "RedLight")!
+        case "Pink":
+            self.regColor = UIColor(named: "PinkReg")!
+            self.lightColor = UIColor(named: "PinkLight")!
+        case "Black":
+            self.regColor = UIColor(named: "BlackReg")!
+            self.lightColor = UIColor(named: "BlackLight")!
+        default:
+            self.regColor = UIColor(named: "GreenReg")!
+            self.lightColor = UIColor(named: "GreenLight")!
+        }
+    }
     
 
     @IBAction func addInventory(_ sender: Any) {

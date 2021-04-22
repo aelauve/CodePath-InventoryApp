@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Parse
 
 class SettingsViewController: UIViewController {
     
@@ -17,6 +18,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var redButton: UIButton!
     @IBOutlet weak var pinkButton: UIButton!
     @IBOutlet weak var blackButton: UIButton!
+    
+    var regColor: UIColor = UIColor(named: "GreenReg")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,21 +35,39 @@ class SettingsViewController: UIViewController {
         
     }
     
+    func setColorSelected(){
+        if regColor == UIColor(named: "GreenReg")! {
+            greenButton.layer.borderWidth = 2.0
+        } else if regColor == UIColor(named: "TealReg")! {
+            tealButton.layer.borderWidth = 2.0
+        } else if regColor == UIColor(named: "BlueReg")! {
+            blueButton.layer.borderWidth = 2.0
+        } else if regColor == UIColor(named: "PurpleReg")! {
+            purpleButton.layer.borderWidth = 2.0
+        } else if regColor == UIColor(named: "YellowReg")! {
+            yellowButton.layer.borderWidth = 2.0
+        } else if regColor == UIColor(named: "RedReg")! {
+            redButton.layer.borderWidth = 2.0
+        } else if regColor == UIColor(named: "PinkReg")! {
+            pinkButton.layer.borderWidth = 2.0
+        } else if regColor == UIColor(named: "BlackReg")! {
+            blackButton.layer.borderWidth = 2.0
+        }
+        
+    }
+    
     @IBAction func colorChanged(_ sender: UIButton) {
         
         var chosenColor = "Green"
         
         if sender.restorationIdentifier == "green" {
             chosenColor = "Green"
-            print("Hello 1!")
         }
         else if sender.restorationIdentifier == "teal"{
             chosenColor = "Teal"
-            print("Hello 2!")
         }
         else if sender.restorationIdentifier == "blue"{
             chosenColor = "Blue"
-            print("Hello 3!")
         }
         else if sender.restorationIdentifier == "purple"{
             chosenColor = "Purple"
@@ -64,8 +85,16 @@ class SettingsViewController: UIViewController {
             chosenColor = "Black"
         }
         
+        let user = PFUser.current()
+        user!["colorPalette"] = chosenColor
+        user?.saveInBackground()
+        
+        
     }
     
+    @IBAction func onBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
