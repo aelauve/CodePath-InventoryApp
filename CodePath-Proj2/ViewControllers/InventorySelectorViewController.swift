@@ -81,8 +81,10 @@ class InventorySelectorViewController: UITableViewController {
     
     
     @IBAction func onLogout(_ sender: Any) {
+//        let user = PFUser.current()
+//        print(user!["firstName"])
         PFUser.logOut()
-        self.dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "loginSegue", sender: nil)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -1006,6 +1006,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="2rb-kQ-oYp">
                             <connections>
                                 <action selector="onLogout:" destination="hKj-zO-lc2" id="dQ1-zM-tiv"/>
+                                <segue destination="zxn-Ad-94Q" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="I9y-KE-DVn"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="HTg-ZR-woF">
@@ -1119,7 +1120,7 @@
         <!--MainTabController-->
         <scene sceneID="mp1-Za-Xb4">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ye0-J5-yld" userLabel="MainTabController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ye0-J5-yld" userLabel="MainTabController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="f3m-9H-yUA">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -1176,7 +1177,7 @@
         <!--Navigation Controller-->
         <scene sceneID="1Q1-GU-51c">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IGB-eW-5Gx" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="InvSelectController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IGB-eW-5Gx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sko-1Y-hpi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -1283,8 +1284,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SiA-Uc-yFX"/>
+        <segue reference="89E-wY-6Ee"/>
         <segue reference="dpj-eM-Se5"/>
+        <segue reference="I9y-KE-DVn"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.backward" catalog="system" width="128" height="106"/>
