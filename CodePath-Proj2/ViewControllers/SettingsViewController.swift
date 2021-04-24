@@ -8,7 +8,7 @@
 import UIKit
 import Parse
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, communicationControllerSettings {
     
     @IBOutlet weak var greenButton: UIButton!
     @IBOutlet weak var tealButton: UIButton!
@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var blackButton: UIButton!
     
     var regColor: UIColor = UIColor(named: "GreenReg")!
+    var chosenColor: String = "Green"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,15 @@ class SettingsViewController: UIViewController {
         pinkButton.layer.cornerRadius = 0.5 * (pinkButton).bounds.size.width
         blackButton.layer.cornerRadius = 0.5 * (blackButton).bounds.size.width
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let myUserInfo = UserInfoViewController()
+        myUserInfo.delegate = self
+    }
+    
+    func backFromSettings() -> String {
+        return chosenColor
     }
     
     func setColorSelected(){
@@ -58,7 +68,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func colorChanged(_ sender: UIButton) {
         
-        var chosenColor = "Green"
+        //var chosenColor = "Green"
         
         if sender.restorationIdentifier == "green" {
             chosenColor = "Green"

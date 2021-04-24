@@ -8,7 +8,13 @@
 import UIKit
 import Parse
 
+protocol communicationControllerSettings {
+    func backFromSettings() -> String
+}
+
 class UserInfoViewController: UIViewController {
+    
+    var delegate: communicationControllerSettings? = nil
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,11 +30,16 @@ class UserInfoViewController: UIViewController {
     var inventoryList: [String]?
     var regColor: UIColor = UIColor(named: "GreenReg")!
     var lightColor: UIColor = UIColor(named: "GreenLight")!
+    var chosenColor: String = "Green"
     
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        chosenColor = (self.delegate?.backFromSettings())!
+        
+        print("View did load")
 
         getUserInfo()
         
@@ -38,17 +49,28 @@ class UserInfoViewController: UIViewController {
         
     }
     
-    func getUserInfo(){
+    override func viewWillAppear(_ animated: Bool) {
+        print("View will appear")
         
-        //Populate user info
-        let user = PFUser.current()
+        getUserInfo()
         
-        firstName = user!["firstName"] as? String
-        lastName = user!["lastName"] as? String
-        inventoryList = user!["inventories"] as? [String]
-        nameLabel.text = firstName! + " " + lastName!
+        userProfileView.backgroundColor = regColor
+        settingsButton.backgroundColor = lightColor
+        settingsButton.layer.cornerRadius = 15
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("View did appear")
         
-        let color: String = user!["colorPalette"] as! String
+        getUserInfo()
+        
+        userProfileView.backgroundColor = regColor
+        settingsButton.backgroundColor = lightColor
+        settingsButton.layer.cornerRadius = 15
+    }
+    
+    func getColorScheme(color: String){
+
         switch color {
         case "Green":
             self.regColor = UIColor(named: "GreenReg")!
@@ -78,6 +100,20 @@ class UserInfoViewController: UIViewController {
             self.regColor = UIColor(named: "GreenReg")!
             self.lightColor = UIColor(named: "GreenLight")!
         }
+    }
+    
+    func getUserInfo(){
+        
+        //Populate user info
+        let user = PFUser.current()
+        
+        firstName = user!["firstName"] as? String
+        lastName = user!["lastName"] as? String
+        inventoryList = user!["inventories"] as? [String]
+        nameLabel.text = firstName! + " " + lastName!
+        
+        let color: String = user!["colorPalette"] as! String
+        getColorScheme(color: color)
         
         
         for invID in inventoryList!{

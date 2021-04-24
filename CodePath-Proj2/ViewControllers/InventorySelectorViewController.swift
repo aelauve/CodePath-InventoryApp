@@ -27,16 +27,14 @@ class InventorySelectorViewController: UITableViewController {
         // Load inventories
         let user = PFUser.current()
         invObjects = user!["inventories"] as! [String]
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
-//        for x in user!["inventories"]\{
-//            invObjects.append(x)
-//        }
+        //Load colors
+        getColorScheme()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     func getColorScheme(){

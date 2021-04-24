@@ -77,6 +77,47 @@ class InventoryViewController: UIViewController {
         }
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //Load colors
+        getColorScheme()
+        backButton.tintColor = regColor
+        
+        getCategories { (valuesINeed , error) in
+            
+            if let error = error {
+                print(error)
+            }
+
+            self.dictCategory = valuesINeed!
+            self.categoryIDs = Array(self.dictCategory.values)
+            self.categoryNames = Array(self.dictCategory.keys)
+            
+            print(self.dictCategory , " the values i wanted all along ")
+            print("category names ", self.categoryNames)
+            
+            self.categoryPickCollection.reloadData()
+            
+        }
+        
+        getItems { (itemArr, itemDictionary , error) in
+            
+            if let error = error {
+                print(error)
+            }
+        
+            self.itemArray = itemArr!
+            self.dictItems = itemDictionary!
+            print(self.dictItems , " the values i wanted all along ")
+            self.itemIDs = Array(self.dictItems.values)
+            self.itemNames = Array(self.dictItems.keys)
+            print("item names ", self.itemNames)
+            
+            self.itemCollection.reloadData()
+            
+        }
+
+    }
 
     
     func getColorScheme(){
