@@ -8,6 +8,11 @@
 import UIKit
 
 class ItemDetailsViewController: UIViewController {
+    
+    var itemID: String = ""
+    var categoryID: String = ""
+    var regColor: UIColor = UIColor(named: "GreenReg")!
+    var lightColor: UIColor = UIColor(named: "GreenLight")!
 
     override func viewDidLoad() {
         super.viewDidLoad()

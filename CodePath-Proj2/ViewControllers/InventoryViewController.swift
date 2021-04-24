@@ -10,10 +10,18 @@ import Parse
 
 class InventoryViewController: UIViewController {
     
-    //var categories = ["All", "Meat", "Dairy", "Cleaning", "Misc"]
-    var categories: [String] = [String]()
+    var dictCategory: [String : String] = [:]
+    var categoryIDs: [String] = [String]()
     var categoryNames: [String] = [String]()
-    var items: [String] = [String]()
+    var chosenCategory: String = "All"
+    var chosenCategoryID: String = ""
+    
+    var dictItems: [String : String] = [:]
+    var itemIDs: [String] = [String]()
+    var itemNames: [String] = [String]()
+    var chosenItem: String = ""
+    var chosenItemID: String = ""
+    var itemArray: [[String]] = [[]]
 
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var categoryPickCollection: UICollectionView!
@@ -26,24 +34,47 @@ class InventoryViewController: UIViewController {
     let addCategoryCollectionViewIdentifier = "addCategoryCell"
     let categoryCollectionViewIdentifier = "horizCategoryCell"
     let itemCollectionViewIdentifier = "inventoryItemCell"
-    
-    let myGroup = DispatchGroup()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Load colors
         getColorScheme()
-        
         backButton.tintColor = regColor
         
-        
-//        categoryPickCollection.dataSource = self
-//        categoryPickCollection.delegate = self
+        getCategories { (valuesINeed , error) in
+            
+            if let error = error {
+                print(error)
+            }
 
-        getCategories()
-        categoryPickCollection.reloadData()
-        itemCollection.reloadData()
+            self.dictCategory = valuesINeed!
+            self.categoryIDs = Array(self.dictCategory.values)
+            self.categoryNames = Array(self.dictCategory.keys)
+            
+            print(self.dictCategory , " the values i wanted all along ")
+            print("category names ", self.categoryNames)
+            
+            self.categoryPickCollection.reloadData()
+            
+        }
+        
+        getItems { (itemArr, itemDictionary , error) in
+            
+            if let error = error {
+                print(error)
+            }
+        
+            self.itemArray = itemArr!
+            self.dictItems = itemDictionary!
+            print(self.dictItems , " the values i wanted all along ")
+            self.itemIDs = Array(self.dictItems.values)
+            self.itemNames = Array(self.dictItems.keys)
+            print("item names ", self.itemNames)
+            
+            self.itemCollection.reloadData()
+            
+        }
 
     }
 
@@ -83,50 +114,67 @@ class InventoryViewController: UIViewController {
         }
     }
     
-    func getCategories() {
-        // Get Category objectIds
-        myGroup.enter()
+    func getCategories(completionHandler : @escaping (_ dictOfCategories : [String : String]? , _ error : Error?) -> () ) {
+        var finalDict :[String : String] = [:]
         let query = PFQuery(className: "Inventory")
         query.getObjectInBackground(withId: inventoryID) { (inventory, error) in
-          if error == nil && inventory != nil {
-
-            self.categories = inventory!["categories"] as! [String]
-            print("Categories: \(self.categories)")
             
-            for x in self.categories {
-                print("x = \(x)")
+            if let error = error {
+                completionHandler(nil , error)
+            }
+            guard let inventory = inventory else { return }
+            let categories = inventory["categories"] as! [String]
+            var count = categories.count
+            for x in categories {
                 let query = PFQuery(className: "Category")
                 query.getObjectInBackground(withId: x) { (category, error) in
                   if error == nil && category != nil {
-                    self.categoryNames.append(category!["categoryName"] as! String)
-                    print("Category name: \(category!["categoryName"] as! String)")
-                    self.categoryPickCollection.reloadData()
-                  } else {
-                    print(error)
+                    count -= 1
+                    finalDict[category!["categoryName"] as! String] = x
+                    if count == 0{
+                        completionHandler(finalDict, nil)
+                    }
+                    
                   }
                 }
             }
-            
-            
-            if inventory!["itemList"] != nil {
-                self.items = inventory!["items"] as! [String]
-                //self.itemCollection.reloadData()
-            } else {
-                self.items = []
-                //self.itemCollection.reloadData()
-            }
-            
-          } else {
-            print(error)
-          }
         }
-        myGroup.leave()
+    }
+    
+    func getItems(completionHandler : @escaping (_ arrayOfItems : [[String]]?, _ dictOfItems : [String : String]?, _ error : Error?) -> () ) {
         
-        myGroup.notify(queue: .main){
-            self.categoryPickCollection.reloadData()
-            self.itemCollection.reloadData()
+        var finalDict :[String : String] = [:]
+        var finalArray: [[String]] = [[]]
+        let query = PFQuery(className: "Category")
+        query.getObjectInBackground(withId: chosenCategoryID) { (category, error) in
+            
+            if let error = error {
+                completionHandler(nil , nil, error)
+            }
+            guard let category = category else { return }
+            let items = category["itemList"] as! [String]
+            var count = items.count
+            for x in items {
+                let query = PFQuery(className: "Item")
+                query.getObjectInBackground(withId: x) { (item, error) in
+                  if error == nil && item != nil {
+                    count -= 1
+                    finalDict[item!["itemName"] as! String] = x
+                    
+                    let name = item!["itemName"] as! String
+                    let ID = x
+                    let itemCount = String(item!["itemCount"] as! Int)
+                    
+                    finalArray.append([name, ID, itemCount])
+                    
+                    if count == 0{
+                        completionHandler(finalArray, finalDict, nil)
+                    }
+                    
+                  }
+                }
+            }
         }
-
     }
 
     
@@ -147,7 +195,14 @@ class InventoryViewController: UIViewController {
             let destinationVC = navVCs.viewControllers[0] as! AddItemViewController
             destinationVC.inventoryID = inventoryID
             destinationVC.pickerData = categoryNames
-            destinationVC.categoryObjIDs = categories
+            destinationVC.categoryObjIDs = categoryIDs
+            destinationVC.regColor = self.regColor
+            destinationVC.lightColor = self.lightColor
+        } else if segue.identifier == "showItemDetails" {
+            let navVCs = segue.destination as! UINavigationController
+            let destinationVC = navVCs.viewControllers[0] as! ItemDetailsViewController
+            destinationVC.itemID = chosenItemID
+            destinationVC.itemID = chosenCategoryID
             destinationVC.regColor = self.regColor
             destinationVC.lightColor = self.lightColor
         }
@@ -177,10 +232,10 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
         if collectionView == self.categoryPickCollection{
-            return categories.count + 1
+            return dictCategory.count + 1
         }
         else{
-            return items.count
+            return dictItems.count
         }
         
     }
@@ -233,21 +288,13 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             cell.itemImage.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             cell.itemImage.layer.cornerRadius = (cell.itemImage?.frame.size.width ?? 0.0) / 2
             
+            let itemDetails = itemArray[indexPath.row]
+            print("item details ", itemDetails)
+            let itemName = itemDetails[0]
+            let itemCount = itemDetails[2]
             
-            let query = PFQuery(className: "Item")
-            query.getObjectInBackground(withId: items[indexPath.row]) { (item, error) in
-              if error == nil && item != nil {
-                cell.itemNameLabel.text = item!["itemName"] as! String
-                cell.itemNumberLabel.text = String(item!["itemCount"] as! Int)
-              } else {
-                print("Error getting item")
-                print(error)
-              }
-            }
-            
-//            cell.itemNameLabel.text = "Garlic"
-//            cell.itemNumberLabel.text = String(2)
-            
+            cell.itemNameLabel.text = itemName
+            cell.itemNumberLabel.text = itemCount
             
             cell.layer.cornerRadius = 15
             //cell.layer.borderWidth = 1.0
@@ -266,27 +313,26 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
                 self.performSegue(withIdentifier: "addCategory", sender: nil)
             } else {
                 
-                let selectedCat = categories[indexPath.item-1]
-                print("Selected: \(selectedCat)")
-
-                let query = PFQuery(className: "Category")
-                query.getObjectInBackground(withId: selectedCat) { (category, error) in
-                  if error == nil && category != nil {
-                    if category!["items"] != nil {
-                        self.items = category!["itemList"] as! [String]
-                        print("Items not nil: \(self.items)")
-                        self.itemCollection.reloadData()
-                    } else {
-                        self.items = []
-                        print("Items nil: \(self.items)")
-                        self.itemCollection.reloadData()
+                chosenCategory = categoryNames[indexPath.item-1]
+                chosenCategoryID = dictCategory[chosenCategory]!
+                
+                getItems { (itemArr, itemDictionary , error) in
+                    
+                    if let error = error {
+                        print(error)
                     }
-                  } else {
-                    self.items = []
-                    print("Category nil: \(self.items)")
+                
+                    self.itemArray = itemArr!
+                    self.dictItems = itemDictionary!
+                    print(self.dictItems , " the values i wanted all along ")
+                    self.itemIDs = Array(self.dictItems.values)
+                    self.itemNames = Array(self.dictItems.keys)
+                    print("item names ", self.itemNames)
+                    
                     self.itemCollection.reloadData()
-                  }
+                    
                 }
+            
             }
             
         } else {
