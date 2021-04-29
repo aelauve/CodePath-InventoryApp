@@ -35,10 +35,12 @@ class UserInfoViewController: UIViewController, ModalTransitionListener {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        viewDidAppear(true)
+        //viewDidAppear(true)
         ModalTransitionMediator.instance.setListener(listener: self)
 
         getUserInfo()
+        
+        configurePageViewController()
         
         userProfileView.backgroundColor = regColor
         settingsButton.backgroundColor = lightColor
@@ -76,6 +78,9 @@ class UserInfoViewController: UIViewController, ModalTransitionListener {
 //
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        let dataView = DataViewController()
+        
+        dataView.getColorInfo()
 
 
 
