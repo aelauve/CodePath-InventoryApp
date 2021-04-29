@@ -34,7 +34,8 @@ class UserInfoViewController: UIViewController, ModalTransitionListener {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
+        viewDidAppear(true)
         ModalTransitionMediator.instance.setListener(listener: self)
 
         getUserInfo()
