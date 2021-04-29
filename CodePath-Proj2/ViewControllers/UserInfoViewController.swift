@@ -91,6 +91,7 @@ class UserInfoViewController: UIViewController, ModalTransitionListener {
         self.navigationController?.dismiss(animated: true, completion: nil)
         self.boolean = true
 //        currentViewControllerIndex += 1
+        
         self.viewDidLoad()
         
         
