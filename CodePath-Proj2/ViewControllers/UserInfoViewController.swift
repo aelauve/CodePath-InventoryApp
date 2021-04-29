@@ -16,6 +16,7 @@ class UserInfoViewController: UIViewController {
     
     var delegate: communicationControllerSettings? = nil
 
+    @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userProfileView: UIView!
@@ -32,12 +33,15 @@ class UserInfoViewController: UIViewController {
     var lightColor: UIColor = UIColor(named: "GreenLight")!
     var chosenColor: String = "Green"
     
+    var imageFile: PFFileObject!
+    var url: URL!
+    
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //chosenColor = (self.delegate?.backFromSettings())!
+//        chosenColor = (self.delegate?.backFromSettings())!
         
         print("View did load")
 
@@ -47,6 +51,33 @@ class UserInfoViewController: UIViewController {
         settingsButton.backgroundColor = lightColor
         settingsButton.layer.cornerRadius = 15
         
+        //visual design of profile picture
+        userImageView.layer.borderWidth = 1.0
+        userImageView.layer.masksToBounds = false
+        userImageView.layer.borderColor = UIColor.white.cgColor
+        userImageView.layer.cornerRadius = userImageView.frame.size.width / 2
+        userImageView.clipsToBounds = true
+        
+        
+        let user = PFUser.current()
+        if((user?["profileImage"]) != nil)
+        {
+            userImageView.af_setImage(withURL: url)
+            userImageView.layer.borderWidth = 1.0
+            userImageView.layer.masksToBounds = false
+            userImageView.layer.borderColor = UIColor.white.cgColor
+            userImageView.layer.cornerRadius = userImageView.frame.size.width / 2
+            userImageView.clipsToBounds = true
+        }
+        else{
+            userImageView.image = UIImage(systemName: "person.fill")
+            userImageView.layer.borderWidth = 1.0
+            userImageView.layer.masksToBounds = false
+            userImageView.layer.borderColor = UIColor.white.cgColor
+            userImageView.layer.cornerRadius = userImageView.frame.size.width / 2
+            userImageView.clipsToBounds = true
+            
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,6 +142,11 @@ class UserInfoViewController: UIViewController {
         lastName = user!["lastName"] as? String
         inventoryList = user!["inventories"] as? [String]
         nameLabel.text = firstName! + " " + lastName!
+        
+        imageFile = user!["profileImage"] as? PFFileObject
+        let urlString = imageFile.url!
+        url = URL(string: urlString)!
+        
         
         let color: String = user!["colorPalette"] as! String
         getColorScheme(color: color)

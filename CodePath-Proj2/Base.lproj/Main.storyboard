@@ -238,6 +238,7 @@
                         <outlet property="contentView" destination="2cd-vt-q6r" id="GHU-4l-EGL"/>
                         <outlet property="nameLabel" destination="Piq-NY-L9L" id="met-RD-9RZ"/>
                         <outlet property="settingsButton" destination="LD5-PH-EMC" id="JOA-6u-aEG"/>
+                        <outlet property="userImageView" destination="fIp-b7-w5g" id="gsJ-nl-leB"/>
                         <outlet property="userProfileView" destination="Wza-oo-fup" id="0RU-oL-cxl"/>
                     </connections>
                 </viewController>
