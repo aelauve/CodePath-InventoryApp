@@ -28,6 +28,8 @@ class SettingsViewController: UIViewController,UIImagePickerControllerDelegate, 
     
     //global variables
     let user = PFUser.current()
+    let dataView = DataViewController()
+    
     var regColor: UIColor = UIColor(named: "GreenReg")!
     var chosenColor: String = "Green"
     

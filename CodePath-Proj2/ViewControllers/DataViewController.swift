@@ -27,7 +27,7 @@ class DataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewDidAppear(true)
         getColorInfo()
         
         outerView.layer.cornerRadius = 20
@@ -48,6 +48,36 @@ class DataViewController: UIViewController {
         //createdLabel.sizeToFit()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getColorInfo()
+        
+        outerView.layer.cornerRadius = 20
+        outerView.backgroundColor = regColor
+        //outerView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        outerView.layer.opacity = 0.5
+        
+        invNameLabel.text = nameLabel
+        //invNameLabel.sizeToFit()
+        
+        invIDLabel.text = idLabel
+        //invIDLabel.sizeToFit()
+        
+        sharedWithLabel.text = sharedWith
+        //sharedWithLabel.sizeToFit()
+        
+        createdLabel.text = createdAt
+
+
+
+//        let color: String = user!["colorPalette"] as! String
+//        getColorScheme(color: color)
+//
+//        userProfileView.backgroundColor = regColor
+//        settingsButton.backgroundColor = lightColor
+//        settingsButton.layer.cornerRadius = 15
     }
     
     func getColorInfo(){
