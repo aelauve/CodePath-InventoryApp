@@ -32,6 +32,7 @@ class DataViewController: UIViewController {
         
         outerView.layer.cornerRadius = 20
         outerView.backgroundColor = regColor
+        //outerView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         outerView.layer.opacity = 0.5
         
         invNameLabel.text = nameLabel

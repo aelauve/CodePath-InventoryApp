@@ -202,8 +202,10 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
                 completionHandler(nil , nil, error)
             }
             guard let category = category else { return }
+            print("Here")
             let items = category["itemList"] as! [String]
             var count = items.count
+            print("Count = ", count)
             for x in items {
                 let query = PFQuery(className: "Item")
                 query.getObjectInBackground(withId: x) { (item, error) in
@@ -346,12 +348,12 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             cell.itemImage.backgroundColor = regColor
             cell.itemImage.layer.cornerRadius = (cell.itemImage?.frame.size.width ?? 0.0) / 2
             
-            print("indexPath.row = ", indexPath.row)
-            print("itemArray count ", itemArray.count)
-            print("itemArray: ", itemArray)
+//            print("indexPath.row = ", indexPath.row)
+//            print("itemArray count ", itemArray.count)
+//            print("itemArray: ", itemArray)
             
             let itemDetails = itemArray[indexPath.row]
-            print("item details ", itemDetails)
+//            print("item details ", itemDetails)
             let itemName = itemDetails[0]
             let itemCount = itemDetails[2]
             
@@ -389,12 +391,13 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
                 
                     self.itemArray = itemArr!
                     self.dictItems = itemDictionary!
-                    print(self.dictItems , " the values i wanted all along ")
+                    //print(self.dictItems , " the values i wanted all along ")
                     self.itemIDs = Array(self.dictItems.values)
                     self.itemNames = Array(self.dictItems.keys)
-                    print("item names ", self.itemNames)
+                    //print("item names ", self.itemNames)
                     
                     self.itemCollection.reloadData()
+                    
                     
                 }
             
