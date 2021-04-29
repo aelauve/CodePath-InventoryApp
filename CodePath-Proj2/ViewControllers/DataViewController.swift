@@ -27,7 +27,7 @@ class DataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewDidAppear(true)
+        //viewDidAppear(true)
         getColorInfo()
         
         outerView.layer.cornerRadius = 20
