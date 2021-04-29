@@ -37,7 +37,7 @@ class UserInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        chosenColor = (self.delegate?.backFromSettings())!
+        //chosenColor = (self.delegate?.backFromSettings())!
         
         print("View did load")
 
