@@ -7,5 +7,6 @@ target 'CodePath-Proj2' do
 
   # Pods for CodePath-Proj2
   pod 'Parse'
+  pod 'AlamofireImage'
 
 end

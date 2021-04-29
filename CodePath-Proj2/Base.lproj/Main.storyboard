@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zxn-Ad-94Q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zxn-Ad-94Q">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -181,8 +181,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wza-oo-fup" userLabel="UserProfileView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="340"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smiley" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fIp-b7-w5g">
-                                        <rect key="frame" x="167" y="94.5" width="80" height="79"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fIp-b7-w5g">
+                                        <rect key="frame" x="167" y="95.5" width="80" height="77"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="4QU-Q4-LjR"/>
@@ -238,6 +238,7 @@
                         <outlet property="contentView" destination="2cd-vt-q6r" id="GHU-4l-EGL"/>
                         <outlet property="nameLabel" destination="Piq-NY-L9L" id="met-RD-9RZ"/>
                         <outlet property="settingsButton" destination="LD5-PH-EMC" id="JOA-6u-aEG"/>
+                        <outlet property="userImageView" destination="fIp-b7-w5g" id="gsJ-nl-leB"/>
                         <outlet property="userProfileView" destination="Wza-oo-fup" id="0RU-oL-cxl"/>
                     </connections>
                 </viewController>
@@ -253,74 +254,120 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EQu-9m-2q4" userLabel="UserProfileView">
+                                <rect key="frame" x="59" y="129" width="296" height="174"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alexis Edwards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yV4-xP-7bN">
+                                        <rect key="frame" x="8" y="202" width="398" height="27.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="T8L-QZ-3VA">
+                                        <rect key="frame" x="108" y="8.5" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="___" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4y-MU-wIC">
+                                        <rect key="frame" x="70" y="96" width="163" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twK-LM-e4M">
+                                        <rect key="frame" x="64" y="136" width="169" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Change Profile Picture">
+                                            <color key="titleColor" red="1" green="0.5409764051" blue="0.84731429820000004" alpha="0.66144566819999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changingPFP:" destination="AQu-S3-qJE" eventType="touchUpInside" id="oLS-CS-erM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.74479174169999995" blue="0.83001493429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Color Scheme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXi-Uh-wiO">
-                                <rect key="frame" x="20" y="85" width="127" height="23"/>
+                                <rect key="frame" x="59" y="341" width="127" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="green" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3H-ZB-qJA">
-                                <rect key="frame" x="20" y="116" width="30" height="30"/>
+                                <rect key="frame" x="59" y="372" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="GreenReg"/>
                                 <connections>
+                                    <action selector="GBttnTouched:" destination="AQu-S3-qJE" eventType="touchUpInside" id="yKZ-dn-lzq"/>
                                     <action selector="colorChanged:" destination="AQu-S3-qJE" eventType="touchUpInside" id="4Ws-HB-Wgz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="blue" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfw-2N-pSr">
-                                <rect key="frame" x="96" y="116" width="30" height="30"/>
+                                <rect key="frame" x="135" y="372" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="BlueReg"/>
                                 <connections>
+                                    <action selector="BBttnTouched:" destination="AQu-S3-qJE" eventType="touchUpInside" id="Azd-8d-iQe"/>
                                     <action selector="colorChanged:" destination="AQu-S3-qJE" eventType="touchUpInside" id="FTy-1e-Ray"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="purple" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PcQ-9x-YuB">
-                                <rect key="frame" x="134" y="116" width="30" height="30"/>
+                                <rect key="frame" x="173" y="372" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="PurpleReg"/>
                                 <connections>
+                                    <action selector="PBttnTouched:" destination="AQu-S3-qJE" eventType="touchUpInside" id="3sM-GU-Y7Q"/>
                                     <action selector="colorChanged:" destination="AQu-S3-qJE" eventType="touchUpInside" id="fHr-qc-E2t"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="teal" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsk-b6-siE">
-                                <rect key="frame" x="58" y="116" width="30" height="30"/>
+                                <rect key="frame" x="97" y="372" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="TealReg"/>
                                 <connections>
+                                    <action selector="TBttnTouched:" destination="AQu-S3-qJE" eventType="touchUpInside" id="E8R-Ik-CCY"/>
                                     <action selector="colorChanged:" destination="AQu-S3-qJE" eventType="touchUpInside" id="kVc-gp-RHp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="red" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaN-nV-Pc4">
-                                <rect key="frame" x="210" y="116" width="30" height="30"/>
+                                <rect key="frame" x="249" y="372" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="RedReg"/>
                                 <connections>
+                                    <action selector="RBttnTouched:" destination="AQu-S3-qJE" eventType="touchUpInside" id="Ee9-RB-93g"/>
                                     <action selector="colorChanged:" destination="AQu-S3-qJE" eventType="touchUpInside" id="Ecn-jn-355"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="yellow" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yo6-s8-qPe">
-                                <rect key="frame" x="172" y="116" width="30" height="30"/>
+                                <rect key="frame" x="211" y="372" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="YellowReg"/>
                                 <connections>
+                                    <action selector="YBttnTouched:" destination="AQu-S3-qJE" eventType="touchUpInside" id="9iR-4F-uG7"/>
                                     <action selector="colorChanged:" destination="AQu-S3-qJE" eventType="touchUpInside" id="Iub-Py-8Ft"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="pink" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJl-46-vjQ">
-                                <rect key="frame" x="248" y="116" width="30" height="30"/>
+                                <rect key="frame" x="287" y="372" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="PinkReg"/>
                                 <connections>
+                                    <action selector="PnkBttnTouched:" destination="AQu-S3-qJE" eventType="touchUpInside" id="BWJ-0M-BFR"/>
                                     <action selector="colorChanged:" destination="AQu-S3-qJE" eventType="touchUpInside" id="b7l-uy-Iap"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="black" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmb-VZ-KO4">
-                                <rect key="frame" x="286" y="116" width="30" height="30"/>
+                                <rect key="frame" x="325" y="372" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="BlackReg"/>
                                 <connections>
+                                    <action selector="BlkBttnTouched:" destination="AQu-S3-qJE" eventType="touchUpInside" id="c87-2b-FFj"/>
                                     <action selector="colorChanged:" destination="AQu-S3-qJE" eventType="touchUpInside" id="MOH-hE-KvP"/>
                                 </connections>
                             </button>
@@ -336,13 +383,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundView" destination="EQu-9m-2q4" id="ARc-Fr-PtA"/>
                         <outlet property="blackButton" destination="xmb-VZ-KO4" id="gpX-h5-cml"/>
                         <outlet property="blueButton" destination="Qfw-2N-pSr" id="frA-TT-EUV"/>
+                        <outlet property="changePFPButton" destination="twK-LM-e4M" id="48v-Xt-Ql4"/>
                         <outlet property="greenButton" destination="b3H-ZB-qJA" id="3lC-qw-3l9"/>
                         <outlet property="pinkButton" destination="fJl-46-vjQ" id="qHN-mP-0zZ"/>
+                        <outlet property="profilePicImageView" destination="T8L-QZ-3VA" id="qp6-hf-Zdd"/>
                         <outlet property="purpleButton" destination="PcQ-9x-YuB" id="0Os-jP-09f"/>
                         <outlet property="redButton" destination="PaN-nV-Pc4" id="Tm5-MD-YvP"/>
                         <outlet property="tealButton" destination="nsk-b6-siE" id="UE7-EQ-dol"/>
+                        <outlet property="userNameLabel" destination="P4y-MU-wIC" id="5XL-ft-oVL"/>
                         <outlet property="yellowButton" destination="yo6-s8-qPe" id="UvU-Mz-aLy"/>
                     </connections>
                 </viewController>
@@ -1296,9 +1347,9 @@
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="list.number" catalog="system" width="128" height="97"/>
         <image name="minus" catalog="system" width="128" height="24"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="smiley" catalog="system" width="128" height="121"/>
         <namedColor name="BlackReg">
             <color red="0.17599999904632568" green="0.20399999618530273" blue="0.21199999749660492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
