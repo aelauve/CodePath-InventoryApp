@@ -8,13 +8,7 @@
 import UIKit
 import Parse
 
-protocol communicationControllerSettings {
-    func backFromSettings() -> String
-}
-
-class UserInfoViewController: UIViewController {
-    
-    var delegate: communicationControllerSettings? = nil
+class UserInfoViewController: UIViewController, ModalTransitionListener {
 
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var contentView: UIView!
@@ -22,7 +16,6 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var userProfileView: UIView!
     @IBOutlet weak var settingsButton: UIButton!
     
-    //let dataSource = ["View Controller 1", "View Controller 2", "View Controller 3", "View Controller 4"]
     var dataSource: [[String]] = [[String]]()
     var currentViewControllerIndex = 0
     
@@ -32,18 +25,17 @@ class UserInfoViewController: UIViewController {
     var regColor: UIColor = UIColor(named: "GreenReg")!
     var lightColor: UIColor = UIColor(named: "GreenLight")!
     var chosenColor: String = "Green"
-    
     var imageFile: PFFileObject!
     var url: URL!
+    let user = PFUser.current()
+    var boolean = false
     
     let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        chosenColor = (self.delegate?.backFromSettings())!
-        
-        print("View did load")
+        ModalTransitionMediator.instance.setListener(listener: self)
 
         getUserInfo()
         
@@ -59,7 +51,6 @@ class UserInfoViewController: UIViewController {
         userImageView.clipsToBounds = true
         
         
-        let user = PFUser.current()
         if((user?["profileImage"]) != nil)
         {
             userImageView.af_setImage(withURL: url)
@@ -80,24 +71,29 @@ class UserInfoViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        print("View will appear")
-        
-        getUserInfo()
-        
-        userProfileView.backgroundColor = regColor
-        settingsButton.backgroundColor = lightColor
-        settingsButton.layer.cornerRadius = 15
+
+//
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+
+
+//        let color: String = user!["colorPalette"] as! String
+//        getColorScheme(color: color)
+//
+//        userProfileView.backgroundColor = regColor
+//        settingsButton.backgroundColor = lightColor
+//        settingsButton.layer.cornerRadius = 15
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("View did appear")
+    //required delegate func
+    func popoverDismissed() {
+        self.navigationController?.dismiss(animated: true, completion: nil)
+        self.boolean = true
+//        currentViewControllerIndex += 1
+        self.viewDidLoad()
         
-        getUserInfo()
         
-        userProfileView.backgroundColor = regColor
-        settingsButton.backgroundColor = lightColor
-        settingsButton.layer.cornerRadius = 15
     }
     
     func getColorScheme(color: String){
@@ -136,16 +132,17 @@ class UserInfoViewController: UIViewController {
     func getUserInfo(){
         
         //Populate user info
-        let user = PFUser.current()
         
         firstName = user!["firstName"] as? String
         lastName = user!["lastName"] as? String
         inventoryList = user!["inventories"] as? [String]
         nameLabel.text = firstName! + " " + lastName!
         
-        imageFile = user!["profileImage"] as? PFFileObject
-        let urlString = imageFile.url!
-        url = URL(string: urlString)!
+        if user!["profileImage"] != nil {
+            imageFile = user!["profileImage"] as? PFFileObject
+            let urlString = imageFile.url!
+            url = URL(string: urlString)!
+        }
         
         
         let color: String = user!["colorPalette"] as! String
@@ -159,8 +156,12 @@ class UserInfoViewController: UIViewController {
               if error == nil && inventory != nil {
 
                 let invName = inventory!["name"] as! String
-                let createdAt = "April 18, 2021"
-                
+//                let createdAt = "April 18, 2021"
+                let createdAt =  inventory?.createdAt!
+                let dateFormat = DateFormatter()
+                dateFormat.dateStyle = .medium
+                let createdDate = dateFormat.string(from: createdAt!)
+            
                 if inventory!["ownedBy"] as? [String] != nil{
                     var userString = ""
                     var index = 0
@@ -174,7 +175,7 @@ class UserInfoViewController: UIViewController {
                         query!.getObjectInBackground(withId: userID) { (user, error) in
                           if error == nil && user != nil {
                             
-                            print("User Name: \(user!["firstName"])")
+                            //print("User Name: \(user!["firstName"])")
                             
                             if index == inventory!.accessibilityElementCount()-1{
                                 userString += user!["firstName"] as! String
@@ -189,14 +190,14 @@ class UserInfoViewController: UIViewController {
                         innerGroup.leave()
                         
                         innerGroup.notify(queue: .main){
-                            self.dataSource.append([invID, invName, userString, createdAt])
+                            self.dataSource.append([invID, invName, userString, createdDate])
                             //print(self.dataSource[index])
                             index += 1
                         }
                         
                     }
                 } else {
-                    self.dataSource.append([invID, invName, " ", createdAt])
+                    self.dataSource.append([invID, invName, " ", createdDate])
                 }
               } else {
                 print("Info load error")
@@ -206,14 +207,12 @@ class UserInfoViewController: UIViewController {
         }
         
         self.myGroup.notify(queue: .main){
-            self.configurePageViewController()
+            if (self.boolean == false){
+                self.configurePageViewController()
+            }
+            //self.configurePageViewController()
         }
-        print(dataSource)
-        let date = Date.init()
-        let dateFormat = DateFormatter()
-        dateFormat.dateStyle = .medium
-        print(dateFormat.string(from: date))
-        
+        //print(dataSource)
     }
     
     @IBAction func onSettings(_ sender: Any) {

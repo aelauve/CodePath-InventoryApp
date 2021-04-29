@@ -13,6 +13,7 @@
 		5E49207425E2E8EF00755AF9 /* ShopListItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49207325E2E8EF00755AF9 /* ShopListItemsTableViewCell.swift */; };
 		5E4F10CC2617742B00AFF4EF /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4F10CB2617742B00AFF4EF /* DataViewController.swift */; };
 		5E5846CD2613673D00AB0458 /* AddInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5846CC2613673D00AB0458 /* AddInventoryViewController.swift */; };
+		5E6947A2263AF42700FE72E9 /* ModalTransitionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6947A1263AF42700FE72E9 /* ModalTransitionListener.swift */; };
 		5E8196B22602B0FB00C653F5 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8196B12602B0FB00C653F5 /* AddCategoryViewController.swift */; };
 		5E9472642602D1E4000212AB /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9472632602D1E4000212AB /* ItemDetailsViewController.swift */; };
 		5E99FA492602AA7900866893 /* AddCategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E99FA482602AA7900866893 /* AddCategoryCollectionCell.swift */; };
@@ -40,6 +41,7 @@
 		5E49207325E2E8EF00755AF9 /* ShopListItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListItemsTableViewCell.swift; sourceTree = "<group>"; };
 		5E4F10CB2617742B00AFF4EF /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		5E5846CC2613673D00AB0458 /* AddInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInventoryViewController.swift; sourceTree = "<group>"; };
+		5E6947A1263AF42700FE72E9 /* ModalTransitionListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTransitionListener.swift; sourceTree = "<group>"; };
 		5E8196B12602B0FB00C653F5 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		5E9472632602D1E4000212AB /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		5E99FA482602AA7900866893 /* AddCategoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryCollectionCell.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				5EB18FFF25E1E6F500D6BE0C /* Info.plist */,
 				5E99FA462602A99800866893 /* Cells */,
 				5E99FA452602A97000866893 /* ViewControllers */,
+				5E6947A1263AF42700FE72E9 /* ModalTransitionListener.swift */,
 			);
 			path = "CodePath-Proj2";
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				5E49207125E2E50900755AF9 /* ShoppingListViewController.swift in Sources */,
 				5E49207425E2E8EF00755AF9 /* ShopListItemsTableViewCell.swift in Sources */,
 				5EF68D2926123BD200D21641 /* SignUpViewController.swift in Sources */,
+				5E6947A2263AF42700FE72E9 /* ModalTransitionListener.swift in Sources */,
 				5E4F10CC2617742B00AFF4EF /* DataViewController.swift in Sources */,
 				5EB1900A25E1EEBB00D6BE0C /* InventoryCollectionViewCell.swift in Sources */,
 				5E99FA492602AA7900866893 /* AddCategoryCollectionCell.swift in Sources */,

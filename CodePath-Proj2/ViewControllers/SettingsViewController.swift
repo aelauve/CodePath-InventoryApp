@@ -9,7 +9,7 @@ import UIKit
 import Parse
 import AlamofireImage
 
-class SettingsViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, communicationControllerSettings {
+class SettingsViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //variables for interactive outlets
     @IBOutlet weak var greenButton: UIButton!
@@ -53,10 +53,11 @@ class SettingsViewController: UIViewController,UIImagePickerControllerDelegate, 
         pinkButton.layer.cornerRadius = 0.5 * (pinkButton).bounds.size.width
         blackButton.layer.cornerRadius = 0.5 * (blackButton).bounds.size.width
         changePFPButton.backgroundColor = UIColor.white
-        changePFPButton.layer.cornerRadius = 8
+        changePFPButton.layer.cornerRadius = 5
         changePFPButton.layer.masksToBounds = true
         changePFPButton.setTitleColor(regColor, for: .normal)
         backgroundView.backgroundColor = regColor
+        backgroundView.layer.cornerRadius = 15
         
         //visual design of profile picture
         if((user?["profileImage"]) != nil)
@@ -82,16 +83,20 @@ class SettingsViewController: UIViewController,UIImagePickerControllerDelegate, 
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        let myUserInfo = UserInfoViewController()
-        myUserInfo.delegate = self
+//    override func viewDidAppear(_ animated: Bool) {
+////        let myUserInfo = UserInfoViewController()
+////        myUserInfo.delegate = self
+//    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        ModalTransitionMediator.instance.sendPopoverDismissed(modelChanged: true)
     }
     
     
-    func backFromSettings() -> String {
-        return chosenColor
-    }
-    
+//    func backFromSettings() -> String {
+//        return chosenColor
+//    }
+//    
     
     func setColorSelected(){
         //resetting button designs
