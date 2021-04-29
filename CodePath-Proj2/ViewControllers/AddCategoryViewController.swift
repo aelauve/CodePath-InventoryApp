@@ -25,11 +25,16 @@ class AddCategoryViewController: UIViewController {
         super.viewDidLoad()
         
         addCategoryButton.backgroundColor = regColor
-        addCategoryButton.layer.borderWidth = 2.0
+        //addCategoryButton.layer.borderWidth = 2.0
         addCategoryButton.layer.cornerRadius = 10
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        ModalTransitionMediator.instance.sendPopoverDismissed(modelChanged: true)
+    }
+    
     @IBAction func onCancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

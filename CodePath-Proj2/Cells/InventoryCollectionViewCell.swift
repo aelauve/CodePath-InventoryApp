@@ -12,4 +12,5 @@ class InventoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var itemNumberLabel: UILabel!
+    @IBOutlet weak var cellContentView: UIView!
 }

@@ -125,6 +125,8 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="109" height="158"/>
                                         <connections>
+                                            <outlet property="cellContentView" destination="2aL-nk-u7f" id="0PI-qp-alz"/>
+                                            <outlet property="contentView" destination="2aL-nk-u7f" id="pQs-zD-9RB"/>
                                             <outlet property="itemImage" destination="nb1-AK-FA1" id="I7t-nu-4mS"/>
                                             <outlet property="itemNameLabel" destination="kzA-SG-yO7" id="3jv-8C-ePY"/>
                                             <outlet property="itemNumberLabel" destination="O3K-xd-rdo" id="Gdw-6G-C13"/>

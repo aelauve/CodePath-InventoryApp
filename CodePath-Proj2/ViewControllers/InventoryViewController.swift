@@ -8,7 +8,8 @@
 import UIKit
 import Parse
 
-class InventoryViewController: UIViewController {
+class InventoryViewController: UIViewController, ModalTransitionListener {
+    
     
     var dictCategory: [String : String] = [:]
     var categoryIDs: [String] = [String]()
@@ -21,7 +22,7 @@ class InventoryViewController: UIViewController {
     var itemNames: [String] = [String]()
     var chosenItem: String = ""
     var chosenItemID: String = ""
-    var itemArray: [[String]] = [[]]
+    var itemArray: [[String]] = []
 
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var categoryPickCollection: UICollectionView!
@@ -38,6 +39,8 @@ class InventoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ModalTransitionMediator.instance.setListener(listener: self)
+        
         //Load colors
         getColorScheme()
         backButton.tintColor = regColor
@@ -52,8 +55,8 @@ class InventoryViewController: UIViewController {
             self.categoryIDs = Array(self.dictCategory.values)
             self.categoryNames = Array(self.dictCategory.keys)
             
-            print(self.dictCategory , " the values i wanted all along ")
-            print("category names ", self.categoryNames)
+            //print(self.dictCategory , " the values i wanted all along ")
+            //print("category names ", self.categoryNames)
             
             self.categoryPickCollection.reloadData()
             
@@ -78,13 +81,19 @@ class InventoryViewController: UIViewController {
 
     }
     
+    func popoverDismissed() {
+        //self.navigationController?.dismiss(animated: true, completion: nil)
+        categoryPickCollection.reloadData()
+        itemCollection.reloadData()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         //Load colors
         getColorScheme()
         backButton.tintColor = regColor
-        
+
         getCategories { (valuesINeed , error) in
-            
+
             if let error = error {
                 print(error)
             }
@@ -92,29 +101,29 @@ class InventoryViewController: UIViewController {
             self.dictCategory = valuesINeed!
             self.categoryIDs = Array(self.dictCategory.values)
             self.categoryNames = Array(self.dictCategory.keys)
-            
-            print(self.dictCategory , " the values i wanted all along ")
-            print("category names ", self.categoryNames)
-            
+
+            //print(self.dictCategory , " the values i wanted all along ")
+            //print("category names ", self.categoryNames)
+
             self.categoryPickCollection.reloadData()
-            
+
         }
-        
+
         getItems { (itemArr, itemDictionary , error) in
-            
+
             if let error = error {
                 print(error)
             }
-        
+
             self.itemArray = itemArr!
             self.dictItems = itemDictionary!
             print(self.dictItems , " the values i wanted all along ")
             self.itemIDs = Array(self.dictItems.values)
             self.itemNames = Array(self.dictItems.keys)
             print("item names ", self.itemNames)
-            
+
             self.itemCollection.reloadData()
-            
+
         }
 
     }
@@ -185,7 +194,7 @@ class InventoryViewController: UIViewController {
     func getItems(completionHandler : @escaping (_ arrayOfItems : [[String]]?, _ dictOfItems : [String : String]?, _ error : Error?) -> () ) {
         
         var finalDict :[String : String] = [:]
-        var finalArray: [[String]] = [[]]
+        var finalArray: [[String]] = []
         let query = PFQuery(className: "Category")
         query.getObjectInBackground(withId: chosenCategoryID) { (category, error) in
             
@@ -263,23 +272,31 @@ class InventoryViewController: UIViewController {
 extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.item == 0{
-                return CGSize(width: 50, height: 33)
-            } else {
-                return CGSize(width: 115, height: 33)
+        
+        if collectionView == self.categoryPickCollection{
+            if indexPath.item == 0{
+                    return CGSize(width: 50, height: 33)
+                } else {
+                    return CGSize(width: 115, height: 33)
+                }
             }
-        }
-    
+        else {
+            return CGSize(width: 110, height: 150)
+            }
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
         if collectionView == self.categoryPickCollection{
             return dictCategory.count + 1
         }
         else{
-            return dictItems.count
+            //return dictItems.count
+            return itemArray.count
         }
         
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -326,8 +343,12 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             
             cell.itemImage.layer.borderWidth = 1.0
             cell.itemImage.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-            cell.itemImage.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.itemImage.backgroundColor = regColor
             cell.itemImage.layer.cornerRadius = (cell.itemImage?.frame.size.width ?? 0.0) / 2
+            
+            print("indexPath.row = ", indexPath.row)
+            print("itemArray count ", itemArray.count)
+            print("itemArray: ", itemArray)
             
             let itemDetails = itemArray[indexPath.row]
             print("item details ", itemDetails)
@@ -356,6 +377,9 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
                 
                 chosenCategory = categoryNames[indexPath.item-1]
                 chosenCategoryID = dictCategory[chosenCategory]!
+                
+                print(chosenCategory)
+                print(chosenCategoryID)
                 
                 getItems { (itemArr, itemDictionary , error) in
                     

@@ -36,8 +36,6 @@ class SettingsViewController: UIViewController,UIImagePickerControllerDelegate, 
         
         super.viewDidLoad()
         
-        
-        
         //setting name label
         let firstName = user!["firstName"] as? String
         let lastName = user!["lastName"] as? String
