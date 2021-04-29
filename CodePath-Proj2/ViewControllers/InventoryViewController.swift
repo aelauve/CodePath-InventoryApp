@@ -70,10 +70,8 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
         
             self.itemArray = itemArr!
             self.dictItems = itemDictionary!
-            print(self.dictItems , " the values i wanted all along ")
             self.itemIDs = Array(self.dictItems.values)
             self.itemNames = Array(self.dictItems.keys)
-            print("item names ", self.itemNames)
             
             self.itemCollection.reloadData()
             
@@ -101,10 +99,6 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
             self.dictCategory = valuesINeed!
             self.categoryIDs = Array(self.dictCategory.values)
             self.categoryNames = Array(self.dictCategory.keys)
-
-            //print(self.dictCategory , " the values i wanted all along ")
-            //print("category names ", self.categoryNames)
-
             self.categoryPickCollection.reloadData()
 
         }
@@ -117,10 +111,8 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
 
             self.itemArray = itemArr!
             self.dictItems = itemDictionary!
-            print(self.dictItems , " the values i wanted all along ")
             self.itemIDs = Array(self.dictItems.values)
             self.itemNames = Array(self.dictItems.keys)
-            print("item names ", self.itemNames)
 
             self.itemCollection.reloadData()
 
@@ -202,29 +194,32 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
                 completionHandler(nil , nil, error)
             }
             guard let category = category else { return }
-            print("Here")
             let items = category["itemList"] as! [String]
             var count = items.count
-            print("Count = ", count)
-            for x in items {
-                let query = PFQuery(className: "Item")
-                query.getObjectInBackground(withId: x) { (item, error) in
-                  if error == nil && item != nil {
-                    count -= 1
-                    finalDict[item!["itemName"] as! String] = x
-                    
-                    let name = item!["itemName"] as! String
-                    let ID = x
-                    let itemCount = String(item!["itemCount"] as! Int)
-                    
-                    finalArray.append([name, ID, itemCount])
-                    
-                    if count == 0{
-                        completionHandler(finalArray, finalDict, nil)
+            if (count > 0){
+                for x in items {
+                    let query = PFQuery(className: "Item")
+                    query.getObjectInBackground(withId: x) { (item, error) in
+                      if error == nil && item != nil {
+                        count -= 1
+                        finalDict[item!["itemName"] as! String] = x
+                        
+                        let name = item!["itemName"] as! String
+                        let ID = x
+                        let itemCount = String(item!["itemCount"] as! Int)
+                        
+                        finalArray.append([name, ID, itemCount])
+                        
+                        if count == 0{
+                            completionHandler(finalArray, finalDict, nil)
+                        }
+                        
+                      }
                     }
-                    
-                  }
                 }
+            }
+            else {
+                completionHandler(finalArray, finalDict, nil)
             }
         }
     }
@@ -340,8 +335,6 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
         else{
             
             let cell = itemCollection.dequeueReusableCell(withReuseIdentifier: itemCollectionViewIdentifier, for: indexPath) as! InventoryCollectionViewCell
-            
-            print("Creating item cell...")
             
             cell.itemImage.layer.borderWidth = 1.0
             cell.itemImage.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
