@@ -775,6 +775,9 @@
                                 <state key="normal" title="Update">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="onUpdate:" destination="oGn-N1-kvq" eventType="touchUpInside" id="YiI-YF-Lfy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Rez-0A-Jf8"/>
@@ -787,6 +790,15 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="itemAmount" destination="wiG-AQ-WNi" id="hJJ-eD-8Md"/>
+                        <outlet property="itemCategory" destination="Zec-Jg-d7e" id="Kto-EX-06A"/>
+                        <outlet property="itemExpiration" destination="ihr-lO-rBd" id="Lch-MU-H5K"/>
+                        <outlet property="itemImage" destination="xWk-Lr-Ky9" id="GpM-hy-NYj"/>
+                        <outlet property="itemName" destination="NGQ-Q0-WCg" id="9Oz-QH-qxU"/>
+                        <outlet property="itemNotes" destination="HAs-Dd-Xtt" id="Hp1-fN-Lcq"/>
+                        <outlet property="updateButton" destination="NXV-VL-qBf" id="fCk-GG-sny"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G3A-Vh-Hdt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

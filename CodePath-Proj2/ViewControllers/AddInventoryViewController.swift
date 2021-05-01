@@ -54,45 +54,60 @@ class AddInventoryViewController: UIViewController {
         
         else {
             
-            //Create new Inventory object
-            var newInventory = PFObject(className:"Inventory")
+            let newCat = PFObject(className:"Category")
+            newCat["categoryName"] = "All"
+            newCat["itemList"] = []
             
-            newInventory["name"] = inventoryName.text
-            newInventory["categories"] = ["All"]
-            newInventory["ownedBy"] = [PFUser.current()?.objectId]
-            
-            newInventory.saveInBackground { (success, error) in
+            newCat.saveInBackground { (success, error) in
                 if success {
-                    let newInventoryObjID = newInventory.objectId!
-                    //Update user's inventory array
-                    if let currentUser = PFUser.current() {
-                        if currentUser["inventories"] == nil {
-                            currentUser["inventories"] = [newInventoryObjID]
-                        } else {
-                            var userInv: [String] = currentUser["inventories"] as! [String]
-                            userInv.append(newInventoryObjID)
-                            
-                            currentUser["inventories"] = userInv
-                        }
+                    let catObjID = newCat.objectId!
+                    
+                    let newInventory = PFObject(className:"Inventory")
+                    //Create new Inventory object
+                    newInventory["name"] = self.inventoryName.text
+                    newInventory["categories"] = [catObjID]
+                    newInventory["ownedBy"] = [PFUser.current()?.objectId]
+                    
+                    newInventory.saveInBackground { (success, error) in
+                        if success {
+                            let newInventoryObjID = newInventory.objectId!
+                            //Update user's inventory array
+                            if let currentUser = PFUser.current() {
+                                if currentUser["inventories"] == nil {
+                                    currentUser["inventories"] = [newInventoryObjID]
+                                } else {
+                                    var userInv: [String] = currentUser["inventories"] as! [String]
+                                    userInv.append(newInventoryObjID)
+                                    
+                                    currentUser["inventories"] = userInv
+                                }
 
-                        currentUser.saveInBackground() { (success, error) in
-                            if success {
-                                print("Saved!")
-                                self.performSegue(withIdentifier:"inventoryAddSuccess", sender: nil)
+                                currentUser.saveInBackground() { (success, error) in
+                                    if success {
+                                        print("Saved!")
+                                        self.performSegue(withIdentifier:"inventoryAddSuccess", sender: nil)
+                                    } else {
+                                        print("User save error")
+                                        print("Error: \(error?.localizedDescription)")
+                                    }
+                                }
                             } else {
-                                print("User save error")
-                                print("Error: \(error?.localizedDescription)")
+                                print("nil user")
                             }
                         }
-                    } else {
-                        print("nil user")
+                        else {
+                            print("Inventory save error")
+                            print("Error: \(error?.localizedDescription)")
+                        }
                     }
-                }
-                else {
-                    print("Inventory save error")
+                    
+                } else {
+                    print("Category save error")
                     print("Error: \(error?.localizedDescription)")
                 }
             }
+            
+            
             
         }
         

@@ -23,7 +23,8 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
     var chosenItem: String = ""
     var chosenItemID: String = ""
     var itemArray: [[String]] = []
-
+    var itemSegueArray: [String] = [String]()
+    
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var categoryPickCollection: UICollectionView!
     @IBOutlet weak var itemCollection: UICollectionView!
@@ -97,6 +98,7 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
             }
 
             self.dictCategory = valuesINeed!
+            print("dictCategory = ", self.dictCategory)
             self.categoryIDs = Array(self.dictCategory.values)
             self.categoryNames = Array(self.dictCategory.keys)
             self.categoryPickCollection.reloadData()
@@ -252,6 +254,7 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
             destinationVC.itemID = chosenCategoryID
             destinationVC.regColor = self.regColor
             destinationVC.lightColor = self.lightColor
+            destinationVC.itemSegueArray = self.itemSegueArray
         }
     }
     
@@ -397,7 +400,32 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             }
             
         } else {
-            performSegue(withIdentifier: "showItemDetails", sender: nil)
+            chosenItem = itemNames[indexPath.item]
+            chosenItemID = dictItems[chosenItem]!
+
+            print(chosenItem)
+            print(chosenItemID)
+            
+            let query = PFQuery(className: "Item")
+            query.getObjectInBackground(withId: chosenItemID) { (item, error) in
+              if error == nil && item != nil {
+                
+                let name = item!["itemName"] as! String
+                let category = item!["itemCategory"] as! String
+//                if let expirationDate = item!["expiration"] as! Date {
+//                    // Convert to String
+//                } else {
+//                    expiration = ""
+//                }
+                let notes = item!["notes"] as! String
+                let itemCount = String(item!["itemCount"] as! Int)
+                
+                self.itemSegueArray = [name, category, "", notes, itemCount]
+                self.performSegue(withIdentifier: "showItemDetails", sender: nil)
+              }
+            }
+            
+            //performSegue(withIdentifier: "showItemDetails", sender: nil)
         }
         
       }
