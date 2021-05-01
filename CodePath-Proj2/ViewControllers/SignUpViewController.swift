@@ -104,31 +104,47 @@ class SignUpViewController: UIViewController {
             let spinner: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium) as UIActivityIndicatorView
             spinner.startAnimating()
             
-            let user = PFUser()
-            user.username = username
-            user.password = password
-            user.email = email
-            user["firstName"] = firstName
-            user["lastName"] = lastName
 
-            user.signUpInBackground { (success, error) in
-                if success {
-                    
-                    let alert = UIAlertController(title: "Welcome!", message: "Sign-up Successful", preferredStyle: UIAlertController.Style.alert)
-                    let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
-                    {
-                        UIAlertAction in
-                        self.performSegue(withIdentifier:"signUpSuccessful", sender: nil)
+            let parseObject = PFObject(className:"ShoppingList")
+            parseObject["itemsToShop"] = []
+
+            // Saves the new object.
+            parseObject.saveInBackground {
+              (success: Bool, error: Error?) in
+              if (success) {
+                
+                let user = PFUser()
+                user.username = username
+                user.password = password
+                user.email = email
+                user["firstName"] = firstName
+                user["lastName"] = lastName
+                user["shoppingList"] = parseObject.objectId
+                
+                user.signUpInBackground { (success, error) in
+                    if success {
+                
+                        let alert = UIAlertController(title: "Welcome!", message: "Sign-up Successful", preferredStyle: UIAlertController.Style.alert)
+                        let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+                        {
+                            UIAlertAction in
+                            self.performSegue(withIdentifier:"signUpSuccessful", sender: nil)
+                        }
+                        alert.addAction(alertAction)
+                        self.present(alert, animated: true)
+                        {
+                            () -> Void in
+                        }
+                    } else {
+                        print("Error: \(String(describing: error?.localizedDescription))")
                     }
-                    alert.addAction(alertAction)
-                    self.present(alert, animated: true)
-                    {
-                        () -> Void in
-                    }
-                    
-                } else {
-                    print("Error: \(String(describing: error?.localizedDescription))")
                 }
+                
+                
+              } else {
+                print("Error: \(String(describing: error?.localizedDescription))")
+              }
+            
             }
         }
     

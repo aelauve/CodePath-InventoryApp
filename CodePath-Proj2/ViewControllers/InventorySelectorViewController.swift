@@ -8,19 +8,22 @@
 import UIKit
 import Parse
 
-class InventorySelectorViewController: UITableViewController {
+class InventorySelectorViewController: UITableViewController, ModalTransitionListener {
 
     var invObjects: [String] = [String]()
     //var invNames: [String] = [String]()
     var invSelected: String = ""
     var regColor: UIColor = UIColor(named: "GreenReg")!
     var lightColor: UIColor = UIColor(named: "GreenLight")!
+    @IBOutlet var inventoryTable: UITableView!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ModalTransitionMediator.instance.setListener(listener: self)
+        
         //Load colors
         getColorScheme()
         
@@ -28,6 +31,23 @@ class InventorySelectorViewController: UITableViewController {
         let user = PFUser.current()
         invObjects = user!["inventories"] as! [String]
     
+    }
+    
+    @IBAction func printReceivedValue(_ sender: UIButton) {
+        print("Print Receieved Value")
+    }
+    
+    func popoverDismissed() {
+        
+        print("Popover Dismissed")
+        
+        self.tabBarController?.dismiss(animated: true, completion: nil)
+        
+        self.viewDidLoad()
+        
+        getColorScheme()
+        inventoryTable.reloadData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

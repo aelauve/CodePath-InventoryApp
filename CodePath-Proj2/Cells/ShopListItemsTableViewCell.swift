@@ -9,6 +9,7 @@ import UIKit
 
 class ShopListItemsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var checkOffImage: UIImageView!
     @IBOutlet weak var listItemImage: UIImageView!
     @IBOutlet weak var listItemName: UILabel!
     @IBOutlet weak var listItemAmount: UILabel!

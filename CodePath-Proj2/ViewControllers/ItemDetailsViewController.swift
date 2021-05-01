@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Parse
 
 class ItemDetailsViewController: UIViewController {
     
@@ -22,6 +23,9 @@ class ItemDetailsViewController: UIViewController {
     @IBOutlet weak var itemNotes: UITextView!
     @IBOutlet weak var itemAmount: UILabel!
     @IBOutlet weak var updateButton: UIButton!
+    @IBOutlet weak var outerView: UIView!
+    @IBOutlet weak var countStepper: UIStepper!
+    @IBOutlet weak var shopListButton: UIButton!
     
     
     
@@ -41,8 +45,20 @@ class ItemDetailsViewController: UIViewController {
         itemNotes.text = itemSegueArray[3]
         itemAmount.text = itemSegueArray[4]
         
-        //button
+        //buttons
         updateButton.backgroundColor = regColor
+        updateButton.layer.cornerRadius = 5
+        shopListButton.backgroundColor = regColor
+        shopListButton.layer.cornerRadius = 5
+        
+        //outerView
+        outerView.backgroundColor = lightColor
+        outerView.layer.cornerRadius = 10
+        outerView.layer.opacity = 0.5
+        
+        //stepper
+        countStepper.value = Double(itemAmount.text!) ?? 0
+        countStepper.minimumValue = 1
 
     }
     
@@ -50,7 +66,46 @@ class ItemDetailsViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    
+    @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        itemAmount.text = Int(sender.value).description
+    }
+    
+    
     @IBAction func onUpdate(_ sender: Any) {
+        
+        let query = PFQuery(className:"Item")
+
+        print("itemID: ", itemID)
+        query.getObjectInBackground(withId: itemID) { (parseObject, error) in
+          if error != nil {
+            print(error)
+          } else if parseObject != nil {
+            //parseObject["itemIcon"] = PFFile(name:"resume.txt", data:"My string content".dataUsingEncoding(NSUTF8StringEncoding))
+            parseObject!["itemCount"] = Int(self.itemAmount.text!)
+            parseObject!["notes"] = self.itemNotes.text
+
+            parseObject!.saveInBackground()
+          }
+        }
+        
+    }
+    
+    @IBAction func addToShopList(_ sender: Any) {
+        
+        let user = PFUser.current()
+        let query = PFQuery(className:"ShoppingList")
+        query.getObjectInBackground(withId: user!["shoppingList"] as! String) { (parseObject, error) in
+          if error != nil {
+            print(error)
+          } else if parseObject != nil {
+            var temp = parseObject!["itemsToShop"] as! [String]
+            temp.append(self.itemName.text!)
+            parseObject!["itemsToShop"] = temp
+
+            parseObject!.saveInBackground()
+          }
+        }
         
     }
     /*

@@ -25,6 +25,7 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
     var itemArray: [[String]] = []
     var itemSegueArray: [String] = [String]()
     
+    @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var categoryPickCollection: UICollectionView!
     @IBOutlet weak var itemCollection: UICollectionView!
@@ -45,6 +46,7 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
         //Load colors
         getColorScheme()
         backButton.tintColor = regColor
+        addButton.tintColor = regColor
         
         getCategories { (valuesINeed , error) in
             
@@ -80,6 +82,10 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
 
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        ModalTransitionMediator.instance.sendPopoverDismissed(modelChanged: true)
+    }
+    
     func popoverDismissed() {
         //self.navigationController?.dismiss(animated: true, completion: nil)
         categoryPickCollection.reloadData()
@@ -98,7 +104,6 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
             }
 
             self.dictCategory = valuesINeed!
-            print("dictCategory = ", self.dictCategory)
             self.categoryIDs = Array(self.dictCategory.values)
             self.categoryNames = Array(self.dictCategory.keys)
             self.categoryPickCollection.reloadData()
@@ -227,7 +232,15 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
     }
 
     
-    @IBAction func backButtonClicked(_ sender: Any) {
+    @IBAction func backButtonClicked(_ sender: UIBarButtonItem) {
+
+        if let tabVC = presentingViewController as? UITabBarController {
+            let navVC = tabVC.viewControllers![0] as? UINavigationController
+            let presenter = navVC?.topViewController as! InventorySelectorViewController
+                presenter.regColor = regColor
+                presenter.lightColor = lightColor
+            }
+        
         self.dismiss(animated: true, completion: nil)
     }
     
