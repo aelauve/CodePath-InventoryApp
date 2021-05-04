@@ -321,4 +321,4 @@ List of network requests by screen
 <img src='http://g.recordit.co/vTdGe1RlPg.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='http://g.recordit.co/5dg0bGOjLz.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='http://g.recordit.co/5dg0bGOjLz.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-<img src='https://ibb.co/BC9Hnps' title='Video Walkthrough' width='' alt='App Icon' />
+<img src='https://i.ibb.co/BC9Hnps/Artboard-1.png' title='Video Walkthrough' width='' alt='App Icon' />
