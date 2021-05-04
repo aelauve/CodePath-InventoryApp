@@ -306,7 +306,7 @@ List of network requests by screen
 <img src='http://g.recordit.co/Dc3eYAXRUE.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='http://g.recordit.co/ZunAWHTjCf.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-## Updates - Milestone 12
+## Updates - Milestone 13
 
 - User can now filter through categories to populate items on the screen
 - User can view item details by clicking on it
@@ -320,3 +320,5 @@ List of network requests by screen
 <img src='http://g.recordit.co/gDGiK2FVf4.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='http://g.recordit.co/vTdGe1RlPg.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='http://g.recordit.co/5dg0bGOjLz.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/5dg0bGOjLz.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://ibb.co/BC9Hnps' title='Video Walkthrough' width='' alt='App Icon' />
