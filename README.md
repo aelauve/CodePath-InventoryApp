@@ -305,3 +305,18 @@ List of network requests by screen
 - User can add items (Does not currently update in app -> to be worked on next sprint)
 <img src='http://g.recordit.co/Dc3eYAXRUE.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='http://g.recordit.co/ZunAWHTjCf.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+## Updates - Milestone 12
+
+- User can now filter through categories to populate items on the screen
+- User can view item details by clicking on it
+- User can choose a color scheme
+- User can add items to Shopping List
+- User can clear Shopping List
+- User can add a profile picture
+- Add Categories bug fixed
+- Add Items bug fixed
+- Added App Icon
+<img src='http://g.recordit.co/gDGiK2FVf4.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/vTdGe1RlPg.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/5dg0bGOjLz.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
