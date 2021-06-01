@@ -8,7 +8,9 @@
 import UIKit
 import Parse
 
+
 class InventoryViewController: UIViewController, ModalTransitionListener {
+    
     
     
     var dictCategory: [String : String] = [:]
@@ -93,6 +95,7 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.itemCollection.reloadData()
         //Load colors
         getColorScheme()
         backButton.tintColor = regColor
@@ -264,10 +267,11 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
             let navVCs = segue.destination as! UINavigationController
             let destinationVC = navVCs.viewControllers[0] as! ItemDetailsViewController
             destinationVC.itemID = chosenItemID
-            destinationVC.itemID = chosenCategoryID
+            destinationVC.categoryID = chosenCategoryID
             destinationVC.regColor = self.regColor
             destinationVC.lightColor = self.lightColor
             destinationVC.itemSegueArray = self.itemSegueArray
+            destinationVC.instanceOfIVC = self
         }
     }
     
@@ -367,9 +371,9 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             let itemName = itemDetails[0]
             let itemCount = itemDetails[2]
             
-            print("indexPath.row = ", indexPath.row)
-            print("itemName = ", itemName)
-            print()
+//            print("indexPath.row = ", indexPath.row)
+//            print("itemName = ", itemName)
+//            print()
             
             cell.itemNameLabel.text = itemName
             cell.itemNumberLabel.text = itemCount
@@ -419,18 +423,18 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             
         } else {
             
-            print("itemArray: ", itemArray)
-            print("itemNames: ", itemNames)
+//            print("itemArray: ", itemArray)
+//            print("itemNames: ", itemNames)
             
             //chosenItem = itemNames[indexPath.item]
             chosenItem = itemArray[indexPath.item][0]
-            print("chosenItem: ", chosenItem)
+            //print("chosenItem: ", chosenItem)
             chosenItemID = dictItems[chosenItem]!
 
-            print("dictItems: ", dictItems)
-            print("indexPath.item: ", indexPath.item)
-            print("chosenItem: ", chosenItem)
-            print()
+//            print("dictItems: ", dictItems)
+//            print("indexPath.item: ", indexPath.item)
+//            print("chosenItem: ", chosenItem)
+//            print()
             //print(chosenItemID)
             
             let query = PFQuery(className: "Item")

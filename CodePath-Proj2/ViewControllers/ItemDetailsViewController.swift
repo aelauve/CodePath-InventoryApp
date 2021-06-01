@@ -15,6 +15,9 @@ class ItemDetailsViewController: UIViewController {
     var regColor: UIColor = UIColor(named: "GreenReg")!
     var lightColor: UIColor = UIColor(named: "GreenLight")!
     var itemSegueArray: [String] = []
+    
+    //experimenting
+    var instanceOfIVC: InventoryViewController!
 
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemName: UILabel!
@@ -63,7 +66,12 @@ class ItemDetailsViewController: UIViewController {
     }
     
     @IBAction func onCancel(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: {
+            DispatchQueue.main.async {
+                //self.instanceOfIVC.itemCollection.reloadData()
+                self.instanceOfIVC.viewDidLoad()
+            }
+        })
     }
     
     
@@ -88,6 +96,7 @@ class ItemDetailsViewController: UIViewController {
             parseObject!.saveInBackground()
           }
         }
+        
         
     }
     
