@@ -416,8 +416,10 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             chosenItem = itemNames[indexPath.item]
             chosenItemID = dictItems[chosenItem]!
 
-            print(chosenItem)
-            print(chosenItemID)
+            print("dictItems: ", dictItems)
+            print("indexPath.item: ", indexPath.item)
+            print("chosenItem: ", chosenItem)
+            //print(chosenItemID)
             
             let query = PFQuery(className: "Item")
             query.getObjectInBackground(withId: chosenItemID) { (item, error) in
