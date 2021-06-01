@@ -361,10 +361,15 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
 //            print("itemArray count ", itemArray.count)
 //            print("itemArray: ", itemArray)
             
+            
             let itemDetails = itemArray[indexPath.row]
 //            print("item details ", itemDetails)
             let itemName = itemDetails[0]
             let itemCount = itemDetails[2]
+            
+            print("indexPath.row = ", indexPath.row)
+            print("itemName = ", itemName)
+            print()
             
             cell.itemNameLabel.text = itemName
             cell.itemNumberLabel.text = itemCount
@@ -413,12 +418,19 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             }
             
         } else {
-            chosenItem = itemNames[indexPath.item]
+            
+            print("itemArray: ", itemArray)
+            print("itemNames: ", itemNames)
+            
+            //chosenItem = itemNames[indexPath.item]
+            chosenItem = itemArray[indexPath.item][0]
+            print("chosenItem: ", chosenItem)
             chosenItemID = dictItems[chosenItem]!
 
             print("dictItems: ", dictItems)
             print("indexPath.item: ", indexPath.item)
             print("chosenItem: ", chosenItem)
+            print()
             //print(chosenItemID)
             
             let query = PFQuery(className: "Item")
