@@ -29,7 +29,7 @@ The app will allow users to add items in several ways: manually type in the item
 
 - [x] The user can add items manually
 - [x] The user can add categories manually
-- [ ] The user can categorize items to make the inventory more organized 
+- [x] The user can categorize items to make the inventory more organized 
 - [x] The user can register an account 
 - [x] The user can log in to their account and have all the previous information stored
 
