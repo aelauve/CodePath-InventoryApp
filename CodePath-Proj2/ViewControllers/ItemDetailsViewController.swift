@@ -44,6 +44,8 @@ class ItemDetailsViewController: UIViewController {
         //labels
         itemName.text = itemSegueArray[0]
         itemCategory.text = itemSegueArray[1]
+        print(itemSegueArray[2])
+        print(type(of: itemSegueArray[2]))
         if itemSegueArray[2] == "" {
             itemExpiration.text = "No Expiration"
         } else {
@@ -101,6 +103,12 @@ class ItemDetailsViewController: UIViewController {
           }
         }
         
+        self.dismiss(animated: true, completion: {
+            DispatchQueue.main.async {
+                //self.instanceOfIVC.itemCollection.reloadData()
+                self.instanceOfIVC.viewDidLoad()
+            }
+        })
         
     }
     
@@ -119,6 +127,8 @@ class ItemDetailsViewController: UIViewController {
             parseObject!.saveInBackground()
           }
         }
+        
+        self.dismiss(animated: true, completion: nil)
         
     }
     /*

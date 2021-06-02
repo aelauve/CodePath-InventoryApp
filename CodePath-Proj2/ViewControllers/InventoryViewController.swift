@@ -448,15 +448,18 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
                 
                 let name = item!["itemName"] as! String
                 let category = item!["itemCategory"] as! String
-//                if let expirationDate = item!["expiration"] as! Date {
-//                    // Convert to String
-//                } else {
-//                    expiration = ""
-//                }
+                
+                var dateString = ""
+                if let expirationDate = item!["expiration"] as? Date {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM/dd/yy"
+                    dateString = "Expires " + dateFormatter.string(from: expirationDate)
+                }
+                
                 let notes = item!["notes"] as! String
                 let itemCount = String(item!["itemCount"] as! Int)
                 
-                self.itemSegueArray = [name, category, "", notes, itemCount]
+                self.itemSegueArray = [name, category, dateString, notes, itemCount]
                 self.performSegue(withIdentifier: "showItemDetails", sender: nil)
               }
             }

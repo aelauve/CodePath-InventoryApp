@@ -182,7 +182,8 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MM/dd/yy"
                 let dateString = dateFormatter.string(from: expirationDate.date)
-                item["expiration"] = dateString
+                item["expiration"] = expirationDate.date
+                //item["expiration"] = dateString
             }
             item["itemCount"] = (Int)(amountTextBox.text!)
             item["notes"] = notesTextBox.text
