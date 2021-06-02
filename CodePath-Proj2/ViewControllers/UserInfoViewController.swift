@@ -224,7 +224,6 @@ class UserInfoViewController: UIViewController, ModalTransitionListener {
                 //self.configurePageViewController()
             }
             self.configurePageViewController()
-            print(self.dataSource)
         }
         //print(dataSource)
     }
