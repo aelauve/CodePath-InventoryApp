@@ -11,7 +11,7 @@ import Parse
 
 class InventoryViewController: UIViewController, ModalTransitionListener {
     
-    
+    var instanceOfISVC: InventorySelectorViewController!
     
     var dictCategory: [String : String] = [:]
     var categoryIDs: [String] = [String]()
@@ -244,7 +244,12 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
                 presenter.lightColor = lightColor
             }
         
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: {
+            DispatchQueue.main.async {
+                //self.instanceOfIVC.itemCollection.reloadData()
+                self.instanceOfISVC.viewWillAppear(true)
+            }
+        })
     }
     
     

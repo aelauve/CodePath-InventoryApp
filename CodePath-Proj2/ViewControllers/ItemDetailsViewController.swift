@@ -44,7 +44,11 @@ class ItemDetailsViewController: UIViewController {
         //labels
         itemName.text = itemSegueArray[0]
         itemCategory.text = itemSegueArray[1]
-        itemExpiration.text = itemSegueArray[2]
+        if itemSegueArray[2] == "" {
+            itemExpiration.text = "No Expiration"
+        } else {
+            itemExpiration.text = itemSegueArray[2]
+        }
         itemNotes.text = itemSegueArray[3]
         itemAmount.text = itemSegueArray[4]
         

@@ -40,7 +40,10 @@ class UserInfoViewController: UIViewController, ModalTransitionListener {
 
         getUserInfo()
         
-        configurePageViewController()
+        //configurePageViewController()
+        
+        
+        //configurePageViewController()
         
         userProfileView.backgroundColor = regColor
         settingsButton.backgroundColor = lightColor
@@ -197,7 +200,10 @@ class UserInfoViewController: UIViewController, ModalTransitionListener {
                         innerGroup.leave()
                         
                         innerGroup.notify(queue: .main){
-                            self.dataSource.append([invID, invName, userString, createdDate])
+                            if !self.dataSource.contains([invID, invName, userString, createdDate]) {
+                                self.dataSource.append([invID, invName, userString, createdDate])
+                            }
+                            
                             //print(self.dataSource[index])
                             index += 1
                         }
@@ -215,9 +221,10 @@ class UserInfoViewController: UIViewController, ModalTransitionListener {
         
         self.myGroup.notify(queue: .main){
             if (self.boolean == false){
-                self.configurePageViewController()
+                //self.configurePageViewController()
             }
-            //self.configurePageViewController()
+            self.configurePageViewController()
+            print(self.dataSource)
         }
         //print(dataSource)
     }

@@ -163,6 +163,7 @@ class InventorySelectorViewController: UITableViewController, ModalTransitionLis
             destinationVC.inventoryID = invSelected
             destinationVC.regColor = self.regColor
             destinationVC.lightColor = self.lightColor
+            destinationVC.instanceOfISVC = self
         }
         if segue.identifier == "addInventory"{
             let navVC = segue.destination as! UINavigationController
