@@ -695,6 +695,10 @@
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WEC-8i-G2u">
                                 <rect key="frame" x="114" y="355" width="277" height="92"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5Kb-9L-6Ew" id="CZW-9D-TOJ"/>
+                                    <outlet property="delegate" destination="5Kb-9L-6Ew" id="2Tu-D6-zdY"/>
+                                </connections>
                             </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dcB-N6-cfR"/>

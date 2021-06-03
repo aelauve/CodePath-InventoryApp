@@ -24,6 +24,7 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var notesTextBox: UITextView!
     @IBOutlet weak var categoryPicker: UIPickerView!
     
+    var dictCategories: [String : String] = [:]
     var pickerData: [String] = [String]()
     var categoryObjIDs: [String] = [String]()
     var chosenCategory: String = ""
@@ -47,12 +48,12 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         itemImageView.backgroundColor = lightColor
         
         //Styling border of Name and Amount text boxes
-        //nameTextBox.layer.borderWidth = 1.0
-        //nameTextBox.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
+        nameTextBox.layer.borderWidth = 1.0
+        nameTextBox.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         nameTextBox.layer.cornerRadius = 5
         
         amountTextBox.layer.borderWidth = 1.0
-        //amountTextBox.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
+        amountTextBox.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         amountTextBox.layer.cornerRadius = 5
         
         //Styling '+' and '-' buttons
@@ -75,15 +76,29 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         //addToInventoryButton.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
         addToInventoryButton.backgroundColor = regColor
         
+        //Adding bordert to Notes Text Box
+        notesTextBox.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        notesTextBox.layer.borderWidth = 1.0
+        
+//        categoryPicker.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+//        categoryPicker.layer.borderWidth = 1.0
+//
+//        expirationDate.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+//        expirationDate.layer.borderWidth = 1.0
+        
         
         //Connect picker data
         self.categoryPicker.delegate = self
         self.categoryPicker.dataSource = self
         
+        self.pickerData = Array(self.dictCategories.keys)
+        print("picker data = ", pickerData)
+        self.categoryObjIDs = Array(self.dictCategories.values)
+        
         //Input temporary data
         //pickerData = ["Category1", "Category2", "Category3"]
-        chosenCategory = pickerData[0]
-        chosenCatID = categoryObjIDs[0]
+//        chosenCategory = pickerData[0]
+//        chosenCatID = categoryObjIDs[0]
         
     }
     
@@ -103,17 +118,19 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         return pickerData.count
     }
     
-    // The data to return fopr the row and component (column) that's being passed in
+    // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
     
     // Capture the picker view selection
-    private func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    
+    internal func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
         chosenCategory = pickerData[row]
         chosenCatID = categoryObjIDs[row]
+
     }
     
     
