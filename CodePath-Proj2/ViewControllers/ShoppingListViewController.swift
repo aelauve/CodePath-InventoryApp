@@ -17,7 +17,8 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     var regColor: UIColor = UIColor(named: "GreenReg")!
     var lightColor: UIColor = UIColor(named: "GreenLight")!
     var user = PFUser.current()
-    var isSelected: Int = 0
+    //var isSelected: Int = -1
+    var isSelected = [Int](repeating: 0, count: 75)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,7 +135,13 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.isSelected = indexPath.row
+        //self.isSelected = indexPath.row
+        if isSelected[indexPath.row] == 0 {
+            isSelected[indexPath.row] = 1
+        }
+        else {
+            isSelected[indexPath.row] = 0
+        }
 
         tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
     }
@@ -150,13 +157,16 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         cell.listItemImage.layer.borderWidth = 2.0
         cell.listItemImage.layer.borderColor = regColor.cgColor
         
-        if isSelected == indexPath.row {
+        if isSelected[indexPath.row] == 1 {
             cell.backgroundColor = lightColor
-            cell.listItemImage.backgroundColor = regColor
+            cell.listItemImage.tintColor = regColor
+            cell.listItemImage.image = UIImage(systemName: "checkmark.circle")
+            cell.listItemImage.layer.borderWidth = 3.0
             cell.layer.opacity = 0.5
         } else {
             cell.listItemImage.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            cell.listItemImage.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.listItemImage.image = nil
+            cell.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
         
         cell.listItemImage.layer.cornerRadius = (cell.listItemImage?.frame.size.width ?? 0.0) / 2
