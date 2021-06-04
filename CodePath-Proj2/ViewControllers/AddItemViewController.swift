@@ -8,7 +8,7 @@
 import UIKit
 import Parse
 
-class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var itemImageView: UIImageView! {
         didSet {
@@ -180,7 +180,29 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     
     @IBAction func didTapImageView(_ sender: UITapGestureRecognizer) {
-        print("you tapped me!")
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            picker.sourceType = .camera
+        } else {
+            picker.sourceType = .photoLibrary
+        }
+        
+        present(picker, animated: true, completion: nil)
+    }
+    
+    //Uploading photo
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as! UIImage
+        let size = CGSize(width: 120, height: 120)
+        let scaledImage = image.af_imageScaled(to: size)
+        
+        itemImageView.image = scaledImage
+        
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancel(_ sender: Any) {
@@ -208,6 +230,7 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             
             item["itemName"] = nameTextBox.text
             item["itemCategory"] = chosenCategory
+            
             if expirationSwitch.isOn {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MM/dd/yy"
@@ -217,6 +240,10 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             }
             item["itemCount"] = (Int)(amountTextBox.text!)
             item["notes"] = notesTextBox.text
+            
+            let imageData = itemImageView.image!.pngData()
+            let file = PFFileObject(name: "image.png", data: imageData!)
+            item["itemIcon"] = file
                 
             item.saveInBackground { (success, error) in
                 if success {
