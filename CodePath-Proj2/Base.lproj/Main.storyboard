@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -595,10 +596,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aj4-Ps-CfE">
-                                <rect key="frame" x="145" y="84" width="124" height="124"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgQ-4Z-Vzu">
                                 <rect key="frame" x="21" y="244" width="48" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -700,6 +697,15 @@
                                     <outlet property="delegate" destination="5Kb-9L-6Ew" id="2Tu-D6-zdY"/>
                                 </connections>
                             </pickerView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aj4-Ps-CfE">
+                                <rect key="frame" x="147" y="86" width="121" height="117"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <imageReference key="image" image="camera.circle" catalog="system" symbolScale="small"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="C3x-Ca-Imc" appends="YES" id="Zgf-cB-674"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dcB-N6-cfR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -726,8 +732,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SUE-qh-Gnp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="C3x-Ca-Imc">
+                    <connections>
+                        <action selector="didTapImageView:" destination="5Kb-9L-6Ew" id="e0v-3h-UkO"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="641" y="2160"/>
+            <point key="canvasLocation" x="640.57971014492762" y="2159.5982142857142"/>
         </scene>
         <!--Add Category-->
         <scene sceneID="Nme-gj-urN">
@@ -1468,11 +1479,12 @@
     <inferredMetricsTieBreakers>
         <segue reference="89E-wY-6Ee"/>
         <segue reference="dpj-eM-Se5"/>
-        <segue reference="I9y-KE-DVn"/>
+        <segue reference="nhD-iz-nUd"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.backward" catalog="system" width="128" height="106"/>
         <image name="bag.fill" catalog="system" width="128" height="128"/>
+        <image name="camera.circle" catalog="system" width="128" height="121"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="list.number" catalog="system" width="128" height="97"/>
         <image name="minus" catalog="system" width="128" height="24"/>

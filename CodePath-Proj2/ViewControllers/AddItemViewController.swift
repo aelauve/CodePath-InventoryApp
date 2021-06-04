@@ -10,7 +10,11 @@ import Parse
 
 class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var itemImageView: UIImageView! {
+        didSet {
+            itemImageView.isUserInteractionEnabled = true
+        }
+    }
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var addToInventoryButton: UIButton!
@@ -46,9 +50,10 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         //Temporary styling of item image
         itemImageView.layer.cornerRadius = (itemImageView?.frame.size.width ?? 0.0) / 2
-        //itemImageView.layer.borderWidth = 2.0
-        //itemImageView.layer.borderColor = #colorLiteral(red: 1, green: 0.3807129264, blue: 0.4381764233, alpha: 1)
-        itemImageView.backgroundColor = lightColor
+        //itemImageView.layer.borderWidth = 1.0
+        //itemImageView.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        //itemImageView.backgroundColor = lightColor
+        itemImageView.tintColor = lightColor
         
         //Styling border of Name and Amount text boxes
         nameTextBox.layer.borderWidth = 1.0
@@ -172,6 +177,10 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         else {
             expirationDate.isEnabled = false
         }
+    }
+    
+    @IBAction func didTapImageView(_ sender: UITapGestureRecognizer) {
+        print("you tapped me!")
     }
     
     @IBAction func cancel(_ sender: Any) {

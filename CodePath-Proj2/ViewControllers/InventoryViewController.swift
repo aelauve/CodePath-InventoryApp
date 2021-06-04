@@ -67,7 +67,7 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
             }
             self.categoryNames = sortedNames
             self.categoryIDs = tempArray
-            print("names: ", self.categoryNames)
+            //print("names: ", self.categoryNames)
             
             if self.categoryIDs.count == 1 {
                 let alert = UIAlertController(title: "Getting Started", message: "Let's add your first category!", preferredStyle: UIAlertController.Style.alert)
@@ -101,6 +101,8 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
             }
             self.itemNames = sortedNames
             self.itemIDs = tempArray
+            
+            print("names: ", self.itemNames)
             
             self.itemCollection.reloadData()
             
@@ -164,6 +166,8 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
             }
             self.itemNames = sortedNames
             self.itemIDs = tempArray
+            
+            print("names: ", self.itemNames)
 
             self.itemCollection.reloadData()
 
@@ -465,6 +469,16 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
                     self.itemIDs = Array(self.dictItems.values)
                     self.itemNames = Array(self.dictItems.keys)
                     //print("item names ", self.itemNames)
+                    
+                    let sortedNames = self.itemNames.sorted(by: <)
+                    var tempArray: [String] = []
+                    for name in sortedNames {
+                        tempArray.append(self.dictItems[name]!)
+                    }
+                    self.itemNames = sortedNames
+                    self.itemIDs = tempArray
+                    
+                    print("item names ", self.itemNames)
                     
                     self.itemCollection.reloadData()
                     
