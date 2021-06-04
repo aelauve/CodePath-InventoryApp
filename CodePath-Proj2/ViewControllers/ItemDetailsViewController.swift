@@ -12,6 +12,8 @@ class ItemDetailsViewController: UIViewController {
     
     var itemID: String = ""
     var categoryID: String = ""
+    var allCategoryID: String = ""
+    var invID: String = ""
     var regColor: UIColor = UIColor(named: "GreenReg")!
     var lightColor: UIColor = UIColor(named: "GreenLight")!
     var itemSegueArray: [String] = []
@@ -70,6 +72,80 @@ class ItemDetailsViewController: UIViewController {
         countStepper.minimumValue = 1
 
     }
+    
+    @IBAction func removeItem(_ sender: Any) {
+        
+        // 1. Delete Item from Database
+        
+        let deleteAttributesOnly = true
+        let query = PFQuery(className:"Item")
+        query.getObjectInBackground(withId: itemID) { (parseObject, error) in
+            
+            if error != nil {
+              print(error)
+            } else if parseObject != nil {
+              if deleteAttributesOnly {
+                parseObject!.remove(forKey: "itemName")
+                parseObject!.remove(forKey: "itemIcon")
+                parseObject!.remove(forKey: "expiration")
+                parseObject!.remove(forKey: "itemCount")
+                parseObject!.remove(forKey: "notes")
+                parseObject!.remove(forKey: "itemCategory")
+                parseObject!.saveInBackground()
+              } else {
+                parseObject!.deleteInBackground()
+              }
+            }
+        }
+        
+        // 2. Remove item from Category
+        
+        let query2 = PFQuery(className:"Category")
+        query2.getObjectInBackground(withId: categoryID) { (category, error) in
+          if error == nil && category != nil {
+            var tempArray: [String] = []
+            for item in category!["itemList"] as! [String]{
+                if item != self.itemID {
+                    tempArray.append(item)
+                }
+            }
+            
+            category!["itemList"] = tempArray
+            category!.saveInBackground()
+            
+          }
+        }
+        
+        
+        // 3. Remove item from "All" category
+        
+        let query3 = PFQuery(className:"Category")
+        query3.getObjectInBackground(withId: allCategoryID) { (category, error) in
+          if error == nil && category != nil {
+            var tempArray: [String] = []
+            for item in category!["itemList"] as! [String]{
+                if item != self.itemID {
+                    tempArray.append(item)
+                }
+            }
+            
+            category!["itemList"] = tempArray
+            category!.saveInBackground()
+            
+          }
+        }
+        
+        // 4. Dismiss VC
+        
+        self.dismiss(animated: true, completion: {
+            DispatchQueue.main.async {
+                //self.instanceOfIVC.itemCollection.reloadData()
+                self.instanceOfIVC.viewDidLoad()
+            }
+        })
+        
+    }
+    
     
     @IBAction func onCancel(_ sender: Any) {
         self.dismiss(animated: true, completion: {

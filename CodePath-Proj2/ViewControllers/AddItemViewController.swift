@@ -14,6 +14,7 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var addToInventoryButton: UIButton!
+    var allCategoryID: String = ""
     //ignore next line
     @IBOutlet weak var notesTextView: UITextView!
     
@@ -91,6 +92,7 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         self.categoryPicker.delegate = self
         self.categoryPicker.dataSource = self
         
+        dictCategories.removeValue(forKey: "All")
         self.pickerData = Array(self.dictCategories.keys)
         print("picker data = ", pickerData)
         self.categoryObjIDs = Array(self.dictCategories.values)
@@ -223,6 +225,23 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                             
                             category!.saveInBackground() { (success, error) in
                                 if success {
+                                    
+                                    
+                                    // Add to "All" Category
+                                    let query = PFQuery(className: "Category")
+                                    query.getObjectInBackground(withId: self.allCategoryID) { (category, error) in
+                                        if error == nil && category != nil {
+                                            if category!["itemList"] == nil {
+                                                category!["itemList"] = [itemID]
+                                            } else {
+                                                var catItems: [String] = category!["itemList"] as! [String]
+                                                catItems.append(itemID)
+                                                category!["itemList"] = catItems
+                                            }
+                                            category!.saveInBackground()
+                                        }
+                                    }
+                                    
                                     self.dismiss(animated: true, completion: nil)
                                 } else {
                                     print("Inventory save error")
