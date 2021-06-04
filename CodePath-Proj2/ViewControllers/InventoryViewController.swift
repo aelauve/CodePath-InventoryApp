@@ -412,10 +412,40 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
             
             let cell = itemCollection.dequeueReusableCell(withReuseIdentifier: itemCollectionViewIdentifier, for: indexPath) as! InventoryCollectionViewCell
             
-            cell.itemImage.layer.borderWidth = 1.0
-            cell.itemImage.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-            cell.itemImage.backgroundColor = regColor
-            cell.itemImage.layer.cornerRadius = (cell.itemImage?.frame.size.width ?? 0.0) / 2
+            let itemForCell = itemArray[indexPath.item][0]
+            //print("chosenItem: ", chosenItem)
+            let itemID = dictItems[itemForCell]!
+            
+            var query = PFQuery(className:"Item")
+            query.getObjectInBackground(withId: itemID) { (item, error) in
+                
+                guard let item = item else { return }
+                if((item["itemIcon"]) != nil)
+                {
+                    let imageFile = item["itemIcon"] as! PFFileObject
+                    let urlString = imageFile.url!
+                    let url = URL(string: urlString)!
+                    cell.itemImage.af_setImage(withURL: url)
+                    cell.itemImage.layer.borderWidth = 1.0
+                    cell.itemImage.layer.masksToBounds = false
+                    cell.itemImage.layer.borderColor = UIColor.white.cgColor
+                    cell.itemImage.layer.cornerRadius = cell.itemImage.frame.size.width / 2
+                    cell.itemImage.clipsToBounds = true
+                } else {
+                    cell.itemImage.layer.borderWidth = 1.0
+                    cell.itemImage.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+                    cell.itemImage.backgroundColor = self.regColor
+                    cell.itemImage.layer.cornerRadius = (cell.itemImage?.frame.size.width ?? 0.0) / 2
+                }
+                
+            }
+            
+        
+//            cell.itemImage.layer.borderWidth = 1.0
+//            cell.itemImage.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+//            cell.itemImage.backgroundColor = regColor
+//            cell.itemImage.layer.cornerRadius = (cell.itemImage?.frame.size.width ?? 0.0) / 2
+            
             
 //            print("indexPath.row = ", indexPath.row)
 //            print("itemArray count ", itemArray.count)
