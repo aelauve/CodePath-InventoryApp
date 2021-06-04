@@ -38,6 +38,30 @@ class ItemDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         // image
+        var query = PFQuery(className:"Item")
+        query.getObjectInBackground(withId: itemID) { (item, error) in
+            
+            guard let item = item else { return }
+            if((item["itemIcon"]) != nil)
+            {
+                let imageFile = item["itemIcon"] as! PFFileObject
+                let urlString = imageFile.url!
+                let url = URL(string: urlString)!
+                self.itemImage.af_setImage(withURL: url)
+                self.itemImage.layer.borderWidth = 1.0
+                self.itemImage.layer.masksToBounds = false
+                self.itemImage.layer.borderColor = UIColor.white.cgColor
+                self.itemImage.layer.cornerRadius = self.itemImage.frame.size.width / 2
+                self.itemImage.clipsToBounds = true
+            } else {
+                self.itemImage.layer.borderWidth = 1.0
+                self.itemImage.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+                self.itemImage.backgroundColor = self.lightColor
+                self.itemImage.layer.cornerRadius = (self.itemImage?.frame.size.width ?? 0.0) / 2
+            }
+            
+        }
+        
         itemImage.layer.cornerRadius = (itemImage.frame.size.width ) / 2
         itemImage.layer.borderWidth = 1.0
         itemImage.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
