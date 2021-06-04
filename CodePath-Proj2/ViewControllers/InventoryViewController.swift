@@ -60,8 +60,14 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
             self.categoryIDs = Array(self.dictCategory.values)
             self.categoryNames = Array(self.dictCategory.keys)
             
-            //print(self.dictCategory , " the values i wanted all along ")
-            //print("category names ", self.categoryNames)
+            let sortedNames = self.categoryNames.sorted(by: <)
+            var tempArray: [String] = []
+            for name in sortedNames {
+                tempArray.append(self.dictCategory[name]!)
+            }
+            self.categoryNames = sortedNames
+            self.categoryIDs = tempArray
+            print("names: ", self.categoryNames)
             
             if self.categoryIDs.count == 1 {
                 let alert = UIAlertController(title: "Getting Started", message: "Let's add your first category!", preferredStyle: UIAlertController.Style.alert)
@@ -87,6 +93,14 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
             self.dictItems = itemDictionary!
             self.itemIDs = Array(self.dictItems.values)
             self.itemNames = Array(self.dictItems.keys)
+            
+            let sortedNames = self.itemNames.sorted(by: <)
+            var tempArray: [String] = []
+            for name in sortedNames {
+                tempArray.append(self.dictItems[name]!)
+            }
+            self.itemNames = sortedNames
+            self.itemIDs = tempArray
             
             self.itemCollection.reloadData()
             
@@ -119,6 +133,15 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
             self.dictCategory = valuesINeed!
             self.categoryIDs = Array(self.dictCategory.values)
             self.categoryNames = Array(self.dictCategory.keys)
+            
+            let sortedNames = self.categoryNames.sorted(by: <)
+            var tempArray: [String] = []
+            for name in sortedNames {
+                tempArray.append(self.dictCategory[name]!)
+            }
+            self.categoryNames = sortedNames
+            self.categoryIDs = tempArray
+            
             self.categoryPickCollection.reloadData()
 
         }
@@ -133,6 +156,14 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
             self.dictItems = itemDictionary!
             self.itemIDs = Array(self.dictItems.values)
             self.itemNames = Array(self.dictItems.keys)
+            
+            let sortedNames = self.itemNames.sorted(by: <)
+            var tempArray: [String] = []
+            for name in sortedNames {
+                tempArray.append(self.dictItems[name]!)
+            }
+            self.itemNames = sortedNames
+            self.itemIDs = tempArray
 
             self.itemCollection.reloadData()
 
@@ -332,6 +363,8 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
         }
         
     }
+    
+    
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
