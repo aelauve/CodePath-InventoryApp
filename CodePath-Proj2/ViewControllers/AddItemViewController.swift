@@ -37,6 +37,7 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var inventoryID: String = ""
     var regColor: UIColor = UIColor(named: "GreenReg")!
     var lightColor: UIColor = UIColor(named: "GreenLight")!
+    var useDefaultImage = true
     //Still need to add actions for the buttons
     //Also need to add text fields
     
@@ -180,6 +181,7 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     
     @IBAction func didTapImageView(_ sender: UITapGestureRecognizer) {
+        self.useDefaultImage = false
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
@@ -225,6 +227,21 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             }
             
         } else {
+            
+//            let imageData = itemImageView.image!.pngData()
+//            let file = PFFileObject(name: "image.png", data: imageData!)
+//            var itemImage = file
+//            var tempImage = itemImage
+//
+//            let query = PFQuery(className: "Category")
+//            print(self.chosenCategory)
+//            print(self.dictCategories[chosenCategory]!)
+//            query.getObjectInBackground(withId: dictCategories[chosenCategory]!) { (category, error) in
+//                if error == nil && category != nil {
+//                    tempImage = category!["icon"] as! PFFileObject
+//                }
+//            }
+            
             //Add item to category in user database
             let item = PFObject(className: "Item")
             
@@ -240,10 +257,13 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             }
             item["itemCount"] = (Int)(amountTextBox.text!)
             item["notes"] = notesTextBox.text
-            
             let imageData = itemImageView.image!.pngData()
             let file = PFFileObject(name: "image.png", data: imageData!)
             item["itemIcon"] = file
+//
+//            if useDefaultImage == true {
+//                item["itemIcon"] = tempImage
+//            }
                 
             item.saveInBackground { (success, error) in
                 if success {

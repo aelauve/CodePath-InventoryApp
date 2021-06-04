@@ -8,12 +8,17 @@
 import UIKit
 import Parse
 
-class AddCategoryViewController: UIViewController {
+class AddCategoryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var defaultIconImage: UIImageView!
     @IBOutlet weak var chooseImageButton: UIButton!
     @IBOutlet weak var categoryNameTextField: UITextField!
     @IBOutlet weak var addCategoryButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView! {
+        didSet {
+            imageView.isUserInteractionEnabled = true
+        }
+    }
     
     var inventoryID: String = ""
     var regColor: UIColor = UIColor(named: "GreenReg")!
@@ -29,6 +34,8 @@ class AddCategoryViewController: UIViewController {
         addCategoryButton.backgroundColor = regColor
         //addCategoryButton.layer.borderWidth = 2.0
         addCategoryButton.layer.cornerRadius = 10
+        
+        imageView.tintColor = lightColor
 
         // Do any additional setup after loading the view.
     }
@@ -39,6 +46,31 @@ class AddCategoryViewController: UIViewController {
     
     @IBAction func onCancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func onSelectImage(_ sender: UITapGestureRecognizer) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            picker.sourceType = .camera
+        } else {
+            picker.sourceType = .photoLibrary
+        }
+        
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as! UIImage
+        let size = CGSize(width: 120, height: 120)
+        let scaledImage = image.af_imageScaled(to: size)
+        
+        imageView.image = scaledImage
+        print("didFinishPicking: ", imageView.image)
+        
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onChooseImage(_ sender: Any) {
@@ -63,6 +95,11 @@ class AddCategoryViewController: UIViewController {
             var newCat = PFObject(className:"Category")
             newCat["categoryName"] = categoryNameTextField.text
             newCat["itemList"] = []
+            
+            print("onAddCat: ", imageView.image)
+            let imageData = imageView.image!.pngData()
+            let file = PFFileObject(name: "image.png", data: imageData!)
+            newCat["icon"] = file
             
             newCat.saveInBackground { (success, error) in
                 if success {

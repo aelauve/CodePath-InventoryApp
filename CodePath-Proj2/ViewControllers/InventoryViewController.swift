@@ -426,9 +426,10 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
                     let urlString = imageFile.url!
                     let url = URL(string: urlString)!
                     cell.itemImage.af_setImage(withURL: url)
-                    cell.itemImage.layer.borderWidth = 1.0
+                    cell.itemImage.layer.borderWidth = 2.0
                     cell.itemImage.layer.masksToBounds = false
-                    cell.itemImage.layer.borderColor = UIColor.white.cgColor
+                    //cell.itemImage.layer.borderColor = UIColor.white.cgColor
+                    cell.itemImage.layer.borderColor = self.regColor.cgColor
                     cell.itemImage.layer.cornerRadius = cell.itemImage.frame.size.width / 2
                     cell.itemImage.clipsToBounds = true
                 } else {
@@ -436,6 +437,7 @@ extension InventoryViewController: UICollectionViewDelegate, UICollectionViewDat
                     cell.itemImage.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
                     cell.itemImage.backgroundColor = self.regColor
                     cell.itemImage.layer.cornerRadius = (cell.itemImage?.frame.size.width ?? 0.0) / 2
+                    cell.itemImage.image = nil
                 }
                 
             }

@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var logoImageView: UIImageView!
     
     var regColor: UIColor = UIColor(named: "GreenReg")!
     var lightColor: UIColor = UIColor(named: "GreenLight")!
@@ -29,6 +30,8 @@ class LoginViewController: UIViewController {
         signUpButton.backgroundColor = regColor
         //signUpButton.layer.borderColor = #colorLiteral(red: 0.852301836, green: 0.4426146448, blue: 0.608592689, alpha: 1)
         signUpButton.layer.cornerRadius = 10
+        
+        logoImageView.layer.cornerRadius = logoImageView.frame.size.width / 2
 
     }
     
