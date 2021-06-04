@@ -124,7 +124,7 @@ class SignUpViewController: UIViewController {
                 user.signUpInBackground { (success, error) in
                     if success {
                 
-                        let alert = UIAlertController(title: "Welcome!", message: "Sign-up Successful", preferredStyle: UIAlertController.Style.alert)
+                        let alert = UIAlertController(title: "Sign-up Successful!", message:nil, preferredStyle: UIAlertController.Style.alert)
                         let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
                         {
                             UIAlertAction in

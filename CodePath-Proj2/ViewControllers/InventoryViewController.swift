@@ -63,7 +63,17 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
             //print(self.dictCategory , " the values i wanted all along ")
             //print("category names ", self.categoryNames)
             
-            self.categoryPickCollection.reloadData()
+            if self.categoryIDs.count == 1 {
+                let alert = UIAlertController(title: "Getting Started", message: "Let's add your first category!", preferredStyle: UIAlertController.Style.alert)
+                let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in self.performSegue(withIdentifier: "addCategory", sender: self) })
+                alert.addAction(alertAction)
+                self.present(alert, animated: true)
+                {
+                    () -> Void in
+                }
+            } else {
+                self.categoryPickCollection.reloadData()
+            }
             
         }
         

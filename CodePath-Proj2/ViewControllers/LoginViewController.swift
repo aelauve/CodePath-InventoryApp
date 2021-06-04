@@ -107,7 +107,7 @@ class LoginViewController: UIViewController {
             }
             else {
                 
-                let alert = UIAlertController(title: "Welcome!", message: "Let's add your first inventory.", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Welcome!", message: "Let's add your first inventory!", preferredStyle: UIAlertController.Style.alert)
                 let alertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
                 {
                     UIAlertAction in
