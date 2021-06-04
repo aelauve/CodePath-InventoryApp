@@ -19,6 +19,8 @@ class AddCategoryViewController: UIViewController {
     var regColor: UIColor = UIColor(named: "GreenReg")!
     var lightColor: UIColor = UIColor(named: "GreenLight")!
     
+    var instanceOfIVC: InventoryViewController!
+    
     
     
     override func viewDidLoad() {
@@ -80,7 +82,12 @@ class AddCategoryViewController: UIViewController {
                             
                             inventory!.saveInBackground() { (success, error) in
                                 if success {
-                                    self.dismiss(animated: true, completion: nil)
+                                    self.dismiss(animated: true, completion: {
+                                        DispatchQueue.main.async {
+                                            //self.instanceOfIVC.itemCollection.reloadData()
+                                            self.instanceOfIVC.viewDidLoad()
+                                        }
+                                    })
                                 } else {
                                     print("Inventory save error")
                                     print("Error: \(error?.localizedDescription)")

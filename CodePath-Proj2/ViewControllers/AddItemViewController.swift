@@ -36,6 +36,8 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     //Still need to add actions for the buttons
     //Also need to add text fields
     
+    var instanceOfIVC: InventoryViewController!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -242,7 +244,12 @@ class AddItemViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                                         }
                                     }
                                     
-                                    self.dismiss(animated: true, completion: nil)
+                                    self.dismiss(animated: true, completion: {
+                                        DispatchQueue.main.async {
+                                            //self.instanceOfIVC.itemCollection.reloadData()
+                                            self.instanceOfIVC.viewDidLoad()
+                                        }
+                                    })
                                 } else {
                                     print("Inventory save error")
                                     print("Error: \(error?.localizedDescription)")

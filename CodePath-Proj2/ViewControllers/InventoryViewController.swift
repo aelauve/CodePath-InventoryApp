@@ -260,6 +260,7 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
             destinationVC.inventoryID = inventoryID
             destinationVC.regColor = self.regColor
             destinationVC.lightColor = self.lightColor
+            destinationVC.instanceOfIVC = self
         } else if segue.identifier == "addItem" {
             let navVCs = segue.destination as! UINavigationController
             let destinationVC = navVCs.viewControllers[0] as! AddItemViewController
@@ -268,6 +269,7 @@ class InventoryViewController: UIViewController, ModalTransitionListener {
             destinationVC.regColor = self.regColor
             destinationVC.lightColor = self.lightColor
             destinationVC.allCategoryID = dictCategory["All"]!
+            destinationVC.instanceOfIVC = self
         } else if segue.identifier == "showItemDetails" {
             let navVCs = segue.destination as! UINavigationController
             let destinationVC = navVCs.viewControllers[0] as! ItemDetailsViewController
